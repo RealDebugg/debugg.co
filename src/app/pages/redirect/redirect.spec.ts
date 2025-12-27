@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DiscordRedirect } from './discord-redirect';
+import { RedirectComponent } from './redirect';
 
-describe('DiscordRedirect', () => {
-  let component: DiscordRedirect;
-  let fixture: ComponentFixture<DiscordRedirect>;
+describe('RedirectComponent', () => {
+  let component: RedirectComponent;
+  let fixture: ComponentFixture<RedirectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DiscordRedirect]
-    })
-    .compileComponents();
+      imports: [RedirectComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(DiscordRedirect);
+    fixture = TestBed.createComponent(RedirectComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
