@@ -8,7 +8,6 @@
 html {
     background: black;
     color: white;
-    font-family: ibmvga8, monospace;
 }
 
 body::after {
@@ -31,6 +30,7 @@ body::after {
 body {
     animation: textShadow 0.15s infinite;
     image-rendering: pixelated;
+    font-family: "MS UI Gothic";
 }
 
 span {
@@ -40,6 +40,15 @@ span {
 br {
     display: block;
     margin: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+    font-weight: normal;
+    font-family: ibmvga8, monospace;
+}
+
+a {
+    color: #00f3ff;
 }
 
 @font-face {
