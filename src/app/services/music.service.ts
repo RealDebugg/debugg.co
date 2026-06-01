@@ -31,7 +31,7 @@ export class MusicService {
     }
 
     void this.musicBgm.play().catch((err) => {
-      console.error('[toggleMute] Rain resume failed:', err);
+      console.error('[toggleMute] Music resume failed:', err);
     });
   }
 
@@ -54,7 +54,7 @@ export class MusicService {
   private setupEventListeners(): void {
     document.addEventListener('visibilitychange', () => {
       const visible = document.visibilityState === 'visible';
-      const shouldMute = !visible || this.mutedMusic(); //TODO: mute switch
+      const shouldMute = !visible || this.mutedMusic();
 
       if (visible && !shouldMute) {
         this.musicBgm.play();

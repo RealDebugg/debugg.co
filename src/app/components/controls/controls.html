@@ -7,4 +7,8 @@
     <input type="checkbox" id="muterain" [checked]="mutedRain" (change)="weatherService.toggleMute($any($event.target).checked)">&nbsp;
     <label for="muterain">Mute rain</label>
   </div>
+  <div>
+    <input type="checkbox" id="disablerain">&nbsp; <!-- TODO: Implement -->
+    <label for="disablerain">Disable Rain</label>
+  </div>
 </div>
