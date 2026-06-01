@@ -1,0 +1,13 @@
+<!-- Store in local storagw -->
+
+<div class="container">
+  <div>
+    <input type="checkbox" id="mutemusic" [checked]="muted" (change)="toggleMute($any($event.target).checked)">&nbsp;
+    <label for="mutemusic">Mute music</label>
+  </div>
+</div>
+
+<audio #music id="background-music" loop [volume]="0.2">
+  <source src="/My Castle Town.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
