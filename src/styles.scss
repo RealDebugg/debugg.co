@@ -56,6 +56,10 @@ a {
   color: #00f3ff;
 }
 
+app-human .human {
+  pointer-events: auto !important;
+}
+
 @font-face {
   font-family: ibmvga8;
   src: url("/ibm_vga8.woff2") format("woff2");
