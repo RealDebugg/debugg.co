@@ -1,6 +1,6 @@
 <div class="scanline"></div>
-<app-human></app-human>
+<app-human (click)="honkService.honk();"></app-human> <!-- TODO: Mouse events are disabled, work around? -->
 <style class="dynamic-style"></style>
 <main>
-    <router-outlet />
+  <router-outlet />
 </main>

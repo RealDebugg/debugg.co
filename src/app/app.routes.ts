@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       { path: '', component: Home },
-      { path: 'invite', component: RedirectComponent, data: { url: 'https://discord.gg/' } },
+      { path: 'invite', component: RedirectComponent, data: { url: 'https://discord.gg/' } }, /* TODO: Add discord invite */
     ],
   },
   { path: '**', component: NotFound },
