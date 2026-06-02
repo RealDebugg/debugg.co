@@ -1,9 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  inject,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { MusicService } from '../../services/music.service';
 
@@ -25,5 +20,9 @@ export class Controls {
 
   get mutedMusic() {
     return this.musicService.mutedMusic();
+  }
+
+  get disableRain() {
+    return this.weatherService.rainStopped();
   }
 }

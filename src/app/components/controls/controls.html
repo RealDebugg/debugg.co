@@ -1,14 +1,26 @@
-<div class="container">
+<div class="container rain-hitbox">
   <div>
-    <input type="checkbox" id="mutemusic" [checked]="mutedMusic" (change)="musicService.toggleMute($any($event.target).checked)">&nbsp;
+    <input
+      type="checkbox"
+      id="mutemusic"
+      [checked]="mutedMusic"
+      (change)="musicService.toggleMute($any($event.target).checked)"
+    />&nbsp;
     <label for="mutemusic">Mute music</label>
   </div>
   <div>
-    <input type="checkbox" id="muterain" [checked]="mutedRain" (change)="weatherService.toggleMute($any($event.target).checked)">&nbsp;
+    <input
+      type="checkbox"
+      id="muterain"
+      [checked]="mutedRain"
+      (change)="weatherService.toggleMute($any($event.target).checked)"
+    />&nbsp;
     <label for="muterain">Mute rain</label>
   </div>
   <div>
-    <input type="checkbox" id="disablerain">&nbsp; <!-- TODO: Implement -->
-    <label for="disablerain">Disable Rain</label>
+    <input type="checkbox" id="disablerain" [checked]="disableRain"
+      (change)="weatherService.toggleRain($any($event.target).checked)" />&nbsp;
+    <!-- TODO: Implement -->
+    <label for="disablerain">Disable rain</label>
   </div>
 </div>

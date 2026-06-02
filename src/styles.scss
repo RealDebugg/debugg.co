@@ -211,3 +211,21 @@ app-human .human {
 .center-text {
   text-align: center;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(70, 70, 70, 0.479);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(31, 31, 31);
+  outline: 1px solid #009199;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(31, 31, 31);
+  outline: 1px solid #00f3ff;
+}
