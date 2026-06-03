@@ -1,9 +1,15 @@
 <div class="layout">
-    <router-outlet></router-outlet>
-    <div>
-      <app-navlinks></app-navlinks>
-      <app-discord-status></app-discord-status>
-      <app-controls></app-controls>
-    </div>
+  <router-outlet></router-outlet>
+  <div>
+    <!-- TODO: Make a separate reusable sidebar component -->
+    <app-navlinks></app-navlinks>
+    <app-discord-status></app-discord-status>
+    <!-- TODO: Song status (last.fm) -->
+    <!-- TODO: Cool websites (marquee 2x)-->
+    <!-- TODO: Current twitter status -->
+    <!-- TODO: Webring -->
+    <!-- TODO: Visitor status (visits, unique visits, current visiting)-->
+    <app-controls></app-controls>
   </div>
-  <app-footer></app-footer>
+</div>
+<app-footer></app-footer>
