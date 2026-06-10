@@ -9,8 +9,6 @@ import { MusicService } from '../../services/music.service';
   styleUrl: './controls.scss',
 })
 export class Controls {
-  @ViewChild('music') musicRef!: ElementRef<HTMLAudioElement>;
-
   weatherService = inject(WeatherService);
   musicService = inject(MusicService);
 
