@@ -2,7 +2,9 @@
 <app-human (click)="honkService.honk();"></app-human>
 <style class="dynamic-style"></style>
 <main>
-  <router-outlet />
+  <app-transition-shell [flip]="flip" [disabled]="disabled">
+    <router-outlet></router-outlet>
+  </app-transition-shell>
 </main>
 <!-- TODO: Add FPS counter, only on desktop -->
 <!-- TODO: Make page mobile friendly + implement a "mobile" side bar, hamburger menu. -->

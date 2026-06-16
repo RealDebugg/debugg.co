@@ -1,8 +1,9 @@
 import { Component, ViewChildren, QueryList, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navlinks',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './navlinks.html',
   styleUrl: './navlinks.scss',
 })
