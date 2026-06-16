@@ -238,7 +238,34 @@ a:hover {
   text-decoration: underline;
 }
 
+#phosphor-trail {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  inset: 0px;
+}
+
+.phosphor-ghost {
+  position: absolute;
+  width: 16px;
+  height: 20px;
+  background-size: 16px 20px;
+  image-rendering: pixelated;
+  opacity: 0;
+  filter: blur(0px);
+  pointer-events: none;
+  transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+  background-image: url('/cursor-winter.png');
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 255, 150, 0.6), inset 0 0 4px rgba(0, 255, 150, 0.4);
+  z-index: 9999;
+}
+
+body {
+  cursor: url('/cursor-winter.png'), auto;
+}
+
 /*
-TODO: Change link & title colors depending on winter or not (#00f3ff & #009199) site wide
-TODO: If low FPS or mobile, disable snow/rain
+TODO: Change link, title colors & cursor depending on winter or not (#00f3ff & #009199) site wide
+TODO: If low FPS or mobile, disable snow/rain, cursor & transitions
 */

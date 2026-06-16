@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, signal, ViewCh
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HumanComponent } from 'human-angular-lib';
 import { HonkService } from './services/honk.service';
+import { PhosphorTrailService } from './services/phosphor-trail.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { TransitionShell } from "./layouts/transition-shell/transition-shell";
 
@@ -14,6 +15,7 @@ import { TransitionShell } from "./layouts/transition-shell/transition-shell";
 export class App implements OnInit, OnDestroy {
   protected readonly title = signal('debugg.co');
   honkService = inject(HonkService);
+  phosphorTrailService = inject(PhosphorTrailService);
 
   flip = false;
   disabled = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
