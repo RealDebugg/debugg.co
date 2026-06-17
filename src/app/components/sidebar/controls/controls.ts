@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
-import { MusicService } from '../../services/music.service';
+import { WeatherService } from '../../../services/weather.service';
+import { MusicService } from '../../../services/music.service';
 
 @Component({
   selector: 'app-controls',

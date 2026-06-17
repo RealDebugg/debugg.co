@@ -1,22 +1,29 @@
-<div class="container" style="margin-top: 10px;margin-bottom: 10px;">
-  <div [className]=" lastfm.nowPlaying() ? 'blob' : 'inblob'" id="pulser"></div> <b id="currentlylistening">{{lastfm.nowPlaying() ? "Current song:" : "Last song:"}}</b><br><br>
-    <a href="{{ lastfm.track()!.url }}" id="songlink" target="_blank">
-      <div id="musicbox">
-        <img [src]="lastfm.track()!.image || '/defaultmusic.jpg'" width="50" height="50" id="albumcover">
-        @if (lastfm.track()!.name.length > 11) {
-          <marquee onmouseover="this.stop();" onmouseout="this.start();" scrollamount="3" id="songname">{{lastfm.track()!.name || 'No data'}}</marquee>
-        } @else {
-          <span id="songname">{{lastfm.track()!.name || 'No data'}}</span>
-        }
+<app-container-with-dots>
+  <div
+    class="music-container rain-hitbox"
+    [class.playing]="lastfm.nowPlaying()"
+    (click)="openTrackLink()"
+  >
+    <div class="music-visualizer" aria-hidden="true"></div>
+    <div class="flex flex-row gap-2">
+      <img [src]="lastfm.track()!.image || '/defaultmusic.jpg'" width="150" height="150">
+      <div class="flex flex-col justify-between">
+        <div>
+          <p [className]="(lastfm.nowPlaying() ? 'active' : 'inactive') + ' font-mono'">
+            {{lastfm.nowPlaying() ? "now_playing_on_apple_music" : "last_played_on_apple_music"}}
+          </p>
+          <p class="text-lg font-bold uppercase [color:#fa586a] [font-family:JetBrains_Mono]">
+            {{lastfm.track()!.name || 'No data'}}
+          </p>
+          <p class="capitalize text-sm text-gray-400 [font-family:JetBrains_Mono]">
+            {{lastfm.track()!.artist || 'No data'}}
+          </p>
+        </div>
 
-        @if (lastfm.track()!.artist.length > 11) {
-          <marquee onmouseover="this.stop();" onmouseout="this.start();" scrollamount="3" id="songname">{{lastfm.track()!.artist || 'No data'}}</marquee>
-        } @else {
-          <span iid="artist">{{lastfm.track()!.artist || 'No data'}}</span>
+        @if (!lastfm.nowPlaying()) {
+          <p class="[font-family:JetBrains_Mono] [color:#fa586a]">Played {{ lastfm.track()!.playedAt | dateAgo }}</p>
         }
       </div>
-      @if (!lastfm.track()!.nowPlaying) {
-        <span id="lastplayed">Played {{ lastfm.track()!.playedAt | dateAgo }}</span>
-      }
-    </a>
-</div>
+    </div>
+  </div>
+</app-container-with-dots>

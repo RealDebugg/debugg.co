@@ -1,6 +1,7 @@
 <div id="phosphor-trail" aria-hidden="true"></div>
 <div class="scanline"></div>
 <app-human (click)="honkService.honk();"></app-human>
+<app-navbar></app-navbar>
 <style class="dynamic-style"></style>
 <main>
   <app-transition-shell [flip]="flip" [disabled]="disabled">
@@ -9,3 +10,5 @@
 </main>
 <!-- TODO: Add FPS counter, only on desktop -->
 <!-- TODO: Make page mobile friendly + implement a "mobile" side bar, hamburger menu. -->
+<!-- TODO: Timeline CV page -->
+<!-- TODO: Custom cursor -->

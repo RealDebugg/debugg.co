@@ -1,69 +1,144 @@
-.blob {
-  background: #5dff8a;
-  border-radius: 50%;
-  margin-right: 7px;
-  height: 10px;
-  width: 10px;
-  box-shadow: 0 0 0 0 #5dff8a;
-  transform: scale(1);
+.active {
+  color: #00f3ff;
   animation: pulse 2s infinite;
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -4px;
 }
-.inblob {
-  background: rgb(93, 93, 93);
-  border-radius: 50%;
-  margin-right: 7px;
-  height: 10px;
-  width: 10px;
-  box-shadow: 0 0 0 0 rgb(93, 93, 93);
-  transform: scale(1);
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -4px;
+
+.inactive {
+  color: rgb(93, 93, 93);
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(93, 255, 138, 0.7);
+    text-shadow: 0 0 0 rgba(0, 243, 255, 0);
+  }
+
+  45% {
+    text-shadow: 0 0 14px rgba(0, 243, 255, 0.8), 0 0 18px rgba(0, 243, 255, 0.55), 0 0 32px rgba(0, 243, 255, 0.35);
   }
 
   70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(93, 255, 138, 0);
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.95), 0 0 28px rgba(0, 243, 255, 0.65), 0 0 46px rgba(0, 243, 255, 0.4);
   }
 
   100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(93, 255, 138, 0);
+    text-shadow: 0 0 0 rgba(0, 243, 255, 0);
   }
 }
 
-#songlink {
-  color: white;
-  text-decoration: none;
+.music-visualizer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.08) 0%, transparent 60%);
 }
 
-#musicbox {
-  height: 60px;
+.music-visualizer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 243, 255, 0.08) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0 1px, transparent 1px 4px);
+  animation: grid-pulse 3s ease-in-out infinite;
 }
 
-#albumcover {
-  border: 1px solid #383838;
-  float: left;
-  margin-right: 10px;
+.music-visualizer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    conic-gradient(from 0deg, rgba(0, 243, 255, 0.15) 0deg 45deg, transparent 45deg 360deg);
+  mask-image: radial-gradient(circle, transparent 0%, transparent 40%, black 70%, black 100%);
+  animation: radar-spin 6s linear infinite;
+  opacity: 0.6;
 }
 
-#songname {
-  width: 115px;
-}
-
-#artist {
-  overflow-wrap: anywhere;
-  max-height: 35px;
-  text-overflow: ellipsis;
-  display: grid;
+.music-container {
+  position: relative;
   overflow: hidden;
+}
+
+.music-container.playing .music-visualizer {
+  opacity: 1;
+}
+
+.music-container.playing .music-visualizer::before {
+  animation: grid-pulse 1.2s ease-in-out infinite;
+}
+
+.music-container.playing::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle, rgba(0, 243, 255, 0.12) 2px, transparent 2px);
+  background-size: 50px 50px, 75px 75px;
+  background-position: 0 0, 25px 25px;
+  animation: dots-float 5s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes grid-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes radar-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes waveform-pulse {
+  0%, 100% {
+    clip-path: inset(30% 0 0 0);
+    filter: saturate(0.8);
+  }
+  25% {
+    clip-path: inset(15% 0 10% 0);
+    filter: saturate(1.1);
+  }
+  50% {
+    clip-path: inset(8% 0 15% 0);
+    filter: saturate(1.3);
+  }
+  75% {
+    clip-path: inset(18% 0 8% 0);
+    filter: saturate(1.1);
+  }
+}
+
+@keyframes dots-float {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
 }

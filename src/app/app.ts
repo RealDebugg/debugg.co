@@ -5,10 +5,11 @@ import { HonkService } from './services/honk.service';
 import { PhosphorTrailService } from './services/phosphor-trail.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { TransitionShell } from "./layouts/transition-shell/transition-shell";
+import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HumanComponent, TransitionShell],
+  imports: [RouterOutlet, HumanComponent, TransitionShell, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

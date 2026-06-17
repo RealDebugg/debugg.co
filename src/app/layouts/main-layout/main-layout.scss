@@ -1,5 +1,7 @@
 .layout {
   display: grid;
-  grid-gap: 0px;
+  grid-gap: 8px;
   grid-template-columns: 0fr 3fr 1fr;
+  width: 900px;
+  margin: 0 auto;
 }

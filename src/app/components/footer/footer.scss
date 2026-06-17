@@ -1,4 +1,139 @@
-.footer {
-  text-align: center;
-  padding: 50px;
+.text-f-p-mobile {
+  font-size: .75rem !important;
+  letter-spacing: 0 !important;
+  line-height: 1rem !important;
+  font-weight: 600 !important;
+}
+
+.text-f-p {
+  font-size: .8125rem !important;
+  line-height: 1rem !important;
+  letter-spacing: 0 !important;
+  font-weight: 600 !important;
+}
+
+.footer-panel {
+  position: relative;
+  background-image: url("/diagonal-pattern.svg");
+  background-repeat: repeat;
+  animation: diagonalPatternAnimation 6s linear infinite;
+  padding: 0.9rem 1rem 0.55rem;
+}
+
+@keyframes diagonalPatternAnimation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 64px 0px;
+  }
+}
+
+.status-line {
+  line-height: 1.35rem !important;
+}
+
+.status-key {
+  color: #00f3ff80;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  margin-right: 0.2rem;
+}
+
+.status-sep {
+  color: rgb(219 219 219 / 0.45);
+  margin: 0 0.35rem;
+}
+
+.social-links-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+
+  li {
+    position: relative;
+    padding-left: 2.15rem;
+    transition: text-shadow 0.25s ease;
+
+    &:hover {
+      text-shadow: 0 0 12px #00f3ff30;
+    }
+  }
+
+  li::before {
+    content: "├──";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(219 219 219 / 0.62);
+    transition: color 0.25s ease;
+  }
+
+  li:hover::before {
+    color: #00f3ff90;
+  }
+
+  li:last-child::before {
+    content: "└──";
+  }
+}
+
+.built-using-desktop {
+  width: 100%;
+  text-align: right;
+}
+
+.built-using-desktop,
+.built-using-mobile {
+  a {
+    color: #00f3ff;
+  }
+}
+
+a {
+  font-weight: 700;
+  position: relative;
+  color: #dde0e2;
+  transition: color 0.35s ease;
+
+  &:hover {
+    color: #00f3ff;
+    transition: color 0.4s;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform .6s cubic-bezier(.19,1,.22,1);
+    opacity: 0.95;
+  }
+
+  &.inline-flex:after {
+    left: calc(1.5rem + 0.5rem);
+    width: calc(100% - 2rem);
+  }
+
+  &:hover:after {
+    transition-duration: 0.4s;
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer-panel {
+    padding: 0.8rem 0.8rem 0.45rem;
+  }
+
+  .social-links-list li {
+    padding-left: 2rem;
+  }
 }

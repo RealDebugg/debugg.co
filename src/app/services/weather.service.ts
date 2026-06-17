@@ -79,7 +79,7 @@ export class WeatherService {
       width: `${window.innerWidth}px`,
       height: `${window.innerHeight}px`,
       pointerEvents: 'none',
-      zIndex: '1',
+      zIndex: '0',
       display: 'block',
     });
     document.body.append(this.rainCanvas);
