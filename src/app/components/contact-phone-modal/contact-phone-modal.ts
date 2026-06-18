@@ -25,6 +25,7 @@ export class ContactPhoneModalComponent implements OnDestroy {
   //TODO: Fix shadows
   //TODO: Implement form/UI
   //TODO: Disable scroll
+  //TODO: Fix inconsistent positioning of the model when opening and closing multiple times
 
   @Output() visibleChange = new EventEmitter<boolean>();
 
