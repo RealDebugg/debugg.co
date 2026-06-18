@@ -3,6 +3,8 @@
     class="music-container rain-hitbox"
     [class.playing]="lastfm.nowPlaying()"
     (click)="openTrackLink()"
+    (mouseenter)="onHoverEnter()"
+    (mouseleave)="onHoverLeave()"
   >
     <div class="music-visualizer" aria-hidden="true"></div>
     <div class="flex flex-row gap-2">

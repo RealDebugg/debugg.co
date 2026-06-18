@@ -1,0 +1,8 @@
+<div
+  class="phone-modal"
+  [class.phone-modal--active]="visible()"
+  [attr.aria-hidden]="!visible()"
+  (mousedown)="onBackdropClick($event)"
+>
+  <div class="phone-modal__stage" #phoneModalStage data-gl-container="true"></div>
+</div>

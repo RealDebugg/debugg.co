@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenMeteoService } from '../../services/openmeteo.service';
+import { ContactPhoneModalService } from '../../services/contact-phone-modal.service';
 
 @Component({
   selector: 'app-footer',
@@ -16,9 +17,18 @@ export class Footer implements OnInit {
     hour12: true,
   });
 
-  constructor(public openMeteo: OpenMeteoService) {}
+  constructor(
+    public openMeteo: OpenMeteoService,
+    private contactPhoneModalService: ContactPhoneModalService
+  ) {}
 
   ngOnInit(): void {
     this.openMeteo.fetch();
+  }
+
+  openPhoneModal(): void {
+    /* TODO: allow two different types of forms */
+    /* TODO: Send me a message should print a message using a thermal printer and raspberry pi */
+    this.contactPhoneModalService.requestOpen();
   }
 }

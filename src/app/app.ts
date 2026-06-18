@@ -1,4 +1,12 @@
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ViewChild,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HumanComponent } from 'human-angular-lib';
 import { HonkService } from './services/honk.service';
@@ -6,10 +14,22 @@ import { PhosphorTrailService } from './services/phosphor-trail.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { TransitionShell } from "./layouts/transition-shell/transition-shell";
 import { Navbar } from './components/navbar/navbar';
+import { CustomCursorComponent } from './components/custom-cursor/custom-cursor.component';
+import { UpdateCanvasCursorComponent } from './components/custom-cursor/update-canvas-cursor.component';
+import { ContactPhoneModalComponent } from './components/contact-phone-modal/contact-phone-modal';
+import { ContactPhoneModalService } from './services/contact-phone-modal.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HumanComponent, TransitionShell, Navbar],
+  imports: [
+    RouterOutlet,
+    HumanComponent,
+    TransitionShell,
+    Navbar,
+    CustomCursorComponent,
+    UpdateCanvasCursorComponent,
+    ContactPhoneModalComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -17,6 +37,7 @@ export class App implements OnInit, OnDestroy {
   protected readonly title = signal('debugg.co');
   honkService = inject(HonkService);
   phosphorTrailService = inject(PhosphorTrailService);
+  private readonly contactPhoneModalService = inject(ContactPhoneModalService);
 
   flip = false;
   disabled = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,11 +45,21 @@ export class App implements OnInit, OnDestroy {
   private readonly transitionMs = 750; // keep aligned with --mask-speed: 0.75
   private hasCompletedInitialNavigation = false;
   private transitionTimeoutId: ReturnType<typeof setTimeout> | null = null;
-  @ViewChild(TransitionShell) transitionShell?: TransitionShell;
+  readonly phoneModalVisible = signal(false);
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
+  @ViewChild(TransitionShell) transitionShell?: TransitionShell;
+  @ViewChild(ContactPhoneModalComponent) phoneModal?: ContactPhoneModalComponent;
+
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
+    this.contactPhoneModalService.openRequests$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.openPhoneModal());
+
     this.router.events
       .pipe(
         filter(
@@ -90,7 +121,16 @@ export class App implements OnInit, OnDestroy {
     if (this.transitionTimeoutId) {
       clearTimeout(this.transitionTimeoutId);
     }
+
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  openPhoneModal(): void {
+    void this.phoneModal?.open();
+  }
+
+  onPhoneModalVisibleChange(isVisible: boolean): void {
+    this.phoneModalVisible.set(isVisible);
   }
 }

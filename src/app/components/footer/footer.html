@@ -85,9 +85,38 @@
       </p>
     </div>
     <div class="footer-panel flex flex-col justify-between">
-      <h3 class="[font-family:Brigends] text-2xl mb-2 lg:mb-4 rain-hitbox">
-        Placeholder
-      </h3>
+      <div class="w-fit">
+        <h3 class="[font-family:Brigends] text-2xl mb-2 lg:mb-4 rain-hitbox">
+          Get in touch
+        </h3>
+
+        <ul class="social-links-list font-mono flex flex-col gap-2">
+          <li>
+            <a (click)="openPhoneModal()" class="inline-flex items-center gap-2">
+              <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M3 5.983C3 4.888 3.895 4 5 4h14c1.105 0 2 .888 2 1.983v8.923a1.992 1.992 0 0 1-2 1.983h-6.6l-2.867 2.7c-.955.899-2.533.228-2.533-1.08v-1.62H5c-1.105 0-2-.888-2-1.983V5.983Zm5.706 3.809a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Zm2.585.002a1 1 0 1 1 .003 1.414 1 1 0 0 1-.003-1.414Zm5.415-.002a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Z" clip-rule="evenodd"/>
+              </svg>
+              Send me a message
+            </a>
+          </li>
+          <li>
+            <a (click)="openPhoneModal()" class="inline-flex items-center gap-2">
+              <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17 6h-2V5h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2h-.541A5.965 5.965 0 0 1 14 10v4a1 1 0 1 1-2 0v-4c0-2.206-1.794-4-4-4-.075 0-.148.012-.22.028C7.686 6.022 7.596 6 7.5 6A4.505 4.505 0 0 0 3 10.5V16a1 1 0 0 0 1 1h7v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3h5a1 1 0 0 0 1-1v-6c0-2.206-1.794-4-4-4Zm-9 8.5H7a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Z"/>
+              </svg>
+              Send me an email
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hello@debugg.co" class="inline-flex items-center gap-2">
+              <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>
+              </svg>
+              hello@debugg.co
+            </a>
+          </li>
+        </ul>
+      </div>
       <p class="hidden lg:block built-using-desktop text-right text-f-p-mobile [color:#dbdbdb] lg:text-f-p rain-hitbox">
         Built using <a target="_blank" href="https://angular.dev/">Angular</a>, <a target="_blank" href="https://tailwindcss.com/">Tailwind CSS</a>, and <a target="_blank" href="https://flowbite.com/">Flowbite</a>
       </p>

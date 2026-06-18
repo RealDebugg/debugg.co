@@ -12,3 +12,14 @@
   animation: scanline 10s linear infinite;
   pointer-events: none;
 }
+
+.site-shell {
+  transition: filter 320ms ease, opacity 320ms ease, transform 320ms ease;
+}
+
+.site-shell--dimmed {
+  filter: blur(2px) brightness(0.2) saturate(0.65);
+  opacity: 0.8;
+  transform: scale(0.995);
+  pointer-events: none;
+}

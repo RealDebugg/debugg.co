@@ -1,0 +1,25 @@
+.phone-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000004;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 360ms ease;
+  background: #00000070;
+}
+
+.phone-modal--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.phone-modal__stage {
+  width: 100%;
+  height: 100%;
+}
+
+.phone-modal__stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

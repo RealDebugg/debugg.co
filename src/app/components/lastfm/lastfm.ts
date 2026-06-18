@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { LastfmService } from '../../services/lastfm.service';
+import { MouseService } from '../../services/mouse.service';
 import { CommonModule } from '@angular/common';
 import { DateAgoPipe } from "../../pipes/date-ago.pipe";
 import { ContainerWithDots } from "../container-with-dots/container-with-dots";
@@ -11,7 +12,8 @@ import { ContainerWithDots } from "../container-with-dots/container-with-dots";
   styleUrl: './lastfm.scss',
 })
 export class Lastfm implements OnInit, OnDestroy {
-  constructor(public lastfm: LastfmService) {}
+  public lastfm = inject(LastfmService);
+  private mouseService = inject(MouseService);
 
   openTrackLink(): void {
     const url = this.lastfm.track()?.url;
@@ -20,6 +22,15 @@ export class Lastfm implements OnInit, OnDestroy {
     }
 
     window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
+  onHoverEnter(): void {
+    this.mouseService.setHoverText('View Song');
+    this.mouseService.setCursorType('pointer');
+  }
+
+  onHoverLeave(): void {
+    this.mouseService.resetCursor();
   }
 
   ngOnInit(): void {
