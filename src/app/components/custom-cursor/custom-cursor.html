@@ -1,18 +1,37 @@
 <div
   #mouseElement
   id="customCursor"
-  class="pointer-events-none translate-[-50%] fixed w-[max(32px,2.2vw)] h-[max(32px,2.2vw)] mix-blend-difference"
-  [style.left]="animatedX() + 'px'"
-  [style.top]="animatedY() + 'px'"
+  class="pointer-events-none fixed translate-[-50%] w-[max(32px,2.2vw)] h-[max(32px,2.2vw)] mix-blend-difference"
+  [style.left]="cursorXSignal() + 'px'"
+  [style.top]="cursorYSignal() + 'px'"
 >
   <div
     #outerCursor
     id="outerCursor"
-    class="w-[max(14px,0.9vw)] h-[max(14px,0.9vw)] translate-[-50%] left-[50%] top-[50%] absolute border rounded-full border-transparent"
+    class="absolute left-[50%] top-[50%] h-[max(14px,0.9vw)] w-[max(14px,0.9vw)] translate-[-50%] rounded-full border border-transparent"
   ></div>
+
   <div
     #innerCursor
     id="innerCursor"
-    class="w-[max(14px,0.9vw)] h-[max(14px,0.9vw)] translate-[-50%] left-[50%] top-[50%] absolute bg-white border rounded-full border-transparent"
+    class="absolute left-[50%] top-[50%] h-[max(14px,0.9vw)] w-[max(14px,0.9vw)] translate-[-50%] rounded-full bg-white border border-transparent"
   ></div>
 </div>
+
+@if (hoverTextValue()) {
+  <p
+    #tooltipElement
+    class="pointer-events-none fixed z-50 bg-black text-white text-xs font-[JetBrains_Mono]"
+    [style.left]="tooltipXSignal() + 'px'"
+    [style.top]="tooltipYSignal() + 'px'"
+    [@fadeInScale]
+  >
+    @if (!showMarquee()) {
+      {{ '[' + hoverTextValue() + ']' }}
+    } @else {
+      <span class="flex gap-0.5">
+        <app-marquee [text]="hoverTextValue()!" />
+      </span>
+    }
+  </p>
+}

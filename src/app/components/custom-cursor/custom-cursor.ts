@@ -1,15 +1,24 @@
 import {
-  AfterViewInit,
   Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ViewChild,
   ElementRef,
   inject,
-  NgZone,
-  OnDestroy,
-  OnInit,
   signal,
-  ViewChild,
+  computed,
+  NgZone,
   ViewEncapsulation,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MouseService } from '../../services/mouse.service';
+import { MarqueeComponent } from './marquee.component';
+
+const OFFSET = 30;
+
+const CURSOR_SPRING = { stiffness: 500, damping: 50 };
+const TOOLTIP_SPRING = { stiffness: 220, damping: 28 };
 
 interface SpringValue {
   current: number;
@@ -17,43 +26,54 @@ interface SpringValue {
   velocity: number;
 }
 
-const DEBOUNCE_WAIT = 5;
-const SPRING_CONFIG = { damping: 50, stiffness: 500 };
-
-/* TODO: Detect if text is hovered or link is hovered */
-
 @Component({
   selector: 'app-custom-cursor',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, MarqueeComponent],
   templateUrl: './custom-cursor.html',
   styleUrl: './custom-cursor.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class CustomCursor implements OnInit, AfterViewInit, OnDestroy {
+export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
+  private mouseService = inject(MouseService);
   private ngZone = inject(NgZone);
-  private animationFrameId?: number;
+
   protected dimensions = signal({ width: 0, height: 0 });
-  private mouseEventListener?: (e: MouseEvent) => void;
-  private debounceTimeoutId?: ReturnType<typeof setTimeout>;
-  private resizeObserver?: ResizeObserver;
+
+  @ViewChild('tooltipElement')
+  tooltipElementRef?: ElementRef<HTMLParagraphElement>;
+
+  @ViewChild('cursorElement')
+  cursorElementRef?: ElementRef<HTMLDivElement>;
+
+  @ViewChild('outerCursor')
+  outerCursorRef?: ElementRef<HTMLDivElement>;
+
+  @ViewChild('innerCursor')
+  innerCursorRef?: ElementRef<HTMLDivElement>;
+
+  private cursorX: SpringValue = { current: 0, target: 0, velocity: 0 };
+  private cursorY: SpringValue = { current: 0, target: 0, velocity: 0 };
+  protected cursorXSignal = signal(0);
+  protected cursorYSignal = signal(0);
+
+  private tooltipX: SpringValue = { current: 0, target: 0, velocity: 0 };
+  private tooltipY: SpringValue = { current: 0, target: 0, velocity: 0 };
+  protected tooltipXSignal = signal(0);
+  protected tooltipYSignal = signal(0);
+
+  protected hoverTextValue = computed(() => this.mouseService.hoverText());
+  protected showMarquee = computed(() => this.mouseService.marquee());
+
+  private mouseListener?: (e: MouseEvent) => void;
+  private rafId?: number;
+
   private cursorOverListener?: (e: MouseEvent) => void;
   private cursorOutListener?: (e: MouseEvent) => void;
-  @ViewChild('mouseElement') mouseElementRef?: ElementRef<HTMLDivElement>;
-  @ViewChild('outerCursor') outerCursorRef?: ElementRef<HTMLDivElement>;
-  @ViewChild('innerCursor') innerCursorRef?: ElementRef<HTMLDivElement>;
-
-  protected animatedX = signal(0);
-  protected animatedY = signal(0);
-  private springX: SpringValue = { current: 0, target: 0, velocity: 0 };
-  private springY: SpringValue = { current: 0, target: 0, velocity: 0 };
-
-  constructor() {
-    this.setupSpringAnimation();
-  }
 
   ngOnInit(): void {
-    this.setupResizeObserver();
-    this.setupMouseListener();
+    this.setupMouse();
+    this.setupAnimation();
   }
 
   ngAfterViewInit(): void {
@@ -62,46 +82,13 @@ export class CustomCursor implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.cleanup();
-  }
-
-  private setupResizeObserver(): void {
-    if (typeof window === 'undefined' || typeof ResizeObserver === 'undefined') {
-      return;
+    if (this.mouseListener) {
+      window.removeEventListener('mousemove', this.mouseListener);
     }
 
-    this.resizeObserver = new ResizeObserver(() => {
-      this.updateDimensions();
-    });
-
-    if (this.mouseElementRef?.nativeElement) {
-      this.resizeObserver.observe(this.mouseElementRef.nativeElement);
-      this.updateDimensions();
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
     }
-  }
-
-  private updateDimensions(): void {
-    if (!this.mouseElementRef?.nativeElement) return;
-
-    const element = this.mouseElementRef.nativeElement;
-    this.dimensions.set({
-      width: element.offsetWidth,
-      height: element.offsetHeight,
-    });
-  }
-
-  private setupMouseListener(): void {
-    if (typeof window === 'undefined') return;
-
-    this.mouseEventListener = (e: MouseEvent) => {
-      this.debounceUpdateMousePosition(e);
-    };
-
-    this.ngZone.runOutsideAngular(() => {
-      window.addEventListener('mousemove', this.mouseEventListener!, {
-        passive: true,
-      });
-    });
   }
 
   private setupCursorModeListeners(): void {
@@ -115,7 +102,7 @@ export class CustomCursor implements OnInit, AfterViewInit, OnDestroy {
       const relatedTarget = e.relatedTarget;
       if (
         relatedTarget instanceof Node &&
-        this.mouseElementRef?.nativeElement?.contains(relatedTarget)
+        this.cursorElementRef?.nativeElement?.contains(relatedTarget)
       ) {
         return;
       }
@@ -190,84 +177,77 @@ export class CustomCursor implements OnInit, AfterViewInit, OnDestroy {
     innerCursor.classList.toggle('text', mode === 'text');
   }
 
-  private debounceUpdateMousePosition(e: MouseEvent): void {
-    if (this.debounceTimeoutId) {
-      clearTimeout(this.debounceTimeoutId);
-    }
+  private computeTooltipPosition(x: number, y: number) {
+    const { width, height } = this.dimensions();
 
-    this.debounceTimeoutId = setTimeout(() => {
-      this.updateMousePosition(e);
-    }, DEBOUNCE_WAIT);
+    const topRightX = x + OFFSET;
+    const topRightY = y - OFFSET - height;
+
+    const bottomRightY = y + OFFSET;
+
+    const finalX = topRightX + width > window.innerWidth ? x - OFFSET - width : topRightX;
+
+    const finalY = topRightY < 0 ? bottomRightY : topRightY;
+
+    return { x: finalX, y: finalY };
   }
 
-  private updateMousePosition(e: MouseEvent): void {
-    this.springX.target = e.clientX;
-    this.springY.target = e.clientY;
-  }
+  private setupMouse(): void {
+    this.mouseListener = (e: MouseEvent) => {
+      this.cursorX.target = e.clientX;
+      this.cursorY.target = e.clientY;
+    };
 
-  private setupSpringAnimation(): void {
-    this.ngZone.runOutsideAngular(() => {
-      const animate = () => {
-        this.updateSpring(this.springX);
-        this.updateSpring(this.springY);
-
-        // Update signals only within Angular zone to trigger change detection
-        this.ngZone.run(() => {
-          this.animatedX.set(Math.round(this.springX.current));
-          this.animatedY.set(Math.round(this.springY.current));
-        });
-
-        this.animationFrameId = requestAnimationFrame(animate);
-      };
-      this.animationFrameId = requestAnimationFrame(animate);
+    window.addEventListener('mousemove', this.mouseListener, {
+      passive: true,
     });
   }
 
-  private updateSpring(spring: SpringValue): void {
-    const k = SPRING_CONFIG.stiffness;
-    const d = SPRING_CONFIG.damping;
-    const m = 1;
+  private setupAnimation(): void {
+    this.ngZone.runOutsideAngular(() => {
+      const loop = () => {
+        this.updateSpring(this.cursorX, CURSOR_SPRING);
+        this.updateSpring(this.cursorY, CURSOR_SPRING);
 
-    // Spring force: F = -kx
-    const springForce = -k * (spring.current - spring.target);
-    // Damping force: F = -dv
-    const dampingForce = -d * spring.velocity;
-    // Total acceleration
-    const acceleration = (springForce + dampingForce) / m;
+        const pos = this.computeTooltipPosition(this.cursorX.current, this.cursorY.current);
 
-    spring.velocity += acceleration * (1 / 60); // Assuming 60fps
-    spring.current += spring.velocity * (1 / 60);
+        this.tooltipX.target = pos.x;
+        this.tooltipY.target = pos.y;
+
+        this.updateSpring(this.tooltipX, TOOLTIP_SPRING);
+        this.updateSpring(this.tooltipY, TOOLTIP_SPRING);
+
+        this.ngZone.run(() => {
+          this.cursorXSignal.set(this.cursorX.current);
+          this.cursorYSignal.set(this.cursorY.current);
+
+          this.tooltipXSignal.set(this.tooltipX.current);
+          this.tooltipYSignal.set(this.tooltipY.current);
+        });
+
+        this.rafId = requestAnimationFrame(loop);
+      };
+
+      loop();
+    });
   }
 
-  private cleanup(): void {
-    if (this.mouseEventListener) {
-      this.ngZone.runOutsideAngular(() => {
-        window.removeEventListener('mousemove', this.mouseEventListener!);
-      });
-    }
+  private updateSpring(s: SpringValue, config: { stiffness: number; damping: number }) {
+    const force = -config.stiffness * (s.current - s.target);
+    const damping = -config.damping * s.velocity;
+    const accel = force + damping;
 
-    if (this.cursorOverListener) {
-      this.ngZone.runOutsideAngular(() => {
-        document.removeEventListener('mouseover', this.cursorOverListener!);
-      });
-    }
+    s.velocity += accel / 60;
+    s.current += s.velocity / 60;
+  }
 
-    if (this.cursorOutListener) {
-      this.ngZone.runOutsideAngular(() => {
-        document.removeEventListener('mouseout', this.cursorOutListener!);
-      });
-    }
+  private updateDimensions(): void {
+    const el = this.tooltipElementRef?.nativeElement;
+    if (!el) return;
 
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-    }
-
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId);
-    }
-
-    if (this.debounceTimeoutId) {
-      clearTimeout(this.debounceTimeoutId);
-    }
+    this.dimensions.set({
+      width: el.offsetWidth,
+      height: el.offsetHeight,
+    });
   }
 }

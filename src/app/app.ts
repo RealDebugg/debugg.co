@@ -21,10 +21,9 @@ import { HonkService } from './services/honk.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { TransitionShell } from './layouts/transition-shell/transition-shell';
 import { Navbar } from './components/navbar/navbar';
-import { CustomTooltipComponent } from './components/custom-tooltip/custom-tooltip.component';
 import { ContactPhoneModalComponent } from './components/contact-phone-modal/contact-phone-modal';
 import { ContactPhoneModalService } from './services/contact-phone-modal.service';
-import { CustomCursor } from './components/custom-cursor/custom-cursor';
+import { CustomCursorComponent } from './components/custom-cursor/custom-cursor';
 
 @Component({
   selector: 'app-root',
@@ -33,9 +32,8 @@ import { CustomCursor } from './components/custom-cursor/custom-cursor';
     HumanComponent,
     TransitionShell,
     Navbar,
-    CustomTooltipComponent,
     ContactPhoneModalComponent,
-    CustomCursor,
+    CustomCursorComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

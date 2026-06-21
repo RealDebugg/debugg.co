@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <span class="marquee-container relative max-w-[8.75rem] overflow-hidden whitespace-nowrap bg-black text-white">
+    <span class="marquee-container relative max-w-35 overflow-hidden whitespace-nowrap bg-black text-white">
       @for (key of [marqueeKey()]; track key) {
         <span
           class="inline-flex w-max whitespace-nowrap"
