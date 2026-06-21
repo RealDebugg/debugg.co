@@ -15,9 +15,9 @@ import {
   Router,
   RouterOutlet,
 } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { HumanComponent } from 'human-angular-lib';
 import { HonkService } from './services/honk.service';
-import { PhosphorTrailService } from './services/phosphor-trail.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { TransitionShell } from './layouts/transition-shell/transition-shell';
 import { Navbar } from './components/navbar/navbar';
@@ -43,8 +43,8 @@ import { CustomCursor } from './components/custom-cursor/custom-cursor';
 export class App implements OnInit, OnDestroy {
   protected readonly title = signal('debugg.co');
   honkService = inject(HonkService);
-  phosphorTrailService = inject(PhosphorTrailService);
   private readonly contactPhoneModalService = inject(ContactPhoneModalService);
+  private readonly titleService = inject(Title);
 
   flip = false;
   disabled = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -52,6 +52,8 @@ export class App implements OnInit, OnDestroy {
   private readonly transitionMs = 750; // keep aligned with --mask-speed: 0.75
   private hasCompletedInitialNavigation = false;
   private transitionTimeoutId: ReturnType<typeof setTimeout> | null = null;
+  private restoreTitleTimeoutId: ReturnType<typeof setTimeout> | null = null;
+  private previousTitle = '';
   readonly phoneModalVisible = signal(false);
 
   @ViewChild(TransitionShell) transitionShell?: TransitionShell;
@@ -66,6 +68,9 @@ export class App implements OnInit, OnDestroy {
     this.contactPhoneModalService.openRequests$
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.openPhoneModal());
+
+    this.titleService.setTitle('debugg.co | I build cool stuff that inspires');
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
 
     this.router.events
       .pipe(
@@ -129,9 +134,38 @@ export class App implements OnInit, OnDestroy {
       clearTimeout(this.transitionTimeoutId);
     }
 
+    if (this.restoreTitleTimeoutId) {
+      clearTimeout(this.restoreTitleTimeoutId);
+    }
+
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+
     this.destroy$.next();
     this.destroy$.complete();
   }
+
+  private readonly handleVisibilityChange = () => {
+    if (document.hidden) {
+      const currentTitle =
+        this.titleService.getTitle() || 'debugg.co | I build cool stuff that inspires';
+      this.previousTitle = currentTitle;
+      this.titleService.setTitle('Come back!! 👋');
+      return;
+    }
+
+    this.titleService.setTitle('Welcome back!');
+
+    if (this.restoreTitleTimeoutId) {
+      clearTimeout(this.restoreTitleTimeoutId);
+    }
+
+    this.restoreTitleTimeoutId = setTimeout(() => {
+      this.titleService.setTitle(
+        this.previousTitle || 'debugg.co | I build cool stuff that inspires',
+      );
+      this.restoreTitleTimeoutId = null;
+    }, 1000);
+  };
 
   openPhoneModal(): void {
     void this.phoneModal?.open();

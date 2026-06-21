@@ -36,29 +36,6 @@
   outline: 1px solid #00f3ff;
 }
 
-#phosphor-trail {
-  position: fixed;
-  z-index: 9999;
-  pointer-events: none;
-  inset: 0px;
-}
-
-.phosphor-ghost {
-  position: absolute;
-  width: 16px;
-  height: 20px;
-  background-size: 16px 20px;
-  image-rendering: pixelated;
-  opacity: 0;
-  filter: blur(0px);
-  pointer-events: none;
-  transition: opacity 0.5s ease-out, filter 0.5s ease-out;
-  background-color: white;
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), inset 0 0 4px rgba(255, 255, 255, 0.4);
-  z-index: 9999;
-}
-
 app-human .human {
   pointer-events: auto !important;
 }

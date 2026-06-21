@@ -6,7 +6,6 @@ import { MusicService } from '../../../services/music.service';
   selector: 'app-controls',
   imports: [],
   templateUrl: './controls.html',
-  styleUrl: './controls.scss',
 })
 export class Controls {
   weatherService = inject(WeatherService);

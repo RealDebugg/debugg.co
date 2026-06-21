@@ -1,7 +1,7 @@
 @if (hoverTextValue()) {
   <p
     #mouseElement
-    class="pointer-events-none color-white fixed z-50 [font-family:JetBrains_Mono] text-xs bg-black"
+    class="pointer-events-none color-white fixed z-50 font-[JetBrains_Mono] text-xs bg-black"
     [style.left]="animatedX() + 'px'"
     [style.top]="animatedY() + 'px'"
     [@fadeInScale]

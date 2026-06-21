@@ -9,13 +9,16 @@ export const routes: Routes = [
     path: '',
     component: MainLayout,
     children: [
-      { path: '', component: Home },
+      { path: '', component: Home, data: { title: 'Home' } },
       {
         path: 'invite',
         component: RedirectComponent,
-        data: { url: 'https://discord.gg/7Snv7rxtMY' },
+        data: {
+          url: 'https://discord.gg/7Snv7rxtMY',
+          title: 'Invite',
+        },
       },
     ],
   },
-  { path: '**', component: NotFound },
+  { path: '**', component: NotFound, data: { title: 'Not Found' } },
 ];

@@ -15,16 +15,16 @@
           <p [className]="(lastfm.nowPlaying() ? 'active' : 'inactive') + ' font-mono'">
             {{ lastfm.nowPlaying() ? 'now_playing_on_apple_music' : 'last_played_on_apple_music' }}
           </p>
-          <p class="text-lg font-bold uppercase [color:#fa586a] [font-family:JetBrains_Mono]">
+          <p class="text-lg font-bold uppercase text-[#fa586a] font-[JetBrains_Mono]">
             {{ lastfm.track()!.name || 'No data' }}
           </p>
-          <p class="capitalize text-sm text-gray-400 [font-family:JetBrains_Mono]">
+          <p class="capitalize text-sm text-gray-400 font-[JetBrains_Mono]">
             {{ lastfm.track()!.artist || 'No data' }}
           </p>
         </div>
 
         @if (!lastfm.nowPlaying()) {
-          <p class="[font-family:JetBrains_Mono] [color:#fa586a]">
+          <p class="font-[JetBrains_Mono] text-[#fa586a]">
             Played {{ lastfm.track()!.playedAt | dateAgo }}
           </p>
         }

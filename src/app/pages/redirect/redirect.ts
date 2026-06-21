@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-redirect',
   imports: [],
   templateUrl: './redirect.html',
-  styleUrl: './redirect.scss',
 })
 export class RedirectComponent implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
