@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 export type ContactSfxKey = 'antenna' | 'button' | 'ruedita';
 
-
-/* TODO: If not page visible, mute */
 @Injectable({
   providedIn: 'root',
 })

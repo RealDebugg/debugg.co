@@ -584,5 +584,3 @@ export class WeatherService {
     if (this.debug) console.log('[WeatherService]', ...args);
   }
 }
-
-/* TODO: Add snow based on calendar month*/

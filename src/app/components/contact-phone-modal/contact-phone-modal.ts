@@ -22,11 +22,6 @@ import { ContactSfxService, type ContactSfxKey } from '../../services/contact-sf
   styleUrl: './contact-phone-modal.scss',
 })
 export class ContactPhoneModalComponent implements OnDestroy {
-  //TODO: Fix shadows
-  //TODO: Implement form/UI
-  //TODO: Disable scroll
-  //TODO: Fix inconsistent positioning of the model when opening and closing multiple times
-
   @Output() visibleChange = new EventEmitter<boolean>();
 
   readonly visible = computed(() => this.modalState() !== 'closed');
@@ -95,7 +90,7 @@ export class ContactPhoneModalComponent implements OnDestroy {
 
   constructor(
     private zone: NgZone,
-    private contactSfxService: ContactSfxService
+    private contactSfxService: ContactSfxService,
   ) {}
 
   ngOnDestroy(): void {
@@ -105,8 +100,6 @@ export class ContactPhoneModalComponent implements OnDestroy {
   }
 
   async open(): Promise<void> {
-    /* TODO: If mobile, redirect to another "contact" page */
-
     if (this.modalState() === 'open') {
       return;
     }
@@ -184,7 +177,7 @@ export class ContactPhoneModalComponent implements OnDestroy {
         45,
         Math.max(stage.clientWidth, 1) / Math.max(stage.clientHeight, 1),
         0.1,
-        100
+        100,
       );
 
       this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -233,7 +226,7 @@ export class ContactPhoneModalComponent implements OnDestroy {
         (error: unknown) => {
           dracoLoader.dispose();
           reject(error);
-        }
+        },
       );
     });
   }
@@ -270,17 +263,23 @@ export class ContactPhoneModalComponent implements OnDestroy {
 
     const introClip =
       gltf.animations.find((clip: THREE.AnimationClip) => clip.name.toLowerCase() === 'intro') ??
-      gltf.animations.find((clip: THREE.AnimationClip) => clip.name.toLowerCase().includes('intro')) ??
+      gltf.animations.find((clip: THREE.AnimationClip) =>
+        clip.name.toLowerCase().includes('intro'),
+      ) ??
       gltf.animations[0];
 
     const outroClip =
       gltf.animations.find((clip: THREE.AnimationClip) => clip.name.toLowerCase() === 'outro') ??
-      gltf.animations.find((clip: THREE.AnimationClip) => clip.name.toLowerCase().includes('outro')) ??
+      gltf.animations.find((clip: THREE.AnimationClip) =>
+        clip.name.toLowerCase().includes('outro'),
+      ) ??
       null;
 
     const idleClip =
       gltf.animations.find((clip: THREE.AnimationClip) => clip.name.toLowerCase() === 'idle') ??
-      gltf.animations.find((clip: THREE.AnimationClip) => clip.name.toLowerCase().includes('idle')) ??
+      gltf.animations.find((clip: THREE.AnimationClip) =>
+        clip.name.toLowerCase().includes('idle'),
+      ) ??
       null;
 
     this.introAction = introClip ? this.mixer.clipAction(introClip) : null;
@@ -290,8 +289,12 @@ export class ContactPhoneModalComponent implements OnDestroy {
     const randomClips = this.randomIdleActionNames
       .map((name) => {
         const clip =
-          gltf.animations.find((candidate: THREE.AnimationClip) => candidate.name.toLowerCase() === name)
-          ?? gltf.animations.find((candidate: THREE.AnimationClip) => candidate.name.toLowerCase().includes(name));
+          gltf.animations.find(
+            (candidate: THREE.AnimationClip) => candidate.name.toLowerCase() === name,
+          ) ??
+          gltf.animations.find((candidate: THREE.AnimationClip) =>
+            candidate.name.toLowerCase().includes(name),
+          );
 
         if (!clip) {
           return null;
@@ -304,16 +307,20 @@ export class ContactPhoneModalComponent implements OnDestroy {
 
         return { clip, key };
       })
-      .filter((entry): entry is { clip: THREE.AnimationClip; key: ContactSfxKey } => Boolean(entry));
+      .filter((entry): entry is { clip: THREE.AnimationClip; key: ContactSfxKey } =>
+        Boolean(entry),
+      );
 
     const uniqueRandomClips = randomClips.filter(
-      (entry, index, all) => all.findIndex((candidate) => candidate.clip.name === entry.clip.name) === index
+      (entry, index, all) =>
+        all.findIndex((candidate) => candidate.clip.name === entry.clip.name) === index,
     );
 
     this.randomIdleActions = uniqueRandomClips
       .map(({ clip, key }) => ({ action: this.mixer!.clipAction(clip), key }))
       .filter(
-        ({ action }) => action !== this.introAction && action !== this.outroAction && action !== this.idleAction
+        ({ action }) =>
+          action !== this.introAction && action !== this.outroAction && action !== this.idleAction,
       );
 
     if (this.introAction) {

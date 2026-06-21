@@ -19,7 +19,7 @@ export class Footer implements OnInit {
 
   constructor(
     public openMeteo: OpenMeteoService,
-    private contactPhoneModalService: ContactPhoneModalService
+    private contactPhoneModalService: ContactPhoneModalService,
   ) {}
 
   ngOnInit(): void {
@@ -27,8 +27,6 @@ export class Footer implements OnInit {
   }
 
   openPhoneModal(): void {
-    /* TODO: allow two different types of forms */
-    /* TODO: Send me a message should print a message using a thermal printer and raspberry pi */
     this.contactPhoneModalService.requestOpen();
   }
 }

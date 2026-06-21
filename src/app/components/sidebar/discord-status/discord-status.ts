@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
 })
 export class DiscordStatus {
   online: boolean = true; // Placeholder for actual status, should be updated with real API call
-  /* TODO: Add discord api call */
 }
