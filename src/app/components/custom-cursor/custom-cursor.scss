@@ -1,0 +1,28 @@
+body,
+body * {
+    cursor: none !important;
+}
+
+#customCursor {
+    z-index: 999999999999999999999999;
+    
+    #outerCursor {
+        transition: border-color 0.1s ease-in-out, width 0.22s ease-in-out, height 0.22s ease-in-out;
+    
+        &.pointer {
+            width: max(32px, 2.2vw);
+            height: max(32px, 2.2vw);
+            border-color: white;
+        }
+    }
+    
+    #innerCursor {
+        transition: 0.1s ease-in-out;
+    
+        &.text {
+            width: max(4px, 0.2vw);
+            height: max(26px, 1.8vw);
+            border-radius: 1px;
+        }
+    }
+}

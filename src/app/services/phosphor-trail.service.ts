@@ -1,9 +1,11 @@
 import { Injectable, OnDestroy } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PhosphorTrailService implements OnDestroy {
+  private disableTrail = true;
+
   private trailContainer: HTMLElement | null = null;
   private ghostElements: HTMLElement[] = [];
   private isInitialized = false;
@@ -11,12 +13,13 @@ export class PhosphorTrailService implements OnDestroy {
   private lastTime = 0;
   private mouseX = 0;
   private mouseY = 0;
-  private lastMouseMoveTime = 0;
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
   private initTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     // Defer initialization to ensure DOM is ready
+    if (this.disableTrail) return;
+
     this.initTimeout = setTimeout(() => this.init(), 100);
   }
 
@@ -60,7 +63,6 @@ export class PhosphorTrailService implements OnDestroy {
 
     this.mouseX = event.clientX;
     this.mouseY = event.clientY;
-    this.lastMouseMoveTime = performance.now();
 
     // Clear the hide timeout and reset it
     if (this.hideTimeout) {

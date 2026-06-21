@@ -5,25 +5,28 @@
     (click)="openTrackLink()"
     (mouseenter)="onHoverEnter()"
     (mouseleave)="onHoverLeave()"
+    data-cursor="pointer"
   >
     <div class="music-visualizer" aria-hidden="true"></div>
     <div class="flex flex-row gap-2">
-      <img [src]="lastfm.track()!.image || '/defaultmusic.jpg'" width="150" height="150">
+      <img [src]="lastfm.track()!.image || '/defaultmusic.jpg'" width="150" height="150" />
       <div class="flex flex-col justify-between">
         <div>
           <p [className]="(lastfm.nowPlaying() ? 'active' : 'inactive') + ' font-mono'">
-            {{lastfm.nowPlaying() ? "now_playing_on_apple_music" : "last_played_on_apple_music"}}
+            {{ lastfm.nowPlaying() ? 'now_playing_on_apple_music' : 'last_played_on_apple_music' }}
           </p>
           <p class="text-lg font-bold uppercase [color:#fa586a] [font-family:JetBrains_Mono]">
-            {{lastfm.track()!.name || 'No data'}}
+            {{ lastfm.track()!.name || 'No data' }}
           </p>
           <p class="capitalize text-sm text-gray-400 [font-family:JetBrains_Mono]">
-            {{lastfm.track()!.artist || 'No data'}}
+            {{ lastfm.track()!.artist || 'No data' }}
           </p>
         </div>
 
         @if (!lastfm.nowPlaying()) {
-          <p class="[font-family:JetBrains_Mono] [color:#fa586a]">Played {{ lastfm.track()!.playedAt | dateAgo }}</p>
+          <p class="[font-family:JetBrains_Mono] [color:#fa586a]">
+            Played {{ lastfm.track()!.playedAt | dateAgo }}
+          </p>
         }
       </div>
     </div>

@@ -1,0 +1,18 @@
+<div
+  #mouseElement
+  id="customCursor"
+  class="pointer-events-none translate-[-50%] fixed w-[max(32px,2.2vw)] h-[max(32px,2.2vw)] mix-blend-difference"
+  [style.left]="animatedX() + 'px'"
+  [style.top]="animatedY() + 'px'"
+>
+  <div
+    #outerCursor
+    id="outerCursor"
+    class="w-[max(14px,0.9vw)] h-[max(14px,0.9vw)] translate-[-50%] left-[50%] top-[50%] absolute border rounded-full border-transparent"
+  ></div>
+  <div
+    #innerCursor
+    id="innerCursor"
+    class="w-[max(14px,0.9vw)] h-[max(14px,0.9vw)] translate-[-50%] left-[50%] top-[50%] absolute bg-white border rounded-full border-transparent"
+  ></div>
+</div>

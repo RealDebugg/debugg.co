@@ -53,14 +53,10 @@
   filter: blur(0px);
   pointer-events: none;
   transition: opacity 0.5s ease-out, filter 0.5s ease-out;
-  background-image: url('/cursor-winter.png');
+  background-color: white;
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0, 255, 150, 0.6), inset 0 0 4px rgba(0, 255, 150, 0.4);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), inset 0 0 4px rgba(255, 255, 255, 0.4);
   z-index: 9999;
-}
-
-body {
-  cursor: url('/cursor-winter.png'), auto;
 }
 
 app-human .human {
@@ -142,6 +138,6 @@ html {
 }
 
 /*
-TODO: Change link, title colors & cursor depending on winter or not (#00f3ff & #009199) site wide
-TODO: If low FPS or mobile, disable snow/rain, cursor & transitions
+TODO: Change link, title colors depending on winter or not (#00f3ff & #009199) site wide
+TODO: If low FPS or mobile, disable snow/rain & transitions
 */

@@ -8,14 +8,14 @@ import {
   inject,
   signal,
   computed,
-  NgZone
+  NgZone,
 } from '@angular/core';
 import { CommonModule, NgForOf, NgIf } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { MouseService } from '../../services/mouse.service';
 import { MarqueeComponent } from './marquee.component';
 
-const OFFSET = 16;
+const OFFSET = 20;
 const DEBOUNCE_WAIT = 5;
 const SPRING_CONFIG = { damping: 50, stiffness: 500 };
 
@@ -26,24 +26,24 @@ interface SpringValue {
 }
 
 @Component({
-  selector: 'app-custom-cursor',
+  selector: 'app-custom-tooltip',
   standalone: true,
   imports: [CommonModule, MarqueeComponent],
-  templateUrl: './custom-cursor.component.html',
-  styleUrl: './custom-cursor.component.scss',
+  templateUrl: './custom-tooltip.component.html',
+  styleUrl: './custom-tooltip.component.scss',
   animations: [
     trigger('fadeInScale', [
       transition(':enter', [
         style({ opacity: 0, transform: 'scale(0)' }),
-        animate('0.2s ease-out', style({ opacity: 1, transform: 'scale(1)' }))
+        animate('0.2s ease-out', style({ opacity: 1, transform: 'scale(1)' })),
       ]),
       transition(':leave', [
-        animate('0.2s ease-out', style({ opacity: 0, transform: 'scale(0)' }))
-      ])
-    ])
-  ]
+        animate('0.2s ease-out', style({ opacity: 0, transform: 'scale(0)' })),
+      ]),
+    ]),
+  ],
 })
-export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
+export class CustomTooltipComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mouseElement') mouseElementRef?: ElementRef<HTMLDivElement>;
 
   protected mouseService = inject(MouseService);
@@ -69,7 +69,6 @@ export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.setupResizeObserver();
     this.setupMouseListener();
-    this.startAnimationLoop();
   }
 
   ngAfterViewInit(): void {
@@ -114,10 +113,6 @@ export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
     spring.current += spring.velocity * (1 / 60);
   }
 
-  private startAnimationLoop(): void {
-    // Animation loop is started in setupSpringAnimation
-  }
-
   private setupResizeObserver(): void {
     if (typeof window === 'undefined' || typeof ResizeObserver === 'undefined') {
       return;
@@ -139,7 +134,7 @@ export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
     const element = this.mouseElementRef.nativeElement;
     this.dimensions.set({
       width: element.offsetWidth,
-      height: element.offsetHeight
+      height: element.offsetHeight,
     });
   }
 
@@ -152,7 +147,7 @@ export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.ngZone.runOutsideAngular(() => {
       window.addEventListener('mousemove', this.mouseEventListener!, {
-        passive: true
+        passive: true,
       });
     });
   }
@@ -171,13 +166,12 @@ export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
     const { width, height } = this.dimensions();
 
     const desiredX = e.clientX + OFFSET;
-    const desiredY = e.clientY + OFFSET;
+    const desiredY = e.clientY + OFFSET * 2;
 
     const defaultX = e.clientX - OFFSET - width;
     const defaultY = e.clientY - OFFSET - height;
 
-    const xPos =
-      desiredX + width > window.innerWidth ? defaultX : desiredX;
+    const xPos = desiredX + width > window.innerWidth ? defaultX : desiredX;
 
     const isOutsideCanvas = window.scrollY > window.innerHeight;
 

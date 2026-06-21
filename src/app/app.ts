@@ -7,17 +7,24 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { HumanComponent } from 'human-angular-lib';
 import { HonkService } from './services/honk.service';
 import { PhosphorTrailService } from './services/phosphor-trail.service';
 import { filter, Subject, takeUntil } from 'rxjs';
-import { TransitionShell } from "./layouts/transition-shell/transition-shell";
+import { TransitionShell } from './layouts/transition-shell/transition-shell';
 import { Navbar } from './components/navbar/navbar';
-import { CustomCursorComponent } from './components/custom-cursor/custom-cursor.component';
-import { UpdateCanvasCursorComponent } from './components/custom-cursor/update-canvas-cursor.component';
+import { CustomTooltipComponent } from './components/custom-tooltip/custom-tooltip.component';
 import { ContactPhoneModalComponent } from './components/contact-phone-modal/contact-phone-modal';
 import { ContactPhoneModalService } from './services/contact-phone-modal.service';
+import { CustomCursor } from './components/custom-cursor/custom-cursor';
 
 @Component({
   selector: 'app-root',
@@ -26,12 +33,12 @@ import { ContactPhoneModalService } from './services/contact-phone-modal.service
     HumanComponent,
     TransitionShell,
     Navbar,
-    CustomCursorComponent,
-    UpdateCanvasCursorComponent,
+    CustomTooltipComponent,
     ContactPhoneModalComponent,
+    CustomCursor,
   ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App implements OnInit, OnDestroy {
   protected readonly title = signal('debugg.co');
@@ -52,7 +59,7 @@ export class App implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -67,9 +74,9 @@ export class App implements OnInit, OnDestroy {
             e instanceof NavigationStart ||
             e instanceof NavigationEnd ||
             e instanceof NavigationCancel ||
-            e instanceof NavigationError
+            e instanceof NavigationError,
         ),
-        takeUntil(this.destroy$)
+        takeUntil(this.destroy$),
       )
       .subscribe((event) => {
         if (this.disabled) return;

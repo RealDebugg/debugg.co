@@ -1,9 +1,9 @@
 <div class="site-shell" [class.site-shell--dimmed]="phoneModalVisible()">
   <div id="phosphor-trail" aria-hidden="true"></div>
   <div class="scanline"></div>
+  <app-custom-tooltip></app-custom-tooltip>
   <app-custom-cursor></app-custom-cursor>
-  <app-update-canvas-cursor></app-update-canvas-cursor>
-  <app-human (click)="honkService.honk();"></app-human>
+  <app-human (click)="honkService.honk()" data-cursor="pointer"></app-human>
   <app-navbar></app-navbar>
   <style class="dynamic-style"></style>
   <main>
@@ -13,7 +13,9 @@
   </main>
 </div>
 
-<app-contact-phone-modal (visibleChange)="onPhoneModalVisibleChange($event)"></app-contact-phone-modal>
+<app-contact-phone-modal
+  (visibleChange)="onPhoneModalVisibleChange($event)"
+></app-contact-phone-modal>
 <!-- TODO: Add FPS counter, only on desktop -->
 <!-- TODO: Make page mobile friendly + implement a "mobile" side bar, hamburger menu. -->
 <!-- TODO: Timeline CV page -->

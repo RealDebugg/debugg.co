@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { LastfmService } from '../../services/lastfm.service';
 import { MouseService } from '../../services/mouse.service';
 import { CommonModule } from '@angular/common';
-import { DateAgoPipe } from "../../pipes/date-ago.pipe";
-import { ContainerWithDots } from "../container-with-dots/container-with-dots";
+import { DateAgoPipe } from '../../pipes/date-ago.pipe';
+import { ContainerWithDots } from '../container-with-dots/container-with-dots';
 
 @Component({
   selector: 'app-lastfm',
@@ -26,7 +26,6 @@ export class Lastfm implements OnInit, OnDestroy {
 
   onHoverEnter(): void {
     this.mouseService.setHoverText('View Song');
-    this.mouseService.setCursorType('pointer');
   }
 
   onHoverLeave(): void {
