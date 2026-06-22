@@ -21,6 +21,7 @@
 @if (hoverTextValue()) {
   <p
     #tooltipElement
+    id="tooltipElement"
     class="pointer-events-none fixed z-50 bg-black text-white text-xs font-[JetBrains_Mono]"
     [style.left]="tooltipXSignal() + 'px'"
     [style.top]="tooltipYSignal() + 'px'"
