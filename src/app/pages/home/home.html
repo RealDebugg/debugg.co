@@ -2,18 +2,30 @@
   <p>Placeholder content for some cool Three.JS stuff</p>
 </div>
 
-<h1
-  class="font-[Brigends] relative z-11 text-4xl md:text-balance max-lg:font-medium sm:text-5xl lg:text-6xl xl:text-8xl mt-15 md:ml-[calc(min(0px,(100vw-71rem)/-2))]"
->
-  Hi! My name is Debugg.
-</h1>
+<div class="anim-trigger relative">
+  <app-container-with-dots
+    classNames="w-100 !absolute z-[-1] right-[-5rem] top-[50%] opacity-[70%] animated-shot"
+  >
+    <img class="grayscale" src="/photos/landing-photograph.jpg" />
+  </app-container-with-dots>
+  <h1
+    class="font-[Brigends] relative z-11 text-4xl md:text-balance max-lg:font-medium sm:text-5xl lg:text-6xl xl:text-8xl mt-15 md:ml-[calc(min(0px,(100vw-71rem)/-2))]"
+  >
+    Hi! My name is Debugg.
+  </h1>
 
-<p class="text-md md:text-xl mt-5 mb-6 font-[JetBrains_Mono]">
-  Hi! I'm Naim (aka Debugg), a software developer from Sweden with about 4 years of professional Software Development experience.<br>
-  I love to build and tinker with all types of stuff, from web applications to embedded systems as well as being a hobbyist mechanic on my own cars.<br/>
-  I enjoy learning new technologies, applying them to real-world problems and building cool stuff that inspires.
-  <span><a class="text-neutral-400 font-bold brand-link" routerLink="/about">Learn more.</a></span>
-</p>
+  <p class="text-md md:text-xl mt-5 mb-6 font-[JetBrains_Mono]">
+    Hi! I'm Naim (aka Debugg), a software developer from Sweden with about 4 years of professional
+    Software Development experience.<br />
+    I love to build and tinker with all types of stuff, from web applications to embedded systems as
+    well as being a hobbyist mechanic on my own cars.<br />
+    I enjoy learning new technologies, applying them to real-world problems and building cool stuff
+    that inspires.
+    <span
+      ><a class="text-neutral-400 font-bold brand-link" routerLink="/about">Learn more.</a></span
+    >
+  </p>
+</div>
 
 <app-lastfm></app-lastfm>
 <div class="w-full h-500"><p>Placeholder content</p></div>

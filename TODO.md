@@ -38,7 +38,6 @@
 
 # To implement, generic ideas
 
-- [ ] Scrollytelling
 - [ ] Three.JS
 - [ ] Mobile friendly UI
 - [ ] If low FPS or mobile, disable snow/rain, music & transitions
