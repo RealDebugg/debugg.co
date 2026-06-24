@@ -19,10 +19,6 @@
   - Add API call
 - [ ] Weather service
   - Add snow based on calendar month
-- [ ] CSS
-  - Change between winter/summer colors depending on calendar month
-  - Make variable for #00f3ff (winter)
-  - Make variable for #009199 (summer)
 
 # To implement components
 
@@ -41,8 +37,7 @@
 - [ ] Scrollytelling
 - [ ] Three.JS
 - [ ] Mobile friendly UI
-- [ ] Background of some sort??
-- [ ] If low FPS or mobile, disable snow/rain & transitions
+- [ ] If low FPS or mobile, disable snow/rain, music & transitions
 
 # Pages to create
 
@@ -62,7 +57,7 @@
 - [ ] Three.JS room
 - [ ] Introduction (first section)
 - [x] LastFM
-- [ ] Feature projects section
+- [ ] Featured projects section
 - [ ] Current position/job
 - [ ] Blog section
 - [ ] All systems status section

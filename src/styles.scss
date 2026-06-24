@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: "Brigends";
   src: url("/brigends.otf") format("opentype");
@@ -11,6 +10,11 @@
   src: url("/JetBrainsMono-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+}
+
+html {
+  background: black;
+  color: white;
 }
 
 ::selection {
@@ -92,24 +96,5 @@ body::after {
 
   to {
     background-position: 0 4px;
-  }
-}
-
-
-
-
-
-
-
-
-
-html {
-  background: black;
-  color: white;
-}
-
-@layer base {
-  span {
-    display: inline-block;
   }
 }

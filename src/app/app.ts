@@ -67,6 +67,14 @@ export class App implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.openPhoneModal());
 
+    /* effect(() => {
+      if (this.phoneModalVisible()) {
+        document.body.style.overflow = "hidden"
+      } else {
+        document.body.style.overflow = "" // Reset to default
+      }
+    }); */
+
     this.titleService.setTitle('debugg.co | I build cool stuff that inspires');
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
 
