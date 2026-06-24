@@ -4,7 +4,6 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class WeatherService {
-  mutedRain = signal(localStorage.getItem('muterain') === '1');
   private debug = false; // Set to false to disable debug logs
   private forceThunder = false; // Set to true to test thunder effects
   private rainBgm!: HTMLAudioElement;
@@ -326,12 +325,11 @@ export class WeatherService {
 
   private playAudio(): void {
     this.log(
-      '[playAudio] Attempting to play, muted:',
-      this.mutedRain(),
+      '[playAudio] Attempting to play',
       'rainStopped:',
       this.rainStopped(),
     );
-    if (this.mutedRain() || this.rainStopped()) return;
+    if (this.rainStopped()) return;
 
     this.rainBgm.play().catch((err) => {
       this.log('[playAudio] Rain play failed, waiting for click:', err);
@@ -349,7 +347,7 @@ export class WeatherService {
   private setupEventListeners(): void {
     document.addEventListener('visibilitychange', () => {
       const visible = document.visibilityState === 'visible';
-      const shouldMute = !visible || this.mutedRain();
+      const shouldMute = !visible;
 
       this.rainBgm.muted = shouldMute;
       if (this.thunderBgm) this.thunderBgm.muted = shouldMute;
@@ -364,7 +362,6 @@ export class WeatherService {
 
       if (
         visible &&
-        !this.mutedRain() &&
         this.activeThunderClip &&
         this.activeThunderClip.paused &&
         !this.activeThunderClip.ended
@@ -389,7 +386,7 @@ export class WeatherService {
       if (!wasThunder && shouldBeThunder) {
         this.log('[startWeatherCycle] Transitioning TO thunder');
         this.rainBgm.src = '/rain/heavy.mp3';
-        if (!this.mutedRain() && !this.rainStopped()) void this.rainBgm.play();
+        if (!this.rainStopped()) void this.rainBgm.play();
         this.isThunder = true;
 
         if (!this.thunderBgm) {
@@ -398,14 +395,14 @@ export class WeatherService {
           document.body.append(this.thunderBgm);
           this.log('[startWeatherCycle] Created new Thunder BGM');
         }
-        if (!this.mutedRain() && !this.rainStopped()) void this.thunderBgm.play();
+        if (!this.rainStopped()) void this.thunderBgm.play();
         this.playThunder();
       }
 
       if (wasThunder && !shouldBeThunder) {
         this.log('[startWeatherCycle] Transitioning FROM thunder');
         this.rainBgm.src = '/rain/light.mp3';
-        if (!this.mutedRain() && !this.rainStopped()) void this.rainBgm.play();
+        if (!this.rainStopped()) void this.rainBgm.play();
         this.isThunder = false;
         if (this.thunderBgm) this.thunderBgm.pause();
       }
@@ -421,7 +418,7 @@ export class WeatherService {
     );
     if (this.thunderPlaying || this.rainStopped()) return;
 
-    if (this.mutedRain() || document.visibilityState !== 'visible') {
+    if (document.visibilityState !== 'visible') {
       this.log('[playThunder] Skipped due to mute/hidden tab');
       if (this.isThunder) {
         setTimeout(() => this.playThunder(), 10000 + Math.floor(Math.random() * 20000));
@@ -470,7 +467,7 @@ export class WeatherService {
       requestAnimationFrame(renderFrame);
     };
 
-    if (!this.mutedRain() && !this.rainStopped()) {
+    if (!this.rainStopped()) {
       audio
         .play()
         .then(() => {
@@ -486,45 +483,6 @@ export class WeatherService {
 
     if (this.isThunder) {
       setTimeout(() => this.playThunder(), 10000 + Math.floor(Math.random() * 20000));
-    }
-  }
-
-  toggleMute(muted: boolean): void {
-    this.mutedRain.set(muted);
-    localStorage.setItem('muterain', muted ? '1' : '0');
-
-    this.rainBgm.muted = muted;
-    if (this.thunderBgm) this.thunderBgm.muted = muted;
-    if (this.activeThunderClip) this.activeThunderClip.muted = muted;
-
-    if (muted) {
-      this.rainBgm.pause();
-      if (this.thunderBgm) this.thunderBgm.pause();
-      if (this.activeThunderClip && !this.activeThunderClip.paused) {
-        this.activeThunderClip.pause();
-      }
-      this.dynamicStyle.innerHTML = '';
-      this.log('[toggleMute] Muted all weather audio');
-      return;
-    }
-
-    if (document.visibilityState !== 'visible' || this.rainStopped()) {
-      this.log('[toggleMute] Unmuted but tab hidden or rain stopped');
-      return;
-    }
-
-    void this.rainBgm.play().catch((err) => {
-      this.log('[toggleMute] Rain resume failed:', err);
-    });
-
-    if (this.thunderBgm && this.isThunder) {
-      void this.thunderBgm.play().catch((err) => {
-        this.log('[toggleMute] Thunder BGM resume failed:', err);
-      });
-    }
-
-    if (this.isThunder && !this.thunderPlaying) {
-      this.playThunder();
     }
   }
 
@@ -563,7 +521,7 @@ export class WeatherService {
     this.paused = false;
     this.resumeRainVisuals();
 
-    const shouldMute = this.mutedRain() || document.visibilityState !== 'visible';
+    const shouldMute = document.visibilityState !== 'visible';
     this.rainBgm.muted = shouldMute;
     if (this.thunderBgm) this.thunderBgm.muted = shouldMute;
     if (this.activeThunderClip) this.activeThunderClip.muted = shouldMute;

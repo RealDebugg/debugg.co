@@ -10,21 +10,21 @@
     <div class="music-visualizer" aria-hidden="true"></div>
     <div class="flex flex-row gap-2">
       <img [src]="lastfm.track()!.image || '/defaultmusic.jpg'" width="150" height="150" />
-      <div class="flex flex-col justify-between">
+      <div class="flex flex-col justify-between overflow-hidden whitespace-nowrap">
         <div>
-          <p [className]="(lastfm.nowPlaying() ? 'active' : 'inactive') + ' font-mono'">
+          <p [className]="(lastfm.nowPlaying() ? 'active' : 'inactive') + ' font-mono truncate'">
             {{ lastfm.nowPlaying() ? 'now_playing_on_apple_music' : 'last_played_on_apple_music' }}
           </p>
-          <p class="text-lg font-bold uppercase text-[#fa586a] font-[JetBrains_Mono]">
+          <p class="text-lg font-bold uppercase text-[#fa586a] font-[JetBrains_Mono] truncate">
             {{ lastfm.track()!.name || 'No data' }}
           </p>
-          <p class="capitalize text-sm text-gray-400 font-[JetBrains_Mono]">
+          <p class="capitalize text-sm text-gray-400 font-[JetBrains_Mono] truncate">
             {{ lastfm.track()!.artist || 'No data' }}
           </p>
         </div>
 
         @if (!lastfm.nowPlaying()) {
-          <p class="font-[JetBrains_Mono] text-[#fa586a]">
+          <p class="font-[JetBrains_Mono] text-[#fa586a] truncate">
             Played {{ lastfm.track()!.playedAt | dateAgo }}
           </p>
         }

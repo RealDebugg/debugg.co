@@ -15,9 +15,6 @@
   - Send me a message should print a message using a thermal printer and raspberry pi
 - [ ] 404 page
   - Actually style it!
-- [ ] Navbar
-  - Music control
-  - Rain control (VFX)
 - [ ] Discord status
   - Add API call
 - [ ] Weather service
@@ -52,12 +49,7 @@
 - [ ] Contact me
 - [ ] Timeline CV Page & projects
 - [ ] Blog
-- [ ] Status
-  - Discord status
-  - LastFM history
-  - Bsky
-  - All (LastFM + Bsky)
-  - Visitor status (visits, unique visits, current visiting)
+- [ ] Useful links
 
 # Cleanup
 
@@ -74,3 +66,11 @@
 - [ ] Current position/job
 - [ ] Blog section
 - [ ] All systems status section
+
+# Status page
+
+- [ ] Discord status + current lastfm status
+- [ ] LastFM history
+- [ ] Bsky
+- [ ] All (LastFM + Bsky)
+- [ ] Visitor status (visits, unique visits, current visiting)

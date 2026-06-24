@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NeonService } from '../../services/neon.service';
+import { Controls } from "../controls/controls";
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
+  imports: [RouterLink, Controls],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })

@@ -1,0 +1,39 @@
+
+
+<div class="container flex flex-row gap-2">
+  <label
+    class="font-bold text-lg text-neutral-400 select-none uppercase"
+    data-cursor="pointer"
+  >
+    <input
+      type="checkbox"
+      class="peer hidden"
+      [checked]="!mutedMusic"
+      (change)="musicService.toggleMute(!$any($event.target).checked)"
+    />
+
+    <span class="inline-block w-6 text-left peer-checked:text-[#00f3ff]">
+      <svg
+        #musicSvg
+        width="22"
+        height="15"
+        viewBox="0 0 22 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-full"
+      >
+        <rect x="0" y="6.5" width="2" height="2" fill="currentColor" />
+        <rect x="5" y="6.5" width="2" height="2" fill="currentColor" />
+        <rect x="10" y="6.5" width="2" height="2" fill="currentColor" />
+        <rect x="15" y="6.5" width="2" height="2" fill="currentColor" />
+        <rect x="20" y="6.5" width="2" height="2" fill="currentColor" />
+      </svg>
+    </span>
+  </label>
+
+  <label class="font-bold text-lg text-neutral-400 select-none uppercase" data-cursor="pointer">
+    <input type="checkbox" class="peer hidden" [checked]="!disableRain"
+      (change)="weatherService.toggleRain(!$any($event.target).checked)" />
+    <span class="peer-checked:text-[#00f3ff]">VFX</span>
+  </label>
+</div>
