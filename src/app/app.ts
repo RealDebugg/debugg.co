@@ -16,8 +16,6 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { HumanComponent } from 'human-angular-lib';
-import { HonkService } from './services/honk.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { TransitionShell } from './layouts/transition-shell/transition-shell';
 import { Navbar } from './components/navbar/navbar';
@@ -29,7 +27,6 @@ import { CustomCursorComponent } from './components/custom-cursor/custom-cursor'
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    HumanComponent,
     TransitionShell,
     Navbar,
     ContactPhoneModalComponent,
@@ -40,7 +37,6 @@ import { CustomCursorComponent } from './components/custom-cursor/custom-cursor'
 })
 export class App implements OnInit, OnDestroy {
   protected readonly title = signal('debugg.co');
-  honkService = inject(HonkService);
   private readonly contactPhoneModalService = inject(ContactPhoneModalService);
   private readonly titleService = inject(Title);
 

@@ -40,19 +40,6 @@ html {
   outline: 1px solid #00f3ff;
 }
 
-app-human .human {
-  pointer-events: auto !important;
-}
-
-app-human {
-  position: static;
-  z-index: 0;
-}
-
-app-human .human {
-  z-index: 0 !important;
-}
-
 app-navbar,
 app-navbar .navbar {
   z-index: 10000001 !important;
