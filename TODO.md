@@ -72,3 +72,61 @@
 - [ ] Bsky
 - [ ] All (LastFM + Bsky)
 - [ ] Visitor status (visits, unique visits, current visiting)
+
+```html
+<span class="menu">
+  <span class="track">
+    <svg
+      class="icon"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+        d="M5 7h14M5 12h14M5 17h14"
+      />
+    </svg>
+    <span class="label">Menu</span>
+  </span>
+</span>
+```
+
+```css
+.menu {
+  display: inline-block;
+  height: 24px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+/* this is the moving "stack" */
+.track {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  text-align: center;
+  align-items: center;
+}
+
+/* each item takes same height */
+.icon,
+.label {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hover moves the whole stack up by one item height */
+.menu:hover .track {
+  transform: translateY(-24px);
+}
+```
