@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component, afterNextRender } from '@angular/core';
 import { Lastfm } from '../../components/lastfm/lastfm';
 import { RouterLink } from '@angular/router';
 import { ContainerWithDots } from '../../components/container-with-dots/container-with-dots';
@@ -11,23 +11,26 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements AfterViewInit {
-  constructor() {
+export class Home {
+  initGsap() {
     gsap.registerPlugin(ScrollTrigger);
-  }
-
-  ngAfterViewInit() {
     const offsets = [-80, 80];
 
     gsap.to('.animated-shot', {
       yPercent: (index) => offsets[index],
       scrollTrigger: {
         trigger: '.anim-trigger',
-        start: 'top bottom',
-        end: 'bottom top',
+        start: 'top 100%',
+        end: 'bottom 0%',
         scrub: 0.8,
         markers: false,
       },
+    });
+  }
+
+  constructor() {
+    afterNextRender(() => {
+      this.initGsap();
     });
   }
 }
