@@ -59,7 +59,7 @@
 # Home page
 
 - [ ] Three.JS room
-- [ ] Introduction (first section)
+- [x] Introduction (first section)
 - [x] LastFM
 - [ ] Featured projects section
 - [ ] Current position/job

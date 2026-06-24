@@ -18,7 +18,7 @@ export const routes: Routes = [
       { path: 'blog', component: Blog, data: { title: 'Blog' } },
       { path: 'contact', component: Contact, data: { title: 'Contact me' } },
       { path: 'links', component: Links, data: { title: 'Useful links' } },
-      { path: 'resume', component: Resume, data: { title: 'Resume' } },
+      { path: 'about', component: Resume, data: { title: 'About me' } },
       { path: 'activity', component: Status, data: { title: 'Activity' } },
       {
         path: 'invite',
