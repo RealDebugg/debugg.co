@@ -185,7 +185,7 @@ export class CustomCursorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const bottomRightY = y + OFFSET;
 
-    const finalX = topRightX + width > window.innerWidth ? x - OFFSET - width : topRightX;
+    const finalX = topRightX + width + 50 > window.innerWidth ? x - OFFSET - width : topRightX;
 
     const finalY = topRightY < 0 ? bottomRightY : topRightY;
 

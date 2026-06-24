@@ -31,7 +31,7 @@
     </span>
   </label>
 
-  <label class="font-bold text-lg text-neutral-400 select-none uppercase" data-cursor="pointer">
+  <label class="font-bold text-md text-neutral-400 select-none uppercase" data-cursor="pointer">
     <input type="checkbox" class="peer hidden" [checked]="!disableRain"
       (change)="weatherService.toggleRain(!$any($event.target).checked)" />
     <span class="peer-checked:text-[#00f3ff]">VFX</span>

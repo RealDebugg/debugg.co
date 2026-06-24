@@ -8,7 +8,6 @@ import {
   inject
 } from '@angular/core';
 import { animate } from 'motion';
-
 import { WeatherService } from '../../services/weather.service';
 import { MusicService } from '../../services/music.service';
 

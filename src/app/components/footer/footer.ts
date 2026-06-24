@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenMeteoService } from '../../services/openmeteo.service';
 import { ContactPhoneModalService } from '../../services/contact-phone-modal.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })

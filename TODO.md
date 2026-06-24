@@ -6,13 +6,13 @@
   - Stability fix!
 - [ ] Contact modal
   - Fix shadows
-  - Implement UI
   - Disable scroll
   - Fix inconsitent positioning of model when opening/closing multiple times
   - If mobile, redirect to another contact page
   - If page isn't visible (tabbed in), mute SFX
-  - Allow send me a message/contact me forms (two different types to be called)
-  - Send me a message should print a message using a thermal printer and raspberry pi
+  - [ ] Implement UI
+    - Allow send me a message/contact me forms (two different types to be called)
+    - Send me a message should print a message using a thermal printer and raspberry pi
 - [ ] 404 page
   - Actually style it!
 - [ ] Discord status
