@@ -1,5 +1,9 @@
 # Implementations needing touch ups
 
+- [ ] Custom cursor
+  - Should track on scroll and resize
+  - Cursor should not be visible on mobile
+  - Tooltip should not be visible on mobile
 - [ ] Page titles
   - Stability fix!
 - [ ] Page transitions
