@@ -45,7 +45,10 @@
 # Pages to create
 
 - [ ] Contact me
-- [ ] Timeline CV Page & projects
+- [ ] About me
+  - Projects
+  - Journey (jobs)
+  - Skills (2x marquee?)
 - [ ] Blog
 - [ ] Useful links
 

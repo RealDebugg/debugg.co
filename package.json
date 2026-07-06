@@ -7,7 +7,8 @@
     "build": "npm run config && ng build",
     "config": "ts-node src/environments/set-env.ts",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "install-deps": "npm i --legacy-peer-deps"
   },
   "prettier": {
     "printWidth": 100,
