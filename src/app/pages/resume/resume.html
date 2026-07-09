@@ -2,11 +2,13 @@
   <div
     class="flex flex-col lg:flex-row lg:gap-6 justify-center lg:items-center h-[calc(100dvh-3.125rem)]"
   >
-    <div class="font-[Brigends] text-4xl md:text-7xl split md:text-left md:w-full lg:flex-1">ABOUT ME</div>
+    <div class="font-[Brigends] text-4xl md:text-7xl split md:text-left md:w-full lg:flex-1">
+      ABOUT ME
+    </div>
     <div class="grid grid-cols-[1fr_1fr] gap-6 lg:flex-2">
       <p class="text-md md:text-xl font-[JetBrains_Mono] font-semibold lg:w-100">
-        I'm Naim Ghulam a fullstack software developer from Sweden with about 4 years of experience in
-        the field.
+        I'm Naim Ghulam a fullstack software developer from Sweden with about 4 years of experience
+        in the field.
       </p>
       <p class="text-md md:text-xl font-[JetBrains_Mono] font-semibold lg:w-100">
         I love building experiences that invoke inspiration — with designs that feels fast,
@@ -21,7 +23,7 @@
     id="split-intro"
     class="split-intro overflow-hidden min-h-[calc(100dvh-3.125rem)] w-full font-[Brigends]"
   >
-    I LOVE ALL THINGS TECH AND WONT STOP LEARNING MORE.
+    I LOVE ALL THINGS TECH.
   </div>
 </section>
 
@@ -48,18 +50,16 @@
       With experience in fullstack web development using different frameworks such as
       <span class="bg-white px-1 py-0.5 text-black">NextJS</span>,
       <span class="bg-white px-1 py-0.5 text-black">.NET</span> &
-      <span class="bg-white px-1 py-0.5 text-black">Angular</span> to developing embedded software on
-      ECU's designed for cars in <span class="bg-white px-1 py-0.5 text-black">C++</span>, I love
+      <span class="bg-white px-1 py-0.5 text-black">Angular</span> to developing embedded software
+      on ECU's designed for cars in <span class="bg-white px-1 py-0.5 text-black">C++</span>, I love
       learning and working with anything related to technology with a keen eye on the details.
     </p>
   </div>
 </section>
 
 <section id="featured-projects" class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-10 lg:gap-y-2 mt-6">
-  <h2
-    class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1"
-  >
-    FEATURED <br/>PROJECTS
+  <h2 class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1">
+    FEATURED <br />PROJECTS
   </h2>
   <ul class="col-span-full lg:row-start-1">
     <li class="grid grid-cols-12 gap-2">
@@ -71,13 +71,29 @@
       </div>
     </li>
     @for (project of projects; track project) {
-      <li class="grid grid-cols-12 gap-2 group" data-cursor="pointer" (mouseenter)="onHoverEnter('View Source')" (mouseleave)="onHoverLeave()">
-        <a [href]="project.link" target="_blank" class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2">
+      <li
+        class="grid grid-cols-12 gap-2 group"
+        data-cursor="pointer"
+        (mouseenter)="onHoverEnter('View Source')"
+        (mouseleave)="onHoverLeave()"
+      >
+        <a
+          [href]="project.link"
+          target="_blank"
+          class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2"
+        >
           <div
             class="with-lines !absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
           ></div>
-          <span class=" col-start-1 col-end-5 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white">{{project.name}}</span>
-          <p class="col-start-5 col-end-10 flex flex-col font-[JetBrains_Mono] font-semibold transition-colors duration-300 group-hover:text-white text-sm">{{project.technology}}</p>
+          <span
+            class="col-start-1 col-end-5 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white"
+            >{{ project.name }}</span
+          >
+          <p
+            class="col-start-5 col-end-10 flex flex-col font-[JetBrains_Mono] font-semibold transition-colors duration-300 group-hover:text-white text-sm"
+          >
+            {{ project.technology }}
+          </p>
         </a>
       </li>
     }
@@ -88,36 +104,37 @@
   <div class="resume-marquee-wrap h-[20vw] mb-[4vw] items-center flex">
     <div class="marquee1 m-container">
       <div class="m-anim-forw anim-cont">
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
       </div>
     </div>
     <div class="marquee2 m-container">
       <div class="m-anim-rev anim-cont">
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
-        <div class="m-item">THESE ARE MY CHAPTERS • </div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
+        <div class="m-item">THESE ARE MY CHAPTERS •</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Timeline? -->
+<p>insert timeline here</p>
 <!-- <section class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-10 lg:gap-y-2 mt-6">
   <h2
     class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1"
@@ -149,25 +166,36 @@
 
 <section id="my-skills">
   <h3 class="font-[Brigends] text-4xl">MY SKILLS</h3>
-  <p class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold text-lg pb-4">A brief overview</p>
+  <p class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold text-lg pb-4">
+    A brief overview
+  </p>
   <div class="scrolling-text full-bleed mb-2">
     <div class="rail">
       @for (skill of skillsRail1; track skill) {
-        <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">{{skill}}</span>
+        <span
+          class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2"
+          >{{ skill }}</span
+        >
       }
     </div>
   </div>
   <div class="scrolling-text full-bleed mb-2">
     <div class="rail">
       @for (skill of skillsRail2; track skill) {
-        <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">{{skill}}</span>
+        <span
+          class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2"
+          >{{ skill }}</span
+        >
       }
     </div>
   </div>
   <div class="scrolling-text full-bleed">
     <div class="rail">
       @for (skill of skillsRail3; track skill) {
-        <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">{{skill}}</span>
+        <span
+          class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2"
+          >{{ skill }}</span
+        >
       }
     </div>
   </div>
@@ -176,17 +204,46 @@
 <section id="finishing-touch">
   <div class="py-4 px-4 with-lines my-6 lg:ml-50 lg:w-[72rem]">
     <a href="mailto:hello@debugg.co" class="group">
-      <h2 class="font-[Brigends] text-2xl lg:text-6xl text-balance mb-3">Want to work<br/> together?</h2>
-      <h1 class="text-[rgb(117_117_117)] group-hover-underline text-4xl font-[JetBrains_Mono] font-semibold">hello@debugg.co</h1>
+      <h2 class="font-[Brigends] text-2xl lg:text-6xl text-balance mb-3">
+        Want to work<br />
+        together?
+      </h2>
+      <h1
+        class="text-[rgb(117_117_117)] group-hover-underline text-4xl font-[JetBrains_Mono] font-semibold"
+      >
+        hello@debugg.co
+      </h1>
     </a>
   </div>
 
-  <a href="/downloadable-content/CV.pdf" download="CV.pdf" class="group md:w-fit relative flex overflow-hidden border-2 border-white bg-white px-4 py-2 font-[JetBrains_Mono] font-semibold text-black transition-colors duration-300 hover:bg-transparent hover:text-white my-6" (mouseenter)="onHoverEnter('Download CV')" (mouseleave)="onHoverLeave()">
-    <span class="with-lines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+  <a
+    href="/downloadable-content/CV.pdf"
+    download="CV.pdf"
+    class="group md:w-fit relative flex overflow-hidden border-2 border-white bg-white px-4 py-2 font-[JetBrains_Mono] font-semibold text-black transition-colors duration-300 hover:bg-transparent hover:text-white my-6"
+    (mouseenter)="onHoverEnter('Download CV')"
+    (mouseleave)="onHoverLeave()"
+  >
+    <span
+      class="with-lines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    ></span>
     <span class="relative z-10 flex items-center gap-4 mx-auto">
       Download
-      <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
+      <svg
+        class="h-6 w-6"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+        />
       </svg>
     </span>
   </a>
