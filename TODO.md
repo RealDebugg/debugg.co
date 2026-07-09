@@ -22,6 +22,7 @@
   - Add API call
 - [ ] Weather service
   - Add snow based on calendar month
+- Update CV to english
 
 # To implement components
 - [ ] Splash loading screen
@@ -51,7 +52,6 @@
 
 # About me
 - [ ] Journey (jobs)
-- [ ] Resume download
 
 # Home page
 - [ ] Three.JS room
