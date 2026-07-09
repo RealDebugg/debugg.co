@@ -38,6 +38,10 @@ export class Resume implements OnDestroy {
     {name: "Trestads Tolkförmedling AB", position: "Software Developer", year: "2023 - 2023", description: "Enter a description here"},
   ]
 
+  public skillsRail1 = ["Grafana", "AWS", "CANBUS", "C++", "Terraform", "Agile Development", "Scrum", "Jira", "Confluence", "Git", "GitHub", "GitLab", "Docker", "Vagrant", "Prisma", "PostgreSQL", "MySQL", "MongoDB", "NGINX"];
+  public skillsRail2 = ["EF Core", "LUA", "JavaScript", "TypeScript", "Angular", "React", "Vue", "NuxtJS", "Electron", "CI/CD", "TDD", "CRUD", "Bruno", "iDenfy", "C#", ".NET", "NextJS", "ExpressJS", "Kotlin"];
+  public skillsRail3 = ["Axios", "Nuxt Auth", "Next Auth", "GO", "SQL", "AWS RDS", "REST API", "WebSocket", "Supabase", "PHP", "Auth0", "AWS Aurora", "AWS Lambda", "LaunchDarkly", "Python", "NoSQL", "Linux", "SSH", "WPF", "GSAP"];
+
   initGsap() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.set('.split', { opacity: 1 });
