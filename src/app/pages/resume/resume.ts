@@ -1,7 +1,8 @@
-import { afterNextRender, Component } from '@angular/core';
+import { afterNextRender, Component, inject } from '@angular/core';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MouseService } from '../../services/mouse.service';
 
 @Component({
   selector: 'app-resume',
@@ -10,8 +11,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   styleUrl: './resume.scss',
 })
 export class Resume {
-  projects = [
+  private mouseService = inject(MouseService);
+
+  public projects = [
     {name: "Debugg.Co", technology: "Angular", link: "https://github.com/RealDebugg/debugg.co"},
+    {name: "Scrum Poker", technology: "Next.JS, Ably, Prisma ORM", link: "https://github.com/RealDebugg/planning-poker/"},
+    {name: "Countdowns", technology: "Next.JS, Prisma ORM", link: "https://github.com/RealDebugg/days/"},
+    {name: "VS Code NPM Menu", technology: "JavaScript", link: "https://github.com/RealDebugg/vsc-nodecmd/"},
+    {name: "ShareX Provider", technology: "Next.JS, Vercel Blob Storage", link: "https://github.com/RealDebugg/sharex-nextjs-uploader/"},
+    {name: "RDR3 POIs", technology: "RedM, TypeScript", link: "https://github.com/RealDebugg/rdr3-pois/"},
+    {name: "VR Game Template", technology: "Unity, C#", link: "https://github.com/RealDebugg/VRGame"},
+    {name: "Discord Bot", technology: "Discord.JS, Prisma ORM", link: "https://github.com/RealDebugg/debuggs-discord-bot"},
+    {name: "FiveM Deaddrop", technology: "FiveM, JavaScript", link: "https://github.com/RealDebugg/fivem-deaddrop/"},
+    {name: "FiveM Snippets", technology: "FiveM, LUA, JavaScript", link: "https://github.com/RealDebugg/debugg-public/"},
+    {name: "RedM Pointing", technology: "RedM, LUA", link: "https://github.com/Infamous-Development-Studio/rdr2-pointing"},
+    {name: "RedM Law Anims", technology: "RedM, LUA", link: "https://github.com/Infamous-Development-Studio/rdr2-law-anims"}
+
   ]
 
   initGsap() {
@@ -56,6 +71,14 @@ export class Resume {
       pin: true,
     }
    })
+  }
+
+  onHoverEnter(text: string): void {
+    this.mouseService.setHoverText(text);
+  }
+
+  onHoverLeave(): void {
+    this.mouseService.resetCursor();
   }
 
   constructor() {
