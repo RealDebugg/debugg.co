@@ -26,14 +26,6 @@
 
 # To implement components
 - [ ] Splash loading screen
-- [ ] "Glitchy" text on hover links
-- [ ] Custom buttons
-  - [ ] Magnetic to cursor for a small distance
-  - [ ] Marquee when hovered
-    - Diagonal pattern animation
-  - [ ] Secondary and primary style
-    - Secordary: Border, transparent bg, black text
-    - Primary: White bg, black text
 
 # To implement, generic ideas
 - [ ] Three.JS
