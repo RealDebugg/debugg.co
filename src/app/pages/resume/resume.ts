@@ -10,6 +10,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   styleUrl: './resume.scss',
 })
 export class Resume {
+  projects = [
+    {name: "Debugg.Co", technology: "Angular", link: "https://github.com/RealDebugg/debugg.co"},
+  ]
+
   initGsap() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.set('.split', { opacity: 1 });
@@ -29,54 +33,29 @@ export class Resume {
       },
     });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.intro-wrapper',
-        start: 'top center',
-        end: 'bottom center',
-        scrub: true,
-        pin: true,
-      },
-    });
+    let textElement = document.getElementById('split-intro');
+    const rawText = textElement?.innerText.trim();
+    const words = rawText?.split(/\s+/) || [];
 
-    // Text 1 & 3 start shifted left and scroll BACK to their normal position (0)
-    tl.from(['.intro-text1', '.intro-text3'], { right: '100%', duration: 1 })
+    if (textElement) {
+      textElement.innerHTML = words.map((word) => `<span class="word">${word}</span>`).join(' ');
+    }
 
-      // Text 2 starts normal (0) and scrolls FORWARD to the right
-      .to('.intro-text2', { xPercent: -100, duration: 1 });
+    const wordElements = document.querySelectorAll('.word');
 
-    /* gsap.to('.intro-text1', {
-      xPercent: -100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.intro-wrapper',
-        pin: true,
-        end: '+=5000px',
-        scrub: true,
-      },
-    });
-
-    gsap.to('.intro-text2', {
-      xPercent: -100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.intro-wrapper',
-        pin: true,
-        end: '+=5000px',
-        scrub: true,
-      },
-    });
-
-    gsap.to('.intro-text3', {
-      xPercent: -100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.intro-wrapper',
-        pin: true,
-        end: '+=5000px',
-        scrub: true,
-      },
-    }); */
+   gsap.to(wordElements, {
+    color: "#ffffff",
+    ease: "none",
+    stagger: 0.1,
+    duration: 0.1,
+    scrollTrigger: {
+      trigger: ".split-intro",
+      start: "top top",
+      end: "bottom top",
+      scrub: 1.5,
+      pin: true,
+    }
+   })
   }
 
   constructor() {

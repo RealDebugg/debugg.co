@@ -1,53 +1,98 @@
-<div class="grid lg:grid-cols-[1fr_1fr_1fr] gap-6 mb-10 mt-10 lg:full-bleed items-center">
-  <div class="font-[Brigends] text-7xl split">ABOUT ME</div>
-  <p class="text-md md:text-xl font-[JetBrains_Mono]">
-    I'm Naim Ghulam a fullstack software developer from Sweden with about 4 years of experience in
-    the field.
+<div
+  class="flex flex-col lg:flex-row lg:gap-6 justify-center lg:items-center h-[calc(100dvh-3.125rem)]"
+>
+  <div class="font-[Brigends] text-4xl md:text-7xl split md:text-left md:w-full lg:flex-1">ABOUT ME</div>
+  <div class="grid grid-cols-[1fr_1fr] gap-6 lg:flex-2">
+    <p class="text-md md:text-xl font-[JetBrains_Mono] font-semibold lg:w-100">
+      I'm Naim Ghulam a fullstack software developer from Sweden with about 4 years of experience in
+      the field.
+    </p>
+    <p class="text-md md:text-xl font-[JetBrains_Mono] font-semibold lg:w-100">
+      I love building experiences that invokes inspiration — with designs that feels fast,
+      intentional and are enjoyable to use.
+    </p>
+  </div>
+</div>
+
+<div
+  id="split-intro"
+  class="split-intro overflow-hidden min-h-[calc(100dvh-3.125rem)] w-full font-[Brigends]"
+>
+  I LOVE ALL THINGS TECH AND DON'T WANT TO STOP LEARNING.
+</div>
+
+<div
+  class="grid lg:grid-cols-[1fr_1fr] items-center justify-center gap-6 lg:min-h-[calc(100dvh-3.125rem)] h-50"
+>
+  <div class="mx-auto my-0 hidden lg:block">
+    <svg
+      width="9"
+      height="196"
+      viewBox="0 0 9 196"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="intro_arrowDown__TDyHq"
+    >
+      <path
+        d="M4.14645 195.354C4.34171 195.549 4.65829 195.549 4.85355 195.354L8.03553 192.172C8.2308 191.976 8.2308 191.66 8.03553 191.464C7.84027 191.269 7.52369 191.269 7.32843 191.464L4.5 194.293L1.67157 191.464C1.47631 191.269 1.15973 191.269 0.964466 191.464C0.769204 191.66 0.769204 191.976 0.964466 192.172L4.14645 195.354ZM5 195L4.99999 -2.18557e-08L3.99999 2.18557e-08L4 195L5 195Z"
+        fill="#EFEFEF"
+      ></path>
+    </svg>
+  </div>
+  <p class="portfolio-intro text-md md:text-xl font-[JetBrains_Mono] font-semibold">
+    With experience in fullstack web development using different frameworks such as
+    <span class="bg-white px-1 py-0.5 text-black">NextJS</span>,
+    <span class="bg-white px-1 py-0.5 text-black">.NET</span> &
+    <span class="bg-white px-1 py-0.5 text-black">Angular</span> to developing embedded software on
+    ECU's designed for cars in <span class="bg-white px-1 py-0.5 text-black">C++</span>, I love
+    learning and working with anything related to technology with a keen eye on the details.
   </p>
-  <p class="text-md md:text-xl font-[JetBrains_Mono]">
-    I love building experiences that invokes inspiration — with designs that feels fast, intentional
-    and are enjoyable to use.
-  </p>
 </div>
 
-<div class="intro-wrapper overflow-hidden h-dvh items-center">
-  <h1 class="font-[Brigends] text-8xl intro-text1 flex w-max whitespace-nowrap">
-    I LOVE ALL THINGS TECH
-  </h1>
-  <h1 class="font-[Brigends] text-8xl intro-text2 flex w-max whitespace-nowrap">
-    I LOVE ALL THINGS TECH
-  </h1>
-  <h1 class="font-[Brigends] text-8xl intro-text3 flex w-max whitespace-nowrap">
-    I LOVE ALL THINGS TECH
-  </h1>
-</div>
+<!-- TODO: Add tooltip "GITHUB" -->
+<section class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-24 lg:gap-y-2 mt-6">
+  <h2
+    class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1"
+  >
+    FEATURED <br/>PROJECTS
+  </h2>
+  <ul class="col-span-full lg:row-start-1">
+    <li class="grid grid-cols-12 gap-2">
+      <div
+        class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold relative col-span-full grid grid-cols-8 items-center gap-2 pb-2 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13"
+      >
+        <span class="col-start-1 col-end-5">Project</span>
+        <span class="col-start-5 col-end-7">Technology</span>
+      </div>
+    </li>
+    @for (project of projects; track project) {
+      <li class="grid grid-cols-12 gap-2 group" data-cursor="pointer">
+        <a [href]="project.link" target="_blank" class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2">
+          <div
+            class="with-lines !absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          ></div>
+          <span class=" col-start-1 col-end-5 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white">{{project.name}}</span>
+          <p class="col-start-5 col-end-7 flex flex-col font-[JetBrains_Mono] font-semibold transition-colors duration-300 group-hover:text-white text-sm">{{project.technology}}</p>
+        </a>
+      </li>
+    }
+  </ul>
+</section>
 
-<p>
-  With exprience in fullstack web development using different frameworks such as
-  <span>NextJS</span>, <span>.NET</span> & <span>Angular</span>
-  to developing embedded software on ECU's designed for cars, I love learning and working with
-  anything related to technology with a keen eye on the details.
-</p>
-
-<div>
-  <h3>FEATURED PROJECTS</h3>
-  <a>github link</a>
-</div>
-
-<div>insert hoverable list (https://demos.gsap.com/demo/cursor-tracking-image-preview/)</div>
-
+<!-- TODO: https://scrollytelling.basement.studio/ (the "THE LAB" marquees) -->
 <h1>THESE ARE MY CHAPTERS</h1>
 
 <h3>JOURNEY</h3>
-<div>insert hoverable list that links to separated pages</div>
+<div>insert hoverable list (https://demos.gsap.com/demo/cursor-tracking-image-preview/)</div>
 
 <h3>MY SKILLS</h3>
 <!-- insert 2x marquee -->
 
-<div>
-  <h3>Contact</h3>
-  <h2>Want to work work together?</h2>
-  <h1>hello@debugg.co</h1>
+<div class="py-4 px-4 with-lines my-6 lg:ml-50 lg:w-[72rem]">
+  <a href="mailto:hello@debugg.co" class="group">
+    <h2 class="font-[Brigends] text-2xl lg:text-6xl text-balance mb-3">Want to work<br/> together?</h2>
+    <h1 class="text-[rgb(117_117_117)] group-hover-underline text-4xl font-[JetBrains_Mono] font-semibold">hello@debugg.co</h1>
+  </a>
 </div>
 
 <p>

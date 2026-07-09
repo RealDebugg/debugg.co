@@ -20,15 +20,6 @@
   padding: 0.9rem 1rem 0.55rem;
 }
 
-@keyframes diagonalPatternAnimation {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 64px 0px;
-  }
-}
-
 .status-key {
   color: #00f3ff;
   font-size: 0.72em;

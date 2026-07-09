@@ -89,3 +89,18 @@ body::after {
     background-position: 0 4px;
   }
 }
+
+.with-lines {
+  background-image: url("/diagonal-pattern.svg");
+  background-repeat: repeat;
+  animation: diagonalPatternAnimation 6s linear infinite;
+}
+
+@keyframes diagonalPatternAnimation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 64px 0px;
+  }
+}
