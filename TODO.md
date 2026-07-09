@@ -1,5 +1,4 @@
 # Implementations needing touch ups
-
 - [ ] Custom cursor
   - Should track on scroll and resize
   - Cursor should not be visible on mobile
@@ -25,7 +24,6 @@
   - Add snow based on calendar month
 
 # To implement components
-
 - [ ] Splash loading screen
 - [ ] "Glitchy" text on hover links
 - [ ] Custom buttons
@@ -37,30 +35,25 @@
     - Primary: White bg, black text
 
 # To implement, generic ideas
-
 - [ ] Three.JS
 - [ ] Mobile friendly UI
 - [ ] If low FPS or mobile, disable snow/rain, music & transitions
 
 # Pages to create
-
 - [ ] Contact me
 - [ ] Blog
 - [ ] Useful links
 
 # Cleanup
-
 - [ ] CSS
 - [ ] TS
 - [ ] HTML
 
 # About me
 - [ ] Journey (jobs)
-- [ ] Skills (2x marquee?)
 - [ ] Resume download
 
 # Home page
-
 - [ ] Three.JS room
 - [x] Introduction (first section)
 - [x] LastFM
@@ -70,7 +63,6 @@
 - [ ] All systems status section
 
 # Status page
-
 - [ ] Discord status + current lastfm status
 - [ ] LastFM history
 - [ ] Bsky

@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject } from '@angular/core';
+import { afterNextRender, Component, inject, OnDestroy } from '@angular/core';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,8 +10,12 @@ import { MouseService } from '../../services/mouse.service';
   templateUrl: './resume.html',
   styleUrl: './resume.scss',
 })
-export class Resume {
+export class Resume implements OnDestroy {
   private mouseService = inject(MouseService);
+  private readonly skillRailTweens: gsap.core.Tween[] = [];
+  private readonly onWindowResize = () => {
+    this.initSkillRails();
+  };
 
   public projects = [
     {name: "Debugg.Co", technology: "Angular", link: "https://github.com/RealDebugg/debugg.co"},
@@ -26,7 +30,12 @@ export class Resume {
     {name: "FiveM Snippets", technology: "FiveM, LUA, JavaScript", link: "https://github.com/RealDebugg/debugg-public/"},
     {name: "RedM Pointing", technology: "RedM, LUA", link: "https://github.com/Infamous-Development-Studio/rdr2-pointing"},
     {name: "RedM Law Anims", technology: "RedM, LUA", link: "https://github.com/Infamous-Development-Studio/rdr2-law-anims"}
+  ]
 
+  public workplaces = [
+    {name: "GCG Sweden AB", position: "Software Developer", year: "2024 - Now", description: "Enter a description here"},
+    {name: "Autocom Diagnostic Partner AB", position: "Software Developer", year: "2023 - Now", description: "Enter a description here"},
+    {name: "Trestads Tolkförmedling AB", position: "Software Developer", year: "2023 - 2023", description: "Enter a description here"},
   ]
 
   initGsap() {
@@ -73,6 +82,42 @@ export class Resume {
     })
 
     this.initMarquees();
+    this.initSkillRails();
+    window.addEventListener('resize', this.onWindowResize);
+  }
+
+  private initSkillRails(): void {
+    const rails = Array.from(document.querySelectorAll<HTMLElement>('.scrolling-text .rail'));
+    if (!rails.length) {
+      return;
+    }
+
+    this.killSkillRailTweens();
+
+    rails.forEach((rail, index) => {
+      const loopDistance = this.prepareSkillRail(rail);
+      if (loopDistance <= 0) {
+        return;
+      }
+
+      const moveLeft = index % 2 === 0;
+      const duration = Math.max(20, loopDistance / 28);
+      const fromX = moveLeft ? 0 : -loopDistance;
+      const toX = moveLeft ? -loopDistance : 0;
+
+      const tween = gsap.fromTo(
+        rail,
+        { x: fromX },
+        {
+          x: toX,
+          duration,
+          ease: 'none',
+          repeat: -1,
+        },
+      );
+
+      this.skillRailTweens.push(tween);
+    });
   }
 
   private initMarquees(): void {
@@ -149,6 +194,51 @@ export class Resume {
     return loopDistance;
   }
 
+  private prepareSkillRail(rail: HTMLElement): number {
+    const chips = Array.from(rail.children) as HTMLElement[];
+    if (!chips.length) {
+      return 0;
+    }
+
+    const originalCount = Number.parseInt(rail.dataset['originalCount'] ?? '', 10) || chips.length;
+    rail.dataset['originalCount'] = String(originalCount);
+
+    const originals = Array.from(rail.children).slice(0, originalCount) as HTMLElement[];
+    if (!originals.length) {
+      return 0;
+    }
+
+    const cycleWidth = originals.reduce((total, chip) => {
+      const styles = window.getComputedStyle(chip);
+      const marginLeft = Number.parseFloat(styles.marginLeft || '0');
+      const marginRight = Number.parseFloat(styles.marginRight || '0');
+      return total + chip.getBoundingClientRect().width + marginLeft + marginRight;
+    }, 0);
+
+    if (!Number.isFinite(cycleWidth) || cycleWidth <= 0) {
+      return 0;
+    }
+
+    const viewportWidth = rail.parentElement?.clientWidth ?? window.innerWidth;
+    const minCopies = Math.max(3, Math.ceil((viewportWidth * 2) / cycleWidth) + 1);
+    const requiredChildren = originalCount * minCopies;
+
+    for (let i = rail.children.length; i < requiredChildren; i++) {
+      const source = originals[i % originalCount];
+      rail.appendChild(source.cloneNode(true));
+    }
+
+    return cycleWidth;
+  }
+
+  private killSkillRailTweens(): void {
+    for (const tween of this.skillRailTweens) {
+      tween.kill();
+    }
+
+    this.skillRailTweens.length = 0;
+  }
+
   onHoverEnter(text: string): void {
     this.mouseService.setHoverText(text);
   }
@@ -161,5 +251,10 @@ export class Resume {
     afterNextRender(() => {
       this.initGsap();
     });
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.onWindowResize);
+    this.killSkillRailTweens();
   }
 }

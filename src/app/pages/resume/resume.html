@@ -49,7 +49,7 @@
   </p>
 </div>
 
-<section class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-24 lg:gap-y-2 mt-6">
+<section class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-10 lg:gap-y-2 mt-6">
   <h2
     class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1"
   >
@@ -109,11 +109,99 @@
   </div>
 </div>
 
-<h3>JOURNEY</h3>
-<div>insert hoverable list (https://demos.gsap.com/demo/cursor-tracking-image-preview/)</div>
+<!-- <div>insert hoverable list (https://demos.gsap.com/demo/cursor-tracking-image-preview/)</div> -->
+<!-- <section class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-10 lg:gap-y-2 mt-6">
+  <h2
+    class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1"
+  >
+    MY JOURNEY
+  </h2>
+  <ul class="col-span-full lg:row-start-1">
+    <li class="grid grid-cols-12 gap-2">
+      <div
+        class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold relative col-span-full grid grid-cols-8 items-center gap-2 pb-2 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13"
+      >
+        <span class="col-start-1 col-end-5">Project</span>
+        <span class="col-start-5 col-end-7">Technology</span>
+      </div>
+    </li>
+    @for (project of projects; track project) {
+      <li class="grid grid-cols-12 gap-2 group" data-cursor="pointer" (mouseenter)="onHoverEnter('View Source')" (mouseleave)="onHoverLeave()">
+        <a [href]="project.link" target="_blank" class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2">
+          <div
+            class="with-lines !absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          ></div>
+          <span class=" col-start-1 col-end-5 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white">{{project.name}}</span>
+          <p class="col-start-5 col-end-10 flex flex-col font-[JetBrains_Mono] font-semibold transition-colors duration-300 group-hover:text-white text-sm">{{project.technology}}</p>
+        </a>
+      </li>
+    }
+  </ul>
+</section> -->
 
-<h3>MY SKILLS</h3>
-<!-- insert 2x marquee -->
+<h3 class="font-[Brigends] text-4xl">MY SKILLS</h3>
+<p class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold text-lg pb-4">A brief overview</p>
+<div class="scrolling-text full-bleed mb-2">
+  <div class="rail">
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Grafana</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">AWS</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">CANBUS</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">C++</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Terraform</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Agile Development</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Docker</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Vagrant</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Prisma</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">EF Core</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">LUA</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">JavaScript</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">TypeScript</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">C#</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">.NET</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">NextJS</span>
+  </div>
+</div>
+<div class="scrolling-text full-bleed mb-2">
+  <div class="rail">
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">VUE</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">React</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">NuxtJS</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Electron</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Angular</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">CI/CD</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">GitLab</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">GitHub</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">GO</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">SQL</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Git</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">AWS RDS</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">AWS Aurora</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">AWS Lambda</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">LaunchDarkly</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Kotlin</span>
+  </div>
+</div>
+<div class="scrolling-text full-bleed">
+  <div class="rail">
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">TDD</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">CRUD</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Bruno</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">iDenfy</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">ExpressJS</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Axios</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Nuxt Auth</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Next Auth</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Auth0</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Supabase</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">PHP</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Python</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">NoSQL</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">Linux</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">SSH</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">WPF</span>
+    <span class="font-[JetBrains_Mono] font-semibold text-sm px-1 py-0.5 border-[rgb(117_117_117)] border-solid rounded-sm border-2 text-[rgb(117_117_117)] mr-2">GSAP</span>
+  </div>
+</div>
 
 <div class="py-4 px-4 with-lines my-6 lg:ml-50 lg:w-[72rem]">
   <a href="mailto:hello@debugg.co" class="group">
@@ -122,6 +210,6 @@
   </a>
 </div>
 
-<p>
+<!-- <p>
   psst. if you want a copy of my full resume, you can get it <span><a>here!</a></span>
-</p>
+</p> -->
