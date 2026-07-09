@@ -83,7 +83,7 @@
           class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2"
         >
           <div
-            class="with-lines !absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+            class="with-lines absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
           ></div>
           <span
             class="col-start-1 col-end-5 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white"
@@ -133,36 +133,33 @@
   </div>
 </section>
 
-<!-- Timeline? -->
-<p>insert timeline here</p>
-<!-- <section class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-10 lg:gap-y-2 mt-6">
-  <h2
-    class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1"
-  >
-    MY JOURNEY
-  </h2>
-  <ul class="col-span-full lg:row-start-1">
-    <li class="grid grid-cols-12 gap-2">
-      <div
-        class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold relative col-span-full grid grid-cols-8 items-center gap-2 pb-2 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13"
-      >
-        <span class="col-start-1 col-end-5">Project</span>
-        <span class="col-start-5 col-end-7">Technology</span>
-      </div>
-    </li>
-    @for (project of projects; track project) {
-      <li class="grid grid-cols-12 gap-2 group" data-cursor="pointer" (mouseenter)="onHoverEnter('View Source')" (mouseleave)="onHoverLeave()">
-        <a [href]="project.link" target="_blank" class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2">
-          <div
-            class="with-lines !absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-          ></div>
-          <span class=" col-start-1 col-end-5 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white">{{project.name}}</span>
-          <p class="col-start-5 col-end-10 flex flex-col font-[JetBrains_Mono] font-semibold transition-colors duration-300 group-hover:text-white text-sm">{{project.technology}}</p>
-        </a>
-      </li>
-    }
-  </ul>
-</section> -->
+<!-- Push entire section down by nav bar's height -->
+<!-- Marker is off center because of top: 473.7px; inline style set by GSAP? -->
+<section id="job-timeline" class="relative">
+  <div class="timeline-stage">
+    <div class="timeline-rail">
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-marker"></div>
+
+    <div class="timeline-entries relative z-10 mx-auto flex w-full max-w-6xl flex-col">
+      @for (workplace of workplaces; track workplace.name; let i = $index) {
+        <article
+          class="timeline-entry"
+          [class.timeline-entry-left]="i % 2 === 0"
+          [class.timeline-entry-right]="i % 2 !== 0"
+        >
+          <div class="timeline-card">
+            <p class="timeline-year">{{ workplace.year }}</p>
+            <h3 class="timeline-company">{{ workplace.name }}</h3>
+            <p class="timeline-position">{{ workplace.position }}</p>
+            <p class="timeline-description">{{ workplace.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
 
 <section id="my-skills">
   <h3 class="font-[Brigends] text-4xl">MY SKILLS</h3>
@@ -202,7 +199,7 @@
 </section>
 
 <section id="finishing-touch">
-  <div class="py-4 px-4 with-lines my-6 lg:ml-50 lg:w-[72rem]">
+  <div class="py-4 px-4 with-lines my-6 lg:ml-50 lg:w-6xl">
     <a href="mailto:hello@debugg.co" class="group">
       <h2 class="font-[Brigends] text-2xl lg:text-6xl text-balance mb-3">
         Want to work<br />

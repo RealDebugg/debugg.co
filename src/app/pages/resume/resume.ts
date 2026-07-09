@@ -18,29 +18,149 @@ export class Resume implements OnDestroy {
   };
 
   public projects = [
-    {name: "Debugg.Co", technology: "Angular", link: "https://github.com/RealDebugg/debugg.co"},
-    {name: "Scrum Poker", technology: "Next.JS, Ably, Prisma ORM", link: "https://github.com/RealDebugg/planning-poker/"},
-    {name: "Countdowns", technology: "Next.JS, Prisma ORM", link: "https://github.com/RealDebugg/days/"},
-    {name: "VS Code NPM Menu", technology: "JavaScript", link: "https://github.com/RealDebugg/vsc-nodecmd/"},
-    {name: "ShareX Provider", technology: "Next.JS, Vercel Blob Storage", link: "https://github.com/RealDebugg/sharex-nextjs-uploader/"},
-    {name: "RDR3 POIs", technology: "RedM, TypeScript", link: "https://github.com/RealDebugg/rdr3-pois/"},
-    {name: "VR Game Template", technology: "Unity, C#", link: "https://github.com/RealDebugg/VRGame"},
-    {name: "Discord Bot", technology: "Discord.JS, Prisma ORM", link: "https://github.com/RealDebugg/debuggs-discord-bot"},
-    {name: "FiveM Deaddrop", technology: "FiveM, JavaScript", link: "https://github.com/RealDebugg/fivem-deaddrop/"},
-    {name: "FiveM Snippets", technology: "FiveM, LUA, JavaScript", link: "https://github.com/RealDebugg/debugg-public/"},
-    {name: "RedM Pointing", technology: "RedM, LUA", link: "https://github.com/Infamous-Development-Studio/rdr2-pointing"},
-    {name: "RedM Law Anims", technology: "RedM, LUA", link: "https://github.com/Infamous-Development-Studio/rdr2-law-anims"}
-  ]
+    { name: 'Debugg.Co', technology: 'Angular', link: 'https://github.com/RealDebugg/debugg.co' },
+    {
+      name: 'Scrum Poker',
+      technology: 'Next.JS, Ably, Prisma ORM',
+      link: 'https://github.com/RealDebugg/planning-poker/',
+    },
+    {
+      name: 'Countdowns',
+      technology: 'Next.JS, Prisma ORM',
+      link: 'https://github.com/RealDebugg/days/',
+    },
+    {
+      name: 'VS Code NPM Menu',
+      technology: 'JavaScript',
+      link: 'https://github.com/RealDebugg/vsc-nodecmd/',
+    },
+    {
+      name: 'ShareX Provider',
+      technology: 'Next.JS, Vercel Blob Storage',
+      link: 'https://github.com/RealDebugg/sharex-nextjs-uploader/',
+    },
+    {
+      name: 'RDR3 POIs',
+      technology: 'RedM, TypeScript',
+      link: 'https://github.com/RealDebugg/rdr3-pois/',
+    },
+    {
+      name: 'VR Game Template',
+      technology: 'Unity, C#',
+      link: 'https://github.com/RealDebugg/VRGame',
+    },
+    {
+      name: 'Discord Bot',
+      technology: 'Discord.JS, Prisma ORM',
+      link: 'https://github.com/RealDebugg/debuggs-discord-bot',
+    },
+    {
+      name: 'FiveM Deaddrop',
+      technology: 'FiveM, JavaScript',
+      link: 'https://github.com/RealDebugg/fivem-deaddrop/',
+    },
+    {
+      name: 'FiveM Snippets',
+      technology: 'FiveM, LUA, JavaScript',
+      link: 'https://github.com/RealDebugg/debugg-public/',
+    },
+    {
+      name: 'RedM Pointing',
+      technology: 'RedM, LUA',
+      link: 'https://github.com/Infamous-Development-Studio/rdr2-pointing',
+    },
+    {
+      name: 'RedM Law Anims',
+      technology: 'RedM, LUA',
+      link: 'https://github.com/Infamous-Development-Studio/rdr2-law-anims',
+    },
+  ];
 
   public workplaces = [
-    {name: "GCG Sweden AB", position: "Software Developer", year: "2024 - Now", description: "Enter a description here"},
-    {name: "Autocom Diagnostic Partner AB", position: "Software Developer", year: "2023 - Now", description: "Enter a description here"},
-    {name: "Trestads Tolkförmedling AB", position: "Software Developer", year: "2023 - 2023", description: "Enter a description here"},
-  ]
+    {
+      name: 'GCG Sweden AB',
+      position: 'Software Developer',
+      year: '2024 - Now',
+      description: 'Enter a description here',
+    },
+    {
+      name: 'Autocom Diagnostic Partner AB',
+      position: 'Software Developer',
+      year: '2023 - Now',
+      description: 'Enter a description here',
+    },
+    {
+      name: 'Trestads Tolkförmedling AB',
+      position: 'Software Developer',
+      year: '2023 - 2023',
+      description: 'Enter a description here',
+    },
+  ];
 
-  public skillsRail1 = ["Grafana", "AWS", "CANBUS", "C++", "Terraform", "Agile Development", "Scrum", "Jira", "Confluence", "Git", "GitHub", "GitLab", "Docker", "Vagrant", "Prisma", "PostgreSQL", "MySQL", "MongoDB", "NGINX"];
-  public skillsRail2 = ["EF Core", "LUA", "JavaScript", "TypeScript", "Angular", "React", "Vue", "NuxtJS", "Electron", "CI/CD", "TDD", "CRUD", "Bruno", "iDenfy", "C#", ".NET", "NextJS", "ExpressJS", "Kotlin"];
-  public skillsRail3 = ["Axios", "Nuxt Auth", "Next Auth", "GO", "SQL", "AWS RDS", "REST API", "WebSocket", "Supabase", "PHP", "Auth0", "AWS Aurora", "AWS Lambda", "LaunchDarkly", "Python", "NoSQL", "Linux", "SSH", "WPF", "GSAP"];
+  public skillsRail1 = [
+    'Grafana',
+    'AWS',
+    'CANBUS',
+    'C++',
+    'Terraform',
+    'Agile Development',
+    'Scrum',
+    'Jira',
+    'Confluence',
+    'Git',
+    'GitHub',
+    'GitLab',
+    'Docker',
+    'Vagrant',
+    'Prisma',
+    'PostgreSQL',
+    'MySQL',
+    'MongoDB',
+    'NGINX',
+  ];
+  public skillsRail2 = [
+    'EF Core',
+    'LUA',
+    'JavaScript',
+    'TypeScript',
+    'Angular',
+    'React',
+    'Vue',
+    'NuxtJS',
+    'Electron',
+    'CI/CD',
+    'TDD',
+    'CRUD',
+    'Bruno',
+    'iDenfy',
+    'C#',
+    '.NET',
+    'NextJS',
+    'ExpressJS',
+    'Kotlin',
+  ];
+  public skillsRail3 = [
+    'Axios',
+    'Nuxt Auth',
+    'Next Auth',
+    'GO',
+    'SQL',
+    'AWS RDS',
+    'REST API',
+    'WebSocket',
+    'Supabase',
+    'PHP',
+    'Auth0',
+    'AWS Aurora',
+    'AWS Lambda',
+    'LaunchDarkly',
+    'Python',
+    'NoSQL',
+    'Linux',
+    'SSH',
+    'WPF',
+    'GSAP',
+  ];
 
   initGsap() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -72,22 +192,127 @@ export class Resume implements OnDestroy {
     const wordElements = document.querySelectorAll('.word');
 
     gsap.to(wordElements, {
-      color: "#ffffff",
-      ease: "none",
+      color: '#ffffff',
+      ease: 'none',
       stagger: 0.1,
       duration: 0.1,
       scrollTrigger: {
-        trigger: ".split-intro",
-        start: "top top",
-        end: "bottom top",
+        trigger: '.split-intro',
+        start: 'top top',
+        end: 'bottom top',
         scrub: 1.5,
         pin: true,
-      }
-    })
+      },
+    });
 
     this.initMarquees();
     this.initSkillRails();
+    this.initWorkplaceTimeline();
     window.addEventListener('resize', this.onWindowResize);
+  }
+
+  private initWorkplaceTimeline(): void {
+    const stage = document.querySelector<HTMLElement>('.timeline-stage');
+    const marker = document.querySelector<HTMLElement>('.timeline-marker');
+    const line = document.querySelector<HTMLElement>('.timeline-line');
+    const entries = document.querySelectorAll<HTMLElement>('.timeline-entry');
+
+    if (!stage || !marker || !line || !entries.length) {
+      return;
+    }
+
+    const numEntries = entries.length;
+    const viewportHeight = window.innerHeight;
+
+    marker.style.top = '0';
+
+    ScrollTrigger.create({
+      trigger: stage,
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: () => {
+        const rect = stage.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        const viewportCenter = viewportHeight / 2;
+        const markerHalfHeight = marker.offsetHeight / 2;
+        const markerTargetY = viewportCenter - sectionTop;
+
+        // Clamp marker within section bounds, accounting for marker size
+        let markerY;
+        if (markerTargetY < markerHalfHeight) {
+          markerY = markerHalfHeight;
+        } else if (markerTargetY > sectionHeight - markerHalfHeight) {
+          markerY = sectionHeight - markerHalfHeight;
+        } else {
+          markerY = markerTargetY;
+        }
+
+        marker.style.top = `${markerY}px`;
+      },
+      invalidateOnRefresh: true,
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: stage,
+        start: 'top top',
+        end: `+=${numEntries * 100}%`, // 100% per entry
+        pin: stage,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    tl.to(line,
+      {
+        backgroundPosition: '0% 50%',
+        ease: 'none',
+      },
+      0
+    );
+
+    entries.forEach((entry, index) => {
+      const card = entry.querySelector<HTMLElement>('.timeline-card');
+      if (!card) {
+        return;
+      }
+
+      const startTime = index / numEntries;
+      const duration = 1 / numEntries;
+
+      tl.fromTo(
+        card,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: duration * 0.5,
+          ease: 'power2.out',
+        },
+        startTime,
+      );
+
+      tl.to(
+        card,
+        {
+          opacity: 0,
+          y: -60,
+          duration: duration * 0.5,
+          ease: 'power2.in',
+        },
+        startTime + duration * 0.5,
+      );
+
+      tl.to(line,
+        {
+          backgroundPosition: `0% ${(index + 1) * 10}%`,
+          ease: 'none',
+          duration: duration,
+        },
+        startTime,
+      );
+    });
   }
 
   private initSkillRails(): void {
@@ -139,7 +364,10 @@ export class Resume implements OnDestroy {
     this.prepareMarqueeTrack(forwardTrack);
     this.prepareMarqueeTrack(reverseTrack);
 
-    if (!this.prepareMarqueeTrack(forwardTrack, true) || !this.prepareMarqueeTrack(reverseTrack, true)) {
+    if (
+      !this.prepareMarqueeTrack(forwardTrack, true) ||
+      !this.prepareMarqueeTrack(reverseTrack, true)
+    ) {
       return;
     }
 
@@ -260,5 +488,6 @@ export class Resume implements OnDestroy {
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.onWindowResize);
     this.killSkillRailTweens();
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }
 }
