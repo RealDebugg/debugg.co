@@ -58,19 +58,95 @@ export class Resume {
 
     const wordElements = document.querySelectorAll('.word');
 
-   gsap.to(wordElements, {
-    color: "#ffffff",
-    ease: "none",
-    stagger: 0.1,
-    duration: 0.1,
-    scrollTrigger: {
-      trigger: ".split-intro",
-      start: "top top",
-      end: "bottom top",
-      scrub: 1.5,
-      pin: true,
+    gsap.to(wordElements, {
+      color: "#ffffff",
+      ease: "none",
+      stagger: 0.1,
+      duration: 0.1,
+      scrollTrigger: {
+        trigger: ".split-intro",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5,
+        pin: true,
+      }
+    })
+
+    this.initMarquees();
+  }
+
+  private initMarquees(): void {
+    const travelFactor = 0.05;
+    const scrubSmoothing = 0.7;
+
+    const marqueeWrap = document.querySelector<HTMLElement>('.resume-marquee-wrap');
+    const forwardTrack = document.querySelector<HTMLElement>('.m-anim-forw');
+    const reverseTrack = document.querySelector<HTMLElement>('.m-anim-rev');
+
+    if (!marqueeWrap || !forwardTrack || !reverseTrack) {
+      return;
     }
-   })
+
+    this.prepareMarqueeTrack(forwardTrack);
+    this.prepareMarqueeTrack(reverseTrack);
+
+    if (!this.prepareMarqueeTrack(forwardTrack, true) || !this.prepareMarqueeTrack(reverseTrack, true)) {
+      return;
+    }
+
+    gsap.fromTo(
+      forwardTrack,
+      { x: 0 },
+      {
+        x: () => -(this.prepareMarqueeTrack(forwardTrack, true) * travelFactor),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: marqueeWrap,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: scrubSmoothing,
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      reverseTrack,
+      { x: () => -(this.prepareMarqueeTrack(reverseTrack, true) * travelFactor) },
+      {
+        x: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: marqueeWrap,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: scrubSmoothing,
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+  }
+
+  private prepareMarqueeTrack(track: HTMLElement, skipClone = false): number {
+    const children = Array.from(track.children) as HTMLElement[];
+    if (!children.length) {
+      return 0;
+    }
+
+    if (!skipClone && !track.dataset['marqueeReady']) {
+      for (const child of children) {
+        track.appendChild(child.cloneNode(true));
+      }
+
+      track.dataset['marqueeReady'] = 'true';
+    }
+
+    const loopDistance = track.scrollWidth / 2;
+    if (!Number.isFinite(loopDistance) || loopDistance <= 0) {
+      return 0;
+    }
+
+    return loopDistance;
   }
 
   onHoverEnter(text: string): void {

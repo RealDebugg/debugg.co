@@ -45,10 +45,6 @@
 # Pages to create
 
 - [ ] Contact me
-- [ ] About me
-  - Projects
-  - Journey (jobs)
-  - Skills (2x marquee?)
 - [ ] Blog
 - [ ] Useful links
 
@@ -57,6 +53,11 @@
 - [ ] CSS
 - [ ] TS
 - [ ] HTML
+
+# About me
+- [ ] Journey (jobs)
+- [ ] Skills (2x marquee?)
+- [ ] Resume download
 
 # Home page
 
