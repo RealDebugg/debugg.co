@@ -11,6 +11,7 @@ import { MouseService } from '../../services/mouse.service';
   styleUrl: './resume.scss',
 })
 export class Resume implements OnDestroy {
+  private static readonly NAVBAR_HEIGHT_REM = 3.125;
   private mouseService = inject(MouseService);
   private readonly skillRailTweens: gsap.core.Tween[] = [];
   private readonly onWindowResize = () => {
@@ -222,8 +223,6 @@ export class Resume implements OnDestroy {
     }
 
     const numEntries = entries.length;
-    const viewportHeight = window.innerHeight;
-
     marker.style.top = '0';
 
     ScrollTrigger.create({
@@ -231,14 +230,14 @@ export class Resume implements OnDestroy {
       start: 'top bottom',
       end: 'bottom top',
       onUpdate: () => {
+        const navHeightPx = this.getNavbarHeightPx();
+        const visibleViewportCenter = navHeightPx + (window.innerHeight - navHeightPx) / 2;
         const rect = stage.getBoundingClientRect();
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
-        const viewportCenter = viewportHeight / 2;
         const markerHalfHeight = marker.offsetHeight / 2;
-        const markerTargetY = viewportCenter - sectionTop;
+        const markerTargetY = visibleViewportCenter - sectionTop;
 
-        // Clamp marker within section bounds, accounting for marker size
         let markerY;
         if (markerTargetY < markerHalfHeight) {
           markerY = markerHalfHeight;
@@ -256,8 +255,12 @@ export class Resume implements OnDestroy {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: stage,
-        start: 'top top',
-        end: `+=${numEntries * 100}%`, // 100% per entry
+        start: () => `top top+=${this.getNavbarHeightPx()}`,
+        end: () => {
+          const navHeightPx = this.getNavbarHeightPx();
+          const effectiveViewportHeight = Math.max(window.innerHeight - navHeightPx, 1);
+          return `+=${numEntries * effectiveViewportHeight}`;
+        },
         pin: stage,
         scrub: true,
         invalidateOnRefresh: true,
@@ -347,6 +350,14 @@ export class Resume implements OnDestroy {
 
       this.skillRailTweens.push(tween);
     });
+  }
+
+  private getNavbarHeightPx(): number {
+    const rootFontSize = Number.parseFloat(
+      window.getComputedStyle(document.documentElement).fontSize || '16',
+    );
+
+    return Resume.NAVBAR_HEIGHT_REM * rootFontSize;
   }
 
   private initMarquees(): void {
