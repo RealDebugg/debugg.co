@@ -83,19 +83,19 @@ export class Resume implements OnDestroy {
       name: 'GCG Sweden AB',
       position: 'Software Developer',
       year: '2024 - Now',
-      description: 'Enter a description here',
+      description: 'This is my own company that my brother and I run together. Here we have sourced the NEVS Android-based infotainment system for the SAAB 9-3 that was never released, also known as iQon. We have developed custom control units for SAAB 9-3 NG vehicles with custom embedded software, written by me in C++, that communicates between the vehicle and the radio unit to make them work together as they would have from the factory — something no one else has managed to do yet.',
     },
     {
       name: 'Autocom Diagnostic Partner AB',
       position: 'Software Developer',
       year: '2023 - Now',
-      description: 'Enter a description here',
+      description: 'Here I develop in an agile team the Secure Gateway & user API used by the applications Autocom sells. Written in C#, Go and Kotlin, these APIs enable the applications to run algorithms or certificates against vehicles to unlock their "Secure Gateway", which then allows them to run diagnostics against vehicles.<br/><br/>I also provided and developed new implementations for their customer portal and administrative portal, which were written in Angular/TS, where I helped develop a solution that required users to identify themselves with iDenfy before they can use the Secure Gateway in the applications.<br/><br/>In the admin portal, I spent a lot of time automating tasks we received from support that otherwise took a long time, and also made it possible for support to handle much of what they requested themselves, without the help of a developer.',
     },
     {
       name: 'Trestads Tolkförmedling AB',
       position: 'Software Developer',
       year: '2023 - 2023',
-      description: 'Enter a description here',
+      description: 'Worked att migrating a 3rd party booking system based on PHP from a Linux environment to run on Windows Server using Vagrant.<br/><br/> I also implemented e-mail and SMS notifications for translators with the help of Generic Mobile and Mailgun.',
     },
   ];
 

@@ -133,7 +133,7 @@
   </div>
 </section>
 
-<!-- Mobile friendly? -->
+<!-- Marker does not reach the bottom -->
 <section id="job-timeline" class="relative">
   <div class="timeline-stage">
     <div class="timeline-rail">
@@ -153,7 +153,7 @@
               <p class="timeline-year">{{ workplace.year }}</p>
               <h3 class="timeline-company">{{ workplace.name }}</h3>
               <p class="timeline-position">{{ workplace.position }}</p>
-              <p class="timeline-description">{{ workplace.description }}</p>
+              <p class="timeline-description" [innerHTML]="workplace.description"></p>
             </div>
           </app-container-with-dots>
         </article>

@@ -284,3 +284,31 @@
   line-height: 1.7;
   color: rgb(217 217 217);
 }
+
+// Mobile timeline: line on the left, all cards on the right (below lg / 1024px)
+@media (max-width: 1023px) {
+  .timeline-line {
+    left: 1.5rem;
+    transform: none;
+  }
+
+  .timeline-marker {
+    left: 1.5rem;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-entry-left,
+  .timeline-entry-right {
+    justify-content: flex-start;
+    padding-left: 3rem;
+    padding-right: 1rem;
+  }
+
+  .timeline-entry-left .timeline-entry-panel,
+  .timeline-entry-right .timeline-entry-panel {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: calc(100vw - 4rem);
+  }
+}
