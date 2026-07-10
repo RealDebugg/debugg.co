@@ -1,8 +1,4 @@
 # Implementations needing touch ups
-- [ ] Custom cursor
-  - Should track on scroll and resize
-  - Cursor should not be visible on mobile
-  - Tooltip should not be visible on mobile
 - [ ] Page titles
   - Stability fix!
 - [ ] Page transitions
@@ -23,6 +19,7 @@
 - [ ] Weather service
   - Add snow based on calendar month
 - Update CV to english
+- Timeline marker in about/resume page won't reach the bottom of section
 
 # To implement components
 - [ ] Splash loading screen
@@ -41,9 +38,6 @@
 - [ ] CSS
 - [ ] TS
 - [ ] HTML
-
-# About me
-- [ ] Journey (jobs)
 
 # Home page
 - [ ] Three.JS room

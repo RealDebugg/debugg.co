@@ -12,6 +12,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   styleUrl: './home.scss',
 })
 export class Home {
+  public yearsSinceFirstJob = new Date().getFullYear() - 2023;
+
   initGsap() {
     gsap.registerPlugin(ScrollTrigger);
     const offsets = [-80, 80];

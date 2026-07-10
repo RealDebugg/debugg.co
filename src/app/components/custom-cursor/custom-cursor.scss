@@ -1,58 +1,72 @@
-body,
-body * {
-  cursor: none !important;
-} 
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body * {
+    cursor: none !important;
+  }
+}
 
 #customCursor {
-    z-index: 999999999999999999999999;
+  z-index: 999999999999999999999999;
 
-    #outerCursor {
-        transition: border-color 0.1s ease-in-out, width 0.22s ease-in-out, height 0.22s ease-in-out;
+  #outerCursor {
+    transition: border-color 0.1s ease-in-out, width 0.22s ease-in-out, height 0.22s ease-in-out;
 
-        &.pointer {
-            width: max(32px, 2.2vw);
-            height: max(32px, 2.2vw);
-            border-color: white;
-        }
+    &.pointer {
+      width: max(32px, 2.2vw);
+      height: max(32px, 2.2vw);
+      border-color: white;
     }
+  }
 
-    #innerCursor {
-        transition: 0.1s ease-in-out;
+  #innerCursor {
+    transition: 0.1s ease-in-out;
 
-        &.text {
-            width: max(4px, 0.2vw);
-            height: max(26px, 1.8vw);
-            border-radius: 1px;
-        }
+    &.text {
+      width: max(4px, 0.2vw);
+      height: max(26px, 1.8vw);
+      border-radius: 1px;
     }
+  }
 }
 
 @keyframes marquee-translate {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    100% {
-        transform: translateX(-50%);
-    }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
 
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #tooltipElement {
-    animation: fadeInScale 0.2s ease-out forwards;
+  animation: fadeInScale 0.2s ease-out forwards;
 }
 
 .marquee-container {
-    display: inline-block;
+  display: inline-block;
+}
+
+@media (max-width: 768px), (hover: none), (pointer: coarse) {
+  body,
+  body * {
+    cursor: auto !important;
+  }
+
+  #customCursor,
+  #tooltipElement {
+    display: none !important;
+  }
 }

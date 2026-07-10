@@ -19,6 +19,8 @@ export class Resume implements OnDestroy {
     this.initSkillRails();
   };
 
+  public yearsSinceFirstJob = new Date().getFullYear() - 2023;
+
   public projects = [
     { name: 'Debugg.Co', technology: 'Angular', link: 'https://github.com/RealDebugg/debugg.co' },
     {
