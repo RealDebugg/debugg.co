@@ -142,18 +142,20 @@
     <div class="timeline-marker"></div>
 
     <div class="timeline-entries relative z-10 mx-auto flex w-full max-w-6xl flex-col">
-      @for (workplace of workplaces; track workplace.name; let i = $index) {
+      @for (workplace of reversedWorkplaces; track workplace.name; let i = $index) {
         <article
           class="timeline-entry"
           [class.timeline-entry-left]="i % 2 === 0"
           [class.timeline-entry-right]="i % 2 !== 0"
         >
-          <div class="timeline-card">
-            <p class="timeline-year">{{ workplace.year }}</p>
-            <h3 class="timeline-company">{{ workplace.name }}</h3>
-            <p class="timeline-position">{{ workplace.position }}</p>
-            <p class="timeline-description">{{ workplace.description }}</p>
-          </div>
+          <app-container-with-dots class="timeline-entry-panel" [classNames]="'with-lines'">
+            <div class="timeline-card-content">
+              <p class="timeline-year">{{ workplace.year }}</p>
+              <h3 class="timeline-company">{{ workplace.name }}</h3>
+              <p class="timeline-position">{{ workplace.position }}</p>
+              <p class="timeline-description">{{ workplace.description }}</p>
+            </div>
+          </app-container-with-dots>
         </article>
       }
     </div>

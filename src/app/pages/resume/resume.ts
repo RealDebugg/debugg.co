@@ -2,11 +2,12 @@ import { afterNextRender, Component, inject, OnDestroy } from '@angular/core';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ContainerWithDots } from '../../components/container-with-dots/container-with-dots';
 import { MouseService } from '../../services/mouse.service';
 
 @Component({
   selector: 'app-resume',
-  imports: [],
+  imports: [ContainerWithDots],
   templateUrl: './resume.html',
   styleUrl: './resume.scss',
 })
@@ -97,6 +98,8 @@ export class Resume implements OnDestroy {
       description: 'Enter a description here',
     },
   ];
+
+  public reversedWorkplaces = [...this.workplaces].reverse();
 
   public skillsRail1 = [
     'Grafana',
@@ -269,14 +272,14 @@ export class Resume implements OnDestroy {
 
     tl.to(line,
       {
-        backgroundPosition: '0% 50%',
+        backgroundPosition: '0% -50%',
         ease: 'none',
       },
       0
     );
 
     entries.forEach((entry, index) => {
-      const card = entry.querySelector<HTMLElement>('.timeline-card');
+      const card = entry.querySelector<HTMLElement>('.timeline-entry-panel');
       if (!card) {
         return;
       }
@@ -309,7 +312,7 @@ export class Resume implements OnDestroy {
 
       tl.to(line,
         {
-          backgroundPosition: `0% ${(index + 1) * 10}%`,
+          backgroundPosition: `0% ${-(index + 1) * 10}%`,
           ease: 'none',
           duration: duration,
         },
