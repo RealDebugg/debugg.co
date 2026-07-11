@@ -85,19 +85,22 @@ export class Resume implements OnDestroy {
       name: 'GCG Sweden AB',
       position: 'Software Developer',
       year: '2024 - Now',
-      description: 'This is my own company that my brother and I run together. Here we have sourced the NEVS Android-based infotainment system for the SAAB 9-3 that was never released, also known as iQon. We have developed custom control units for SAAB 9-3 NG vehicles with custom embedded software, written by me in C++, that communicates between the vehicle and the radio unit to make them work together as they would have from the factory — something no one else has managed to do yet.',
+      description:
+        "This is my own company that my brother and I run together.<br/>Here we have sourced the remaining NEVS Android-based infotainment systems made for the SAAB 9-3 which was never released to the public, also known as the SAAB iQon.<br/><br/>We have developed a custom control unit (ECU) for the SAAB 9-3 NG with our own in-house custom embedded software written by me in C++ which communicates between the vehicle and the radio unit to make them work together as they would have from the factory — something no one else has managed to do yet.<br/>To achieve this, both of us have had to spend months reverse engineering functionality over CAN bus in these cars with the use of tools such as Vehicle Spy 3, create C++ based CLI tools as well as bash scripts to manipulate the vehicle and radio units and to extract meaning from these values.<br/><br/>In the end, we've managed to develop our own ECU, with custom hardware and scalable code which is sold for SAAB enthusiasts worldwide and an android software stack based off of the OEM software which enhances the users experience.",
     },
     {
       name: 'Autocom Diagnostic Partner AB',
       position: 'Software Developer',
       year: '2023 - Now',
-      description: 'Here I develop in an agile team the Secure Gateway & user API used by the applications Autocom sells. Written in C#, Go and Kotlin, these APIs enable the applications to run algorithms or certificates against vehicles to unlock their "Secure Gateway", which then allows them to run diagnostics against vehicles.<br/><br/>I also provided and developed new implementations for their customer portal and administrative portal, which were written in Angular/TS, where I helped develop a solution that required users to identify themselves with iDenfy before they can use the Secure Gateway in the applications.<br/><br/>In the admin portal, I spent a lot of time automating tasks we received from support that otherwise took a long time, and also made it possible for support to handle much of what they requested themselves, without the help of a developer.',
+      description:
+        'Here I develop in an agile team the Secure Gateway & user API among many other things which is used by the applications Autocom sells. Written in C#, Go and Kotlin, these APIs enable the applications to run algorithms or certificates against vehicles to unlock their "Secure Gateway", which then allows them to run diagnostics against vehicles.<br/><br/>I also helped developed a new solution for their customer portal and administrative portal — written in Angular & TS — that enables users to identify themselves with iDenfy before they can use Secure Gateway services in the applications.<br/><br/>I was also one among a few others that developed the base of which their next gen customer portal is now built on top of, as well as provided the company with a standardised way to properly install and use the internal UI framework in a maintable way which is now used across all of their platforms.',
     },
     {
       name: 'Trestads Tolkförmedling AB',
       position: 'Software Developer',
       year: '2023 - 2023',
-      description: 'Worked att migrating a 3rd party booking system based on PHP from a Linux environment to run on Windows Server using Vagrant.<br/><br/> I also implemented e-mail and SMS notifications for translators with the help of Generic Mobile and Mailgun.',
+      description:
+        'Worked with migrating a 3rd party booking system based on PHP from a Linux environment to run on Windows Server using Vagrant and Task Scheduler.<br/><br/> I also implemented e-mail and SMS notifications for translators with the use of Generic Mobile and Mailgun.',
     },
   ];
 
@@ -272,12 +275,13 @@ export class Resume implements OnDestroy {
       },
     });
 
-    tl.to(line,
+    tl.to(
+      line,
       {
         backgroundPosition: '0% -50%',
         ease: 'none',
       },
-      0
+      0,
     );
 
     entries.forEach((entry, index) => {
@@ -312,7 +316,8 @@ export class Resume implements OnDestroy {
         startTime + duration * 0.5,
       );
 
-      tl.to(line,
+      tl.to(
+        line,
         {
           backgroundPosition: `0% ${-(index + 1) * 10}%`,
           ease: 'none',
