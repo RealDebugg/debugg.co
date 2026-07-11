@@ -9,7 +9,7 @@ export class WeatherService {
   private rainBgm!: HTMLAudioElement;
   private thunderBgm!: HTMLAudioElement;
   private activeThunderClip: HTMLAudioElement | null = null;
-  rainStopped = signal(localStorage.getItem('disablerain') === '1');
+  rainStopped = signal(localStorage.getItem('disablerain') !== '0');
   private thunderPlaying = false;
   isThunder = false;
   private dynamicStyle!: HTMLStyleElement;

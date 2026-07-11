@@ -5,7 +5,7 @@ import { Injectable, signal } from '@angular/core';
 })
 
 export class MusicService {
-  mutedMusic = signal(localStorage.getItem('mutemusic') === '1');
+  mutedMusic = signal(localStorage.getItem('mutemusic') !== '0');
   private musicBgm!: HTMLAudioElement;
 
   constructor() {
