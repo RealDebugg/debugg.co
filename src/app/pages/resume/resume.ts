@@ -23,6 +23,7 @@ export class Resume implements OnDestroy {
 
   public projects = [
     { name: 'Debugg.Co', technology: 'Angular', link: 'https://github.com/RealDebugg/debugg.co' },
+    { name: 'Incipit', technology: 'Next.JS, Prisma ORM, Auth0', link: 'https://github.com/RealDebugg/incipit' },
     {
       name: 'Scrum Poker',
       technology: 'Next.JS, Ably, Prisma ORM',
