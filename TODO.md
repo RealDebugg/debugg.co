@@ -1,4 +1,5 @@
 # Implementations needing touch ups
+
 - [ ] Page titles
   - Stability fix!
 - [ ] Page transitions
@@ -22,24 +23,28 @@
 - Timeline marker in about/resume page won't reach the bottom of section
 
 # To implement components
+
 - [ ] Splash loading screen
 
 # To implement, generic ideas
+
 - [ ] Three.JS
 - [ ] Mobile friendly UI
-- [ ] If low FPS or mobile, disable snow/rain, music & transitions
 
 # Pages to create
+
 - [ ] Contact me
 - [ ] Blog
 - [ ] Useful links
 
 # Cleanup
+
 - [ ] CSS
 - [ ] TS
 - [ ] HTML
 
 # Home page
+
 - [ ] Three.JS room
 - [x] Introduction (first section)
 - [x] LastFM
@@ -49,6 +54,7 @@
 - [ ] All systems status section
 
 # Status page
+
 - [ ] Discord status + current lastfm status
 - [ ] LastFM history
 - [ ] Bsky
