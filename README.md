@@ -1,3 +1,5 @@
+Credit where credit is due, the websites UI is heavily inspired from basement.studio's website, some snippets of their front end are present within this project.
+
 # DebuggCo
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
