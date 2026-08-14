@@ -10,5 +10,22 @@
       >Debugg</a
     >
   </div>
-  <app-controls></app-controls>
+  <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-6">
+    @for (link of navLinks; track link.route) {
+      <a [routerLink]="link.route" routerLinkActive #rla="routerLinkActive" class="nav-link">
+        <span class="menu">
+          <span class="track" [class.active-track]="rla.isActive">
+            <span class="label">{{ link.label }}</span>
+            <span class="label hovered">{{ link.label }}</span>
+          </span>
+        </span>
+      </a>
+    }
+  </nav>
+  <div class="hidden md:block">
+    <app-controls></app-controls>
+  </div>
+  <div class="block md:hidden">
+    <p>todo: menu</p>
+  </div>
 </div>
