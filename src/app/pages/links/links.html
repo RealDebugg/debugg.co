@@ -1,1 +1,49 @@
-<p>links works!</p>
+<p>Here's some links to stuff I find interesting, to friends and the tools I use when researching my work.</p>
+
+<section id="featured-projects" class="grid lg:grid-cols-[1fr_2fr] gap-y-4 pb-10 lg:gap-y-2 mt-6">
+  <h2 class="font-[Brigends] text-4xl md:text-5xl lg:text-4xl w-full lg:col-start-1 lg:row-start-1">
+    MY LINKS<br />
+    <span class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold text-sm"
+    >Here are my bookmarks</span
+    >
+  </h2>
+  <ul class="col-span-full lg:row-start-1">
+    <li class="grid grid-cols-12 gap-2">
+      <div
+        class="text-[rgb(117_117_117)] font-[JetBrains_Mono] font-semibold relative col-span-full grid grid-cols-8 items-center gap-2 pb-2 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13"
+      >
+        <span class="col-start-1 col-end-7">Title</span>
+        <span class="col-start-7 col-end-10">Type</span>
+      </div>
+    </li>
+    @for (link of links; track link) {
+      <li
+        class="grid grid-cols-12 gap-2 group"
+        data-cursor="pointer"
+        (mouseenter)="onHoverEnter(link.tooltip)"
+        (mouseleave)="onHoverLeave()"
+      >
+        <a
+          [href]="link.link"
+          target="_blank"
+          class="text-[rgb(117_117_117)] relative col-span-full grid grid-cols-8 items-start gap-2 py-4 after:absolute after:bottom-0 after:left-0 after:w-full after:border-b lg:col-start-5 lg:col-end-13 lg:items-center lg:py-2"
+        >
+          <div
+            class="with-lines absolute -top-px bottom-0 left-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          ></div>
+          <span
+            class="col-start-1 col-end-7 font-[Brigends] text-xl transition-colors duration-300 group-hover:text-white"
+          >{{ link.name }}</span
+          >
+          <p
+            class="col-start-7 col-end-10 flex flex-col font-[JetBrains_Mono] font-semibold transition-colors duration-300 group-hover:text-white text-sm"
+          >
+            {{ link.technology }}
+          </p>
+        </a>
+      </li>
+    }
+  </ul>
+</section>
+
+
