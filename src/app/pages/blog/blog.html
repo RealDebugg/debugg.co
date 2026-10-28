@@ -1,1 +1,79 @@
-<p>blog works!</p>
+<h1 class="font-[Brigends] relative z-11 text-4xl md:text-balance sm:text-5xl lg:text-6xl xl:text-8xl my-15 md:ml-[calc(min(0px,(100vw-71rem)/-2))]">Blog</h1>
+
+
+@let posts = postsResponse | async;
+@let tags = tagsResponse | async;
+<app-container-with-dots>
+  <div class="filter-header">// Filters</div>
+  <div class="filter-body">
+    <div class="filter-row">
+      <span id="tag-filter-label" class="filter-label">Tags</span>
+      <div class="tag-filters" role="group" aria-labelledby="tag-filter-label">
+        @if (tags) {
+          @for (tag of tags.data; track tag.id) {
+            <label class="tag-filter">
+              <input
+                #tagCheckbox
+                type="checkbox"
+                [checked]="selectedTagIds().has(tag.id)"
+                (change)="setTagSelected(tag.id, tagCheckbox.checked)"
+              />
+              <span>{{ tag.name }}</span>
+            </label>
+          }
+        }
+      </div>
+    </div>
+    <div class="filter-row">
+      <span id="sort-filter-label" class="filter-label">Sort</span>
+      <div class="tag-filters" role="radiogroup" aria-labelledby="sort-filter-label">
+        <label class="tag-filter">
+          <input
+            type="radio"
+            name="post-sort"
+            [checked]="sortOrder() === 'newest'"
+            (change)="sortOrder.set('newest')"
+          />
+          <span>Newest</span>
+        </label>
+        <label class="tag-filter">
+          <input
+            type="radio"
+            name="post-sort"
+            [checked]="sortOrder() === 'oldest'"
+            (change)="sortOrder.set('oldest')"
+          />
+          <span>Oldest</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="filter-status text-sm" role="status">
+    <span
+      class="active-filters"
+      [class.inactive]="selectedTagIds().size === 0 && sortOrder() === 'newest'"
+    >
+      active_filters:
+      @if (selectedTagIds().size === 0 && sortOrder() === 'newest') {
+        none
+      } @else if (tags) {
+        @for (tag of tags.data; track tag.id) {
+          @if (selectedTagIds().has(tag.id)) {
+            <span>{{ ' --tag=' + tag.name.toLowerCase() }}</span>
+          }
+        }
+      }
+      @if (sortOrder() === 'oldest') {
+        <span>{{ ' --sort=oldest' }}</span>
+      }
+    </span>
+    <span class="opacity-40"> | </span>
+    @if (posts) {
+      <span>results: {{ posts.data.length }} posts found</span>
+    }
+  </div>
+</app-container-with-dots>
+
+@if (posts) {
+  <p class="text-white whitespace-pre-wrap">{{ posts | json }}</p>
+}

@@ -1,0 +1,7 @@
+{
+  "/api/**": {
+    "target": "https://incipit.debugg.co",
+    "secure": true,
+    "changeOrigin": true
+  }
+}
