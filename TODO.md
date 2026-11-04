@@ -3,7 +3,7 @@
 - [ ] Page titles
   - Stability fix!
 - [ ] Page transitions
-  - Stability fix!
+  - Firefox support?
 - [ ] Contact modal
   - Fix shadows
   - Disable scroll
@@ -18,10 +18,6 @@
 - [ ] Weather service
   - Add snow based on calendar month
 - Timeline marker in about/resume page won't reach the bottom of section
-
-# To implement components
-
-- [ ] Splash loading screen
 
 # To implement, generic ideas
 
