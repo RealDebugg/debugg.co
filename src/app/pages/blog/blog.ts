@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { AsyncPipe, JsonPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { combineLatest, map } from 'rxjs';
 import { ContainerWithDots } from '../../components/container-with-dots/container-with-dots';
@@ -19,7 +20,7 @@ interface PostsResponse {
     tags: Tag[];
     title: string;
     description: string;
-    coverPhotoBlob: string;
+    coverPhotoBlob: string | null;
   }[];
   count: number | undefined;
 }
@@ -30,9 +31,8 @@ interface TagsResponse {
 
 @Component({
   selector: 'app-blog',
-  imports: [AsyncPipe, JsonPipe, DatePipe, ContainerWithDots],
+  imports: [AsyncPipe, DatePipe, ContainerWithDots, RouterLink],
   templateUrl: './blog.html',
-  styleUrl: './blog.scss',
 })
 export class Blog {
   private readonly http = inject(HttpClient);
@@ -59,6 +59,10 @@ export class Blog {
     }),
   );
   tagsResponse = this.http.get<TagsResponse>('/api/public/tags');
+
+  isFuturePost(date: string): boolean {
+    return Date.parse(date) > Date.now();
+  }
 
   setTagSelected(tagId: number, checked: boolean): void {
     this.selectedTagIds.update((selectedTagIds) => {

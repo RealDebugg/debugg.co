@@ -32,7 +32,10 @@
             ],
             "styles": [
               "src/tailwind.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/pages/blog/blog.scss",
+              "src/app/pages/blog-post/blog-post.scss",
+              "src/app/components/container-with-dots/container-with-dots.scss"
             ]
           },
           "configurations": {

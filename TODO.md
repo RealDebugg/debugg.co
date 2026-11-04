@@ -34,7 +34,6 @@
 # Pages to create
 
 - [ ] Contact me
-- [ ] Blog
 - [ ] Useful links
 
 # Cleanup

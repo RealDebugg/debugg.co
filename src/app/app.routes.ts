@@ -8,6 +8,7 @@ import { Contact } from './pages/contact/contact';
 import { Links } from './pages/links/links';
 import { Resume } from './pages/resume/resume';
 import { Status } from './pages/status/status';
+import { BlogPost } from './pages/blog-post/blog-post';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       { path: '', component: Home, data: { title: 'Home' } },
+      { path: 'blog/:id', component: BlogPost, data: { title: 'Blog' } },
       { path: 'blog', component: Blog, data: { title: 'Blog' } },
       { path: 'contact', component: Contact, data: { title: 'Contact me' } },
       { path: 'links', component: Links, data: { title: 'Useful links' } },

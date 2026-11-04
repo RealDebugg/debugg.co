@@ -1,3 +1,4 @@
+app-container-with-dots {
 .with-dots::after, .with-dots::before {
   pointer-events: none;
   position: absolute;
@@ -31,5 +32,6 @@
       border-left: 0px !important;
       border-right: 0px !important;
     }
+  }
   }
 }

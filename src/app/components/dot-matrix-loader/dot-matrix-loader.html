@@ -1,0 +1,28 @@
+<div
+  class="dmx-root dmx-dot-shape-circle"
+  [style.width.px]="size()"
+  [style.height.px]="size()"
+  [style.--dmx-speed]="speedScale"
+  [style.--dmx-dot-size.px]="dotSize()"
+  [style.--dmx-dot-fill]="color()"
+  [style.--dmx-opacity-base]="opacityBase()"
+  [style.--dmx-opacity-mid]="opacityMid()"
+  [style.--dmx-opacity-peak]="opacityPeak()"
+  [style.--dmx-cycle]="cycleDuration"
+  role="status"
+  aria-live="polite"
+  [attr.aria-label]="label()"
+>
+  <div class="dmx-grid" [style.gap.px]="gap">
+    @for (dot of dots; track dot) {
+      <span
+        class="dmx-dot"
+        [class.dmx-diagonal-alt-sweep]="animated()"
+        [style.width.px]="dotSize()"
+        [style.height.px]="dotSize()"
+        [style.animation-delay.ms]="dotDelay(dot)"
+        aria-hidden="true"
+      ></span>
+    }
+  </div>
+</div>

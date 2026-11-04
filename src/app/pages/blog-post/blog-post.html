@@ -1,0 +1,60 @@
+@if (postState | async; as state) {
+  @if (state.status === 'loading') {
+    <div class="post-loading" role="status" aria-label="Loading post">
+      <app-dot-matrix-loader />
+    </div>
+  } @else if (state.status === 'not-found') {
+    <section class="post-message">
+      <h1 class="font-[Brigends] text-4xl sm:text-5xl">Post not found</h1>
+      <a routerLink="/blog" class="post-back-link">← Back to blog</a>
+    </section>
+  } @else if (state.status === 'error') {
+    <section class="post-message" role="alert">
+      <h1 class="font-[Brigends] text-4xl sm:text-5xl">Unable to load this post</h1>
+      <p>Please try again later.</p>
+      <a routerLink="/blog" class="post-back-link">← Back to blog</a>
+    </section>
+  } @else {
+    <article class="blog-post">
+      <a routerLink="/blog" class="post-back-link">← Back to blog</a>
+
+      <header class="post-header mb-4!">
+        <div class="post-tags">
+          @for (tag of state.post.tags; track tag.id) {
+            <span>{{ tag.name }}</span>
+          }
+        </div>
+        <h1 class="font-[Brigends] text-4xl sm:text-5xl lg:text-6xl">
+          {{ state.post.title }}
+        </h1>
+        <p class="post-description">{{ state.post.description }}</p>
+        <p class="post-meta">
+          <span>{{ state.post.author }}</span>
+          <span aria-hidden="true">·</span>
+          <time [attr.datetime]="state.post.date">{{ state.post.date | date: 'mediumDate' }}</time>
+          <!-- TODO: Add profile links such as linkedin for the author -->
+        </p>
+      </header>
+
+      <app-container-with-dots [fullWidth]="true">
+        <div class="py-4">
+          @if (state.post.coverPhotoBlob) {
+            <app-container-with-dots classNames="post-cover">
+              <img [src]="state.post.coverPhotoBlob" [alt]="state.post.title" />
+            </app-container-with-dots>
+          }
+
+          <div class="post-content" [innerHTML]="state.post.content"></div>
+        </div>
+      </app-container-with-dots>
+      <p class="post-meta">
+        <span>{{ state.post.author }}</span>
+        <span aria-hidden="true">·</span>
+        <time [attr.datetime]="state.post.date">{{ state.post.date | date: 'mediumDate' }}</time>
+        <!-- TODO: Add profile links such as linkedin for the author -->
+      </p>
+
+      <!-- TODO: Comment section -->
+    </article>
+  }
+}
