@@ -93,10 +93,10 @@
         [class.post-card--locked]="futurePost"
         [attr.aria-disabled]="futurePost ? 'true' : null"
         [attr.aria-label]="futurePost ? post.title + ' — coming soon' : null"
-        class="post-card col-span-full grid grid-cols-12 gap-2 py-2 focus-visible:!ring-offset-0 lg:py-4"
+        class="post-card col-span-full grid grid-cols-12 gap-2 py-2 focus-visible:ring-offset-0! lg:py-4"
       >
         <div
-          class="post-cover relative col-span-full my-auto aspect-[418/228] w-full overflow-clip after:absolute after:inset-0 lg:col-span-2 lg:aspect-auto lg:h-[124px] lg:max-w-[276px]"
+          class="post-cover relative col-span-full my-auto aspect-418/228 w-full overflow-clip after:absolute after:inset-0 lg:col-span-2 lg:aspect-auto lg:h-31 lg:max-w-69"
         >
           @if (post.coverPhotoBlob) {
             <app-container-with-dots classNames="h-full w-full !mt-0">
@@ -154,7 +154,7 @@
         >
           @for (tag of post.tags; track tag.id) {
             <p
-              class="font-[JetBrains_Mono] text-[#e5e5e5] bg-[#262626] px-[0.625rem] py-[0.25rem] text-sm rounded-[2px]"
+              class="font-[JetBrains_Mono] text-[#e5e5e5] bg-[#262626] px-2.5 py-1 text-sm rounded-xs"
             >
               {{ tag.name }}
             </p>

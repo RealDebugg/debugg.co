@@ -13,13 +13,10 @@
   - [ ] Implement UI
     - Allow send me a message/contact me forms (two different types to be called)
     - Send me a message should print a message using a thermal printer and raspberry pi
-- [ ] 404 page
-  - Actually style it!
 - [ ] Discord status
   - Add API call
 - [ ] Weather service
   - Add snow based on calendar month
-- Update CV to english
 - Timeline marker in about/resume page won't reach the bottom of section
 
 # To implement components
@@ -34,13 +31,6 @@
 # Pages to create
 
 - [ ] Contact me
-- [ ] Useful links
-
-# Cleanup
-
-- [ ] CSS
-- [ ] TS
-- [ ] HTML
 
 # Home page
 

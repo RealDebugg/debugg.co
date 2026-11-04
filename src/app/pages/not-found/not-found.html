@@ -1,4 +1,14 @@
-<div class="hero">
-    <h1>404!</h1>
-    <p>You've wandered too far! The page you're looking for doesn't exist.</p>
-</div>
+<main class="not-found">
+  <div class="not-found-content">
+    <p class="not-found-label"><span></span> ERROR / 404</p>
+    <h1 class="not-found-code">404</h1>
+    <h2 class="not-found-title">Wrong turn.</h2>
+    <p class="not-found-message">
+      This page doesn't exist, or it may have moved somewhere else.
+    </p>
+    <nav class="not-found-actions" aria-label="Where to go next">
+      <a routerLink="/" class="not-found-link not-found-link--primary">Back to home <span>↗</span></a>
+      <a routerLink="/blog" class="not-found-link">Visit the blog <span>↗</span></a>
+    </nav>
+  </div>
+</main>

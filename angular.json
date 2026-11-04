@@ -35,6 +35,8 @@
               "src/styles.scss",
               "src/app/pages/blog/blog.scss",
               "src/app/pages/blog-post/blog-post.scss",
+              "src/app/pages/not-found/not-found.scss",
+              "src/app/pages/resume/resume.scss",
               "src/app/components/container-with-dots/container-with-dots.scss"
             ]
           },

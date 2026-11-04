@@ -1,3 +1,4 @@
+app-resume {
 .split-intro {
   display: flex;
   flex-wrap: wrap;
@@ -311,4 +312,126 @@
     width: 100%;
     max-width: calc(100vw - 4rem);
   }
+}
+
+.featured-projects-heading {
+  align-self: start;
+  padding-right: 2rem;
+}
+
+.featured-projects-directory {
+  box-sizing: border-box;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-inline: clamp(1.5rem, 7vw, 8rem);
+}
+
+.featured-projects-count {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  color: #737373;
+  font: 0.75rem "JetBrains Mono", monospace;
+  text-transform: uppercase;
+}
+
+.featured-projects-count span {
+  color: #00f3ff;
+  font: 2.5rem "Brigends", sans-serif;
+}
+
+.featured-projects-table-heading {
+  margin-top: 0.25rem;
+  color: #737373;
+  font: 0.7rem "JetBrains Mono", monospace;
+  text-transform: uppercase;
+}
+
+.featured-project-row {
+  list-style: none;
+}
+
+.featured-project-link {
+  color: #999;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.featured-project-link::after {
+  border-color: rgb(255 255 255 / 16%);
+  transition: border-color 180ms ease;
+}
+
+.featured-project-link:hover {
+  color: white;
+}
+
+.featured-project-link:hover::after {
+  border-color: rgb(0 243 255 / 55%);
+}
+
+.featured-project-link:hover .featured-project-external {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.featured-project-link:focus-visible {
+  outline: 2px solid #00f3ff;
+  outline-offset: 4px;
+}
+
+.featured-project-name,
+.featured-project-technology,
+.featured-project-external {
+  position: relative;
+  z-index: 1;
+}
+
+.featured-project-technology {
+  align-self: center;
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.featured-project-external {
+  position: absolute;
+  top: 50%;
+  right: 0.25rem;
+  color: #00f3ff;
+  font: 1rem "JetBrains Mono", monospace;
+  opacity: 0;
+  transform: translate(0, 0);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+@media (max-width: 1023px) {
+  .featured-projects-heading {
+    padding-right: 0;
+  }
+
+  .featured-projects-count {
+    margin: 0.75rem 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-project-name {
+    font-size: 1rem;
+  }
+
+  .featured-project-technology {
+    font-size: 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-project-link,
+  .featured-project-link::after,
+  .featured-project-external {
+    transition: none;
+  }
+}
 }

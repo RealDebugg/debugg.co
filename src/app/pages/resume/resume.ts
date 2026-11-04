@@ -9,7 +9,6 @@ import { MouseService } from '../../services/mouse.service';
   selector: 'app-resume',
   imports: [ContainerWithDots],
   templateUrl: './resume.html',
-  styleUrl: './resume.scss',
 })
 export class Resume implements OnDestroy {
   private static readonly NAVBAR_HEIGHT_REM = 3.125;
