@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe, DatePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { combineLatest, map } from 'rxjs';
@@ -30,7 +30,7 @@ interface TagsResponse {
 
 @Component({
   selector: 'app-blog',
-  imports: [AsyncPipe, JsonPipe, ContainerWithDots],
+  imports: [AsyncPipe, JsonPipe, DatePipe, ContainerWithDots],
   templateUrl: './blog.html',
   styleUrl: './blog.scss',
 })

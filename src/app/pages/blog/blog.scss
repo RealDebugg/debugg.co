@@ -118,3 +118,31 @@
     outline-offset: 3px;
   }
 }
+
+.hover-post {
+  position: relative;
+  isolation: isolate;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("/diagonal-pattern.svg");
+    background-repeat: repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    animation: diagonalPatternAnimation 6s linear infinite;
+  }
+}
+

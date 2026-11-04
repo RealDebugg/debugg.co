@@ -67,7 +67,7 @@
         <span>{{ ' --sort=oldest' }}</span>
       }
     </span>
-    <span class="opacity-40"> | </span>
+    <span class="opacity-40 hidden sm:block"> | </span>
     @if (posts) {
       <span>results: {{ posts.data.length }} posts found</span>
     }
@@ -75,5 +75,26 @@
 </app-container-with-dots>
 
 @if (posts) {
-  <p class="text-white whitespace-pre-wrap">{{ posts | json }}</p>
+  <!-- TODO: Locked (future) posts, link to actual posts by using post.id -->
+  @for (post of posts.data; track post.id) {
+    <app-container-with-dots [fullWidth]="true" classNames="md:ml-[calc(min(0px,(100vw-71rem)/-2))] md:mr-[calc(min(0px,(100vw-71rem)/-2))] !mt-0 ">
+      <a class="col-span-full grid grid-cols-12 gap-2 py-2 focus-visible:!ring-offset-0 lg:py-4 hover-post">
+        <div class="relative col-span-full my-auto aspect-[418/228] w-full overflow-clip after:absolute after:inset-0 lg:col-span-2 lg:aspect-auto lg:h-[124px] lg:max-w-[276px]">
+          <app-container-with-dots classNames="h-full w-full !mt-0">
+            <img src="{{ post.coverPhotoBlob }}" alt="{{ post.title }}" class="w-full h-full object-cover"/>
+          </app-container-with-dots>
+        </div>
+        <div class="lg:col-span-[auto] relative col-span-full lg:col-start-5 lg:col-end-8">
+          <p class="font-[Brigends] text-xl">{{post.title}}</p>
+          <p class="font-[JetBrains_Mono]">{{post.description}}</p>
+        </div>
+        <div class="relative col-span-6 flex flex-wrap gap-1 self-start lg:col-span-2 lg:col-start-9 lg:col-end-10">
+          @for (tag of post.tags; track tag.id) {
+            <p class="font-[JetBrains_Mono] text-[#e5e5e5] bg-[#262626] px-[0.625rem] py-[0.25rem] text-sm rounded-[2px]">{{ tag.name }}</p>
+          }
+        </div>
+        <p class="relative col-span-6 text-right lg:col-span-2 lg:col-start-11 lg:text-left text-f-p-mobile lg:text-f-p text-[#dbdbdb]">{{ post.date | date:'mediumDate' }}</p>
+      </a>
+    </app-container-with-dots>
+  }
 }
