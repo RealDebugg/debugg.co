@@ -3,7 +3,7 @@
 
 @let posts = postsResponse | async;
 @let tags = tagsResponse | async;
-<app-container-with-dots>
+<app-container-with-dots [fullWidth]="true" classNames="md:ml-[calc(min(0px,(100vw-71rem)/-2))] md:mr-[calc(min(0px,(100vw-71rem)/-2))]">
   <div class="filter-header">// Filters</div>
   <div class="filter-body">
     <div class="filter-row">

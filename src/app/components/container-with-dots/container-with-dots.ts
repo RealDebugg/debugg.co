@@ -8,4 +8,5 @@ import { Component, input } from '@angular/core';
 })
 export class ContainerWithDots {
   classNames = input<string>();
+  fullWidth = input(false);
 }

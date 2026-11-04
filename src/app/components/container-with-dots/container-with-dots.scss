@@ -21,7 +21,15 @@
   bottom: 0;
 }
 
-.custom-border::after {
-  content: "";
-  border-color: rgb(230 230 230/.2);
+.custom-border {
+  &::after {
+    content: "";
+    border-color: rgb(230 230 230/.2);
+  }
+  &.full-width {
+    &::after {
+      border-left: 0px !important;
+      border-right: 0px !important;
+    }
+  }
 }
