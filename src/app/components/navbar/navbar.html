@@ -1,5 +1,6 @@
 <div
   class="navbar w-full h-12.5 fixed justify-between px-3.75 content-center z-20 top-0 flex flex-row items-center"
+  [class.menu-open]="menuOpen"
 >
   <div>
     <a
@@ -25,7 +26,106 @@
   <div class="hidden md:block">
     <app-controls></app-controls>
   </div>
-  <div class="block md:hidden">
-    <p>todo: menu</p>
+  <div class="block md:hidden mobile-menu-toggle">
+    <button
+      type="button"
+      class="menu-button"
+      [class.is-open]="menuOpen"
+      [class.visual-menu-label]="menuButtonState() === 'menu-label'"
+      [class.visual-menu-icon]="menuButtonState() === 'menu-icon'"
+      [class.visual-close-label]="menuButtonState() === 'close-label'"
+      [class.visual-close-icon]="menuButtonState() === 'close-icon'"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="mobile-menu-panel"
+      [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'"
+      (click)="toggleMenu()"
+    >
+      <span class="menu" aria-hidden="true">
+        <span class="track">
+          <span class="label">Menu</span>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="M5 7h14M5 12h14M5 17h14"
+            />
+          </svg>
+          <span class="label">Close</span>
+          <svg
+            class="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="m6 6 12 12M18 6 6 18"
+            />
+          </svg>
+        </span>
+      </span>
+    </button>
   </div>
+  <nav
+    id="mobile-menu-panel"
+    class="mobile-menu-panel"
+    [class.is-open]="menuOpen"
+    [attr.aria-hidden]="!menuOpen"
+    [attr.inert]="menuOpen ? null : ''"
+    aria-label="Main navigation"
+  >
+    <div class="mobile-menu-links">
+      <a
+        routerLink="/"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >
+        <h1>
+          <span>Home</span>
+        </h1>
+      </a>
+      @for (link of navLinks; track link.route; let i = $index) {
+        <a [routerLink]="link.route" routerLinkActive="is-active" (click)="closeMenu()">
+          <h1>
+            <span [style.transition-delay]="menuOpen ? (i + 1) * 70 + 'ms' : '0ms'">
+              {{ link.label }}
+            </span>
+          </h1>
+        </a>
+      }
+    </div>
+    <footer class="mobile-menu-footer">
+      <nav aria-label="Social links">
+        <a href="https://instagram.com/iamdebugg" target="_blank" rel="noopener noreferrer">
+          Instagram
+        </a>
+        <span>, </span>
+        <a href="https://github.com/realdebugg" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+        <span>, </span>
+        <a
+          href="https://se.linkedin.com/in/naim-ghulam-a12071266"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </nav>
+      <p>© Debugg {{ currentYear }}. All rights reserved</p>
+    </footer>
+  </nav>
 </div>

@@ -72,3 +72,189 @@
 .track.active-track {
   transform: translateY(-24px);
 }
+
+.navbar > div {
+  position: relative;
+  z-index: 2;
+}
+
+.navbar.menu-open > div:first-child {
+  visibility: hidden;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+.menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 0.25rem;
+  border: 0;
+  color: #dde0e2;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.menu-button:hover,
+.menu-button:focus-visible {
+  color: #00f3ff;
+}
+
+.menu-button .label {
+  color: inherit;
+}
+
+.menu-button:focus-visible {
+  outline: 1px solid #00f3ff;
+  outline-offset: 4px;
+}
+
+.menu-button .menu {
+  height: 24px;
+}
+
+.menu-button .track {
+  transition-delay: 0s;
+}
+
+.menu-button .track .icon {
+  align-self: flex-end;
+}
+
+.menu-button.visual-menu-label .track {
+  transform: translateY(0);
+}
+
+.menu-button.visual-menu-icon .track {
+  transform: translateY(-24px);
+}
+
+.menu-button.visual-close-label .track {
+  transform: translateY(-48px);
+}
+
+.menu-button.visual-close-icon .track {
+  transform: translateY(-72px);
+}
+
+.mobile-menu-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.5rem 1.75rem;
+  overflow-y: auto;
+  color: #fff;
+  background: #000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1rem);
+  transition:
+    opacity 300ms ease,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 350ms;
+  transition-delay: 0s, 0s, 350ms;
+}
+
+.mobile-menu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-top: 0.25rem;
+}
+
+.mobile-menu-links a {
+  max-width: 100%;
+  color: #f4f4f4;
+  text-decoration: none;
+}
+
+.mobile-menu-links a:hover,
+.mobile-menu-links a:focus-visible {
+  color: #00f3ff;
+}
+
+.navbar .mobile-menu-panel .mobile-menu-links a.is-active {
+  color: #00f3ff;
+}
+
+.mobile-menu-links h1 {
+  margin: 0;
+  overflow: hidden;
+  font: 700 clamp(2.25rem, 10vw, 3rem) / 1.06 Arial, Helvetica, sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.mobile-menu-links h1 > span {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu-panel.is-open .mobile-menu-links h1 > span {
+  transform: translateY(0);
+}
+
+.mobile-menu-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  color: #eee;
+  font: 600 0.8rem / 1.5 Arial, Helvetica, sans-serif;
+}
+
+.mobile-menu-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.2rem;
+}
+
+.mobile-menu-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mobile-menu-footer a:hover,
+.mobile-menu-footer a:focus-visible {
+  color: #ff4d00;
+}
+
+.mobile-menu-footer p {
+  margin: 0.2rem 0 0;
+  color: #858585;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-panel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-button .track,
+  .mobile-menu-panel,
+  .mobile-menu-links h1 > span {
+    transition-duration: 0.01ms;
+  }
+}
