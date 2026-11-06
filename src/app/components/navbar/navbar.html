@@ -13,7 +13,12 @@
   </div>
   <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-6">
     @for (link of navLinks; track link.route) {
-      <a [routerLink]="link.route" routerLinkActive #rla="routerLinkActive" class="nav-link">
+      <a
+        [routerLink]="link.route"
+        routerLinkActive
+        #rla="routerLinkActive"
+        class="nav-link"
+      >
         <span class="menu">
           <span class="track" [class.active-track]="rla.isActive">
             <span class="label">{{ link.label }}</span>
@@ -98,7 +103,11 @@
         </h1>
       </a>
       @for (link of navLinks; track link.route; let i = $index) {
-        <a [routerLink]="link.route" routerLinkActive="is-active" (click)="closeMenu()">
+        <a
+          [routerLink]="link.route"
+          routerLinkActive="is-active"
+          (click)="closeMenu()"
+        >
           <h1>
             <span [style.transition-delay]="menuOpen ? (i + 1) * 70 + 'ms' : '0ms'">
               {{ link.label }}

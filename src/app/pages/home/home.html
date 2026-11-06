@@ -1,74 +1,166 @@
-<div class="w-full h-[calc(100dvh-50px)]">
-  <p>Placeholder content for some cool Three.JS stuff</p>
-</div>
+<section class="home-hero anim-trigger">
+  <div class="home-hero-copy">
+    <p class="home-eyebrow"><span></span> Software developer · Sweden</p>
+    <h1>Hi, I'm<br /><span>Naim.</span></h1>
+    <p class="home-intro">
+      I'm Naim — a software developer who likes making thoughtful digital experiences, useful
+      tools, and the occasional thing for a car.
+    </p>
+    <div class="home-hero-actions">
+      <app-button route="/about" variant="primary">More about me <span>↗</span></app-button>
+      <app-button
+        href="#featured-projects"
+        variant="text"
+        (activated)="scrollToSection($event, 'featured-projects')"
+      >
+        Explore my work <span>↓</span>
+      </app-button>
+    </div>
+    <p class="home-experience">Building software professionally since 2023</p>
+  </div>
 
-<div class="anim-trigger relative">
-  <app-container-with-dots
-    classNames="w-100 !absolute z-[-1] right-[-5rem] top-[50%] opacity-[70%] animated-shot"
-  >
-    <img class="grayscale" src="/photos/landing-photograph.jpg" />
-  </app-container-with-dots>
-  <h1
-    class="font-[Brigends] relative z-11 text-4xl md:text-balance sm:text-5xl lg:text-6xl xl:text-8xl mt-15 md:ml-[calc(min(0px,(100vw-71rem)/-2))]"
-  >
-    Hi! My name is Debugg.
-  </h1>
+  <div class="home-hero-visual">
+    <div class="hero-image-frame">
+      <app-container-with-dots classNames="hero-image-container !absolute inset-0">
+        <img
+          class="hero-image"
+          src="/photos/landing-photograph.jpg"
+          alt="Monochrome photograph from Debugg's portfolio"
+        />
+      </app-container-with-dots>
+    </div>
+    <span class="hero-image-caption">NAIM GHULAM / DEBUGG</span>
+    <span class="hero-image-index" aria-hidden="true">01</span>
+  </div>
+</section>
 
-  <p class="text-md md:text-xl mt-5 mb-6 font-[JetBrains_Mono]">
-    Hi! I'm Naim (aka Debugg), a software developer from Sweden with about {{yearsSinceFirstJob}} years of professional
-    Software Development experience.<br />
-    I love to build and tinker with all types of stuff, from web applications to embedded systems as
-    well as being a hobbyist mechanic on my own cars.<br />
-    I enjoy learning new technologies, applying them to real-world problems and building cool stuff
-    that inspires.
-    <span
-      ><a class="text-neutral-400 font-bold brand-link" routerLink="/about">Learn more.</a></span
-    >
-  </p>
-</div>
+<section class="home-listening-section" aria-label="Currently listening">
+  <app-lastfm></app-lastfm>
+</section>
 
-<app-lastfm></app-lastfm>
-<div class="w-full h-500"><p>Placeholder content</p></div>
+<section id="featured-projects" class="home-section">
+  <div class="home-section-heading">
+    <p class="home-eyebrow"><span></span> Selected work / 01</p>
+    <h2>Featured<br />projects<span>.</span></h2>
+    <p>A few things I've built, from useful tools to projects made just because.</p>
+  </div>
+  <div class="home-project-content">
+    <div class="home-project-list">
+      <a
+        class="home-project-card"
+        href="https://github.com/RealDebugg/debugg.co"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="home-card-number">01</span>
+        <span class="home-card-content">
+          <span class="home-card-title">Debugg.co</span>
+          <span class="home-card-description"
+            >A personal corner of the internet, built with Angular.</span
+          >
+        </span>
+        <span class="home-card-tech">Angular · TypeScript</span>
+        <span class="home-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a
+        class="home-project-card"
+        href="https://github.com/RealDebugg/incipit"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="home-card-number">02</span>
+        <span class="home-card-content">
+          <span class="home-card-title">Incipit</span>
+          <span class="home-card-description"
+            >A full-stack project built with Next.js, Prisma, and Auth0.</span
+          >
+        </span>
+        <span class="home-card-tech">Next.js · Prisma</span>
+        <span class="home-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a
+        class="home-project-card"
+        href="https://github.com/RealDebugg/sharex-nextjs-uploader"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="home-card-number">03</span>
+        <span class="home-card-content">
+          <span class="home-card-title">ShareX Provider</span>
+          <span class="home-card-description"
+            >An image upload provider that can also serve as a CDN.</span
+          >
+        </span>
+        <span class="home-card-tech">Next.js · Vercel Blob</span>
+        <span class="home-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <app-button route="/about" variant="secondary" class="home-section-button">
+      View more projects <span>↗</span>
+    </app-button>
+  </div>
+</section>
 
-<!-- <div class="container rain-hitbox" style="margin-top: 10px;">
-<h2>Projects</h2>
-  <ul>
-    <li>
-      <a target="_blank" href="https://github.com/RealDebugg/sharex-nextjs-uploader"><h3>☾ ShareX Uploader</h3></a>
-      <p>An upload provider for images taken using ShareX, built using Next.js and Vercel Blob Storage. Can also work as a CDN for Fivem & RedM servers.</p>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/RealDebugg/planning-poker"><h3>☾ Scrum Planning Poker</h3></a>
-      <p>Based on Ably's chat feature and built using Next.js, this is a simple planning poker app for scrum teams. Unstable, but might pick it up again.</p>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/RealDebugg/fivem-deaddrop"><h3>☾ FiveM Deaddrop</h3></a>
-      <p>A deaddrop script for FiveM that recreates "G's cache" from GTA V Online. Built in JS.</p>
-    </li>
-    <li>
-      <a target="_blank" href="https://www.gcgsweden.eu"><h3>☾ GCG Sweden AB</h3></a>
-      <p>A gateway module for the 9-3 NG SAABs to allow them to use the 2014+ touch screen radio developed by NEVS. Built using C++.</p>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/RealDebugg/rdr3-pois"><h3>☾ RDR3 POIs</h3></a>
-      <p>A script for RedM and FiveM that adds 3D space markers using custom or in-game textures. Usefull to instruct players of "next steps" in quests or similar.</p>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/RealDebugg/vsc-nodecmd"><h3>☾ VS Code Node Menu</h3></a>
-      <p>An extension for VS Code that replicates the same npm/pnpm/yarn behaviour as seen in WebStorm. Lock file and package file monitoring as well as a command menu which allows you to run scripts more accessibly.</p>
-    </li>
-  </ul>
-  <br><br>
+<section class="home-position-section">
+  <div class="home-section-heading">
+    <p class="home-eyebrow"><span></span> What I do / 02</p>
+    <h2>Current<br />roles<span>.</span></h2>
+    <p>Software developer working across web platforms, APIs, and embedded systems.</p>
+  </div>
+  <div class="home-position-content">
+    <div class="home-position-list">
+      <article>
+        <span class="home-position-date">2023 — NOW</span>
+        <div>
+          <h3>Software Developer <span>·</span> Autocom Diagnostic Partner AB</h3>
+          <p>Building APIs and customer-facing platforms for automotive diagnostics.</p>
+        </div>
+      </article>
+      <article>
+        <span class="home-position-date">2024 — NOW</span>
+        <div>
+          <h3>Software Developer <span>·</span> GCG Sweden AB</h3>
+          <p>Developing custom embedded software and hardware for Saab infotainment.</p>
+        </div>
+      </article>
+    </div>
+    <app-button route="/about" variant="secondary" class="home-section-button">
+      More about my experience <span>↗</span>
+    </app-button>
+  </div>
+</section>
 
-  <b>And couple of other projects:</b><br>
-  <span>
-    <a target="_blank" href="https://github.com/RealDebugg/human-angular-ts">Human Angular Lib</a> ✩
-    <a target="_blank" href="https://github.com/RealDebugg/VRGame">Oculus Quest VR Game Template</a> ✩
-    <a target="_blank" href="https://github.com/RealDebugg/arduino_rickroll">Rickroll script insipired by Justin Flom</a> ✩
-    <a target="_blank" href="https://github.com/RealDebugg/debuggs-discord-bot">My personal Discord bot</a> ✩
-    <a target="_blank" href="https://github.com/RealDebugg/debugg-public">A collection of mini Fivem/RedM scripts by me</a> ✩
-    <a target="_blank" href="https://github.com/RealDebugg/days">Countdown site inspired by bots in Twitter</a> ✩
-    <a target="_blank" href="https://github.com/Infamous-Development-Studio/rdr2-law-anims">RDR2 Law Animations</a> ✩
-    <a target="_blank" href="https://github.com/Infamous-Development-Studio/rdr2-pointing">RDR2 Pointing</a>
-  </span>
-</div> -->
+<section class="home-blog-section">
+  <div class="home-section-heading">
+    <p class="home-eyebrow"><span></span> Blog / 03</p>
+    <h2>Latest<br />post<span>.</span></h2>
+  </div>
+  @let latest = latestPost | async;
+  <div class="home-latest-post">
+    @if (latest; as postState) {
+      @if (postState.status === 'loading') {
+        <p class="home-post-status" role="status">Finding the latest post...</p>
+      } @else if (postState.status === 'error') {
+        <p class="home-post-status" role="status">The latest post couldn't be loaded right now.</p>
+        <a routerLink="/blog" class="home-text-link">Visit the blog <span>↗</span></a>
+      } @else if (postState.status === 'empty') {
+        <p class="home-post-status">No published posts yet.</p>
+        <a routerLink="/blog" class="home-text-link">Visit the blog <span>↗</span></a>
+      } @else {
+        <app-container-with-dots classNames="!mt-0 home-latest-dots">
+          <a [routerLink]="['/blog', postState.post.id]" class="home-latest-card">
+            <span class="home-latest-pattern with-lines" aria-hidden="true"></span>
+            <span class="home-latest-content">
+              <span class="home-latest-date">{{ postState.post.date | date: 'MMMM d, y' }}</span>
+              <h3 [style.font-size]="postTitleFontSize(postState.post.title)">
+                {{ postState.post.title }}
+              </h3>
+              <p>{{ postState.post.description }}</p>
+              <span class="home-text-link">Read the post <span>↗</span></span>
+            </span>
+          </a>
+        </app-container-with-dots>
+      }
+    }
+  </div>
+</section>

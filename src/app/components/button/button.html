@@ -1,0 +1,14 @@
+<a
+  [routerLink]="route() ?? null"
+  [attr.href]="href() ?? null"
+  class="button"
+  [class.button-primary]="variant() === 'primary'"
+  [class.button-secondary]="variant() === 'secondary'"
+  [class.button-text]="variant() === 'text'"
+  (click)="activated.emit($event)"
+>
+  <span class="button-pattern" aria-hidden="true"></span>
+  <span class="button-content">
+    <ng-content></ng-content>
+  </span>
+</a>

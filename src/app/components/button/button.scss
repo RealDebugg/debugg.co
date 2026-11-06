@@ -1,0 +1,103 @@
+:host {
+  display: inline-block;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.75rem 1rem;
+  border: 2px solid #fff;
+  font: 700 0.8rem "JetBrains Mono", monospace;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.button-primary {
+  color: #000;
+  background: #fff;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  border-color: #00f3ff;
+  color: #000;
+  background: #00f3ff;
+}
+
+.button-secondary {
+  color: #fff;
+  background: transparent;
+}
+
+.button-text {
+  border-color: transparent;
+  color: #d6d8d9;
+  background: transparent;
+}
+
+.button-text:hover,
+.button-text:focus-visible {
+  border-color: transparent;
+  color: #00f3ff;
+  background: transparent;
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  border-color: #00f3ff;
+  color: #00f3ff;
+  background-color: transparent;
+}
+
+.button-text .button-pattern {
+  inset: -0.25rem -0.5rem;
+}
+
+.button-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/diagonal-pattern.svg");
+  background-repeat: repeat;
+  animation: diagonalPatternAnimation 6s linear infinite;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.button-secondary:hover .button-pattern,
+.button-secondary:focus-visible .button-pattern,
+.button-text:hover .button-pattern,
+.button-text:focus-visible .button-pattern {
+  opacity: 1;
+}
+
+.button-content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button:focus-visible {
+  outline: 2px solid #00f3ff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button-pattern {
+    transition-duration: 0.01ms;
+  }
+
+  .button-pattern {
+    animation: none;
+  }
+}

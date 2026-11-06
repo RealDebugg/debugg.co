@@ -22,6 +22,7 @@ import { Navbar } from './components/navbar/navbar';
 import { ContactPhoneModalComponent } from './components/contact-phone-modal/contact-phone-modal';
 import { ContactPhoneModalService } from './services/contact-phone-modal.service';
 import { CustomCursorComponent } from './components/custom-cursor/custom-cursor';
+import { WeatherService } from './services/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -56,7 +57,9 @@ export class App implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
-  ) {}
+  ) {
+    inject(WeatherService);
+  }
 
   ngOnInit(): void {
     this.contactPhoneModalService.openRequests$

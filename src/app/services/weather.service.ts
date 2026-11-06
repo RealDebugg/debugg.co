@@ -42,7 +42,14 @@ export class WeatherService {
   private gradient!: CanvasGradient;
 
   constructor() {
+    this.syncVfxOverlay();
     this.init();
+  }
+
+  private syncVfxOverlay(): void {
+    if (typeof document !== 'undefined') {
+      document.body.classList.toggle('vfx-disabled', this.rainStopped());
+    }
   }
 
   private init(): void {
@@ -488,6 +495,7 @@ export class WeatherService {
 
   toggleRain(stopped: boolean): void {
     this.rainStopped.set(stopped);
+    this.syncVfxOverlay();
     localStorage.setItem('disablerain', stopped ? '1' : '0');
 
     if (stopped) {

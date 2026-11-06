@@ -16,7 +16,7 @@
 - [ ] Discord status
   - Add API call
 - [ ] Weather service
-  - Add snow based on calendar month
+  - Add snow instead of rain based on calendar month
 - Timeline marker in about/resume page won't reach the bottom of section
 
 # To implement, generic ideas
@@ -27,16 +27,6 @@
 # Pages to create
 
 - [ ] Contact me
-
-# Home page
-
-- [ ] Three.JS room
-- [x] Introduction (first section)
-- [x] LastFM
-- [ ] Featured projects section
-- [ ] Current position/job
-- [ ] Blog section
-- [ ] All systems status section
 
 # Status page
 

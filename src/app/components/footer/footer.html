@@ -4,17 +4,17 @@
     <h1
       class="font-[Brigends] text-[clamp(2rem,calc(16vw-15px),100px)] flex w-full justify-between border-b border-[rgb(230_230_230/0.3)] pb-2 lg:pb-4"
     >
-      <span class="rain-hitbox">D</span>
-      <span class="rain-hitbox">E</span>
-      <span class="rain-hitbox">B</span>
-      <span class="rain-hitbox">U</span>
-      <span class="rain-hitbox">G</span>
-      <span class="rain-hitbox">G</span>
-      <span class="hidden lg:inline-block rain-hitbox">.</span>
-      <span class="hidden lg:inline-block rain-hitbox">{{
+      <span >D</span>
+      <span >E</span>
+      <span >B</span>
+      <span >U</span>
+      <span >G</span>
+      <span >G</span>
+      <span class="hidden lg:inline-block">.</span>
+      <span class="hidden lg:inline-block">{{
         currentYear.toString().slice(2)[0]
       }}</span>
-      <span class="hidden lg:inline-block rain-hitbox">{{
+      <span class="hidden lg:inline-block">{{
         currentYear.toString().slice(2)[1]
       }}</span>
     </h1>
@@ -24,7 +24,7 @@
   >
     <div class="footer-panel lg:pr-6 flex flex-col justify-between pb-4 lg:pb-0">
       <div class="w-fit">
-        <h3 class="font-[Brigends] text-2xl mb-2 lg:mb-4 rain-hitbox">Socials</h3>
+        <h3 class="font-[Brigends] text-2xl mb-2 lg:mb-4">Socials</h3>
 
         <ul class="social-links-list font-mono flex flex-col gap-2">
           <li>
@@ -171,13 +171,13 @@
           </li>
         </ul>
       </div>
-      <p class="hidden lg:block text-f-p-mobile text-[#dbdbdb] lg:text-f-p rain-hitbox w-fit">
+      <p class="hidden lg:block text-f-p-mobile text-[#dbdbdb] lg:text-f-p w-fit">
         © Debugg {{ currentYear }}. All rights reserved
       </p>
     </div>
     <div class="footer-panel lg:pr-6 flex flex-col justify-between pb-4 lg:pb-0">
       <div class="w-fit">
-        <h3 class="font-[Brigends] text-2xl mb-2 lg:mb-4 rain-hitbox">Projects</h3>
+        <h3 class="font-[Brigends] text-2xl mb-2 lg:mb-4">Projects</h3>
         <ul class="social-links-list font-mono flex flex-col gap-2">
           <li>
             <a
@@ -337,7 +337,7 @@
           </li>
         </ul>
       </div>
-      <p class="hidden lg:block text-center text-f-p-mobile text-[#dbdbdb] lg:text-f-p rain-hitbox">
+      <p class="hidden lg:block text-center text-f-p-mobile text-[#dbdbdb] lg:text-f-p">
         <span class="status-key">TIME</span> <b class="text-white">{{ swedishTime }}</b> in Sweden
         <span class="status-sep">•</span> <span class="status-key">WX</span>
         <b class="text-white">{{ openMeteo.weather() }}</b> <span class="status-sep">•</span>
@@ -350,7 +350,7 @@
     </div>
     <div class="footer-panel flex flex-col justify-between">
       <div class="w-fit">
-        <h3 class="font-[Brigends] text-2xl mb-2 lg:mb-4 rain-hitbox">Get in touch</h3>
+        <h3 class="font-[Brigends] text-2xl mb-2 lg:mb-4">Get in touch</h3>
 
         <ul class="social-links-list font-mono flex flex-col gap-2">
           <li>
@@ -416,7 +416,7 @@
         </ul>
       </div>
       <p
-        class="hidden lg:block built-using-desktop text-right text-f-p-mobile text-[#dbdbdb] lg:text-f-p rain-hitbox"
+        class="hidden lg:block built-using-desktop text-right text-f-p-mobile text-[#dbdbdb] lg:text-f-p"
       >
         Built using <a target="_blank" href="https://angular.dev/">Angular</a>,
         <a target="_blank" href="https://tailwindcss.com/">Tailwind CSS</a>, and
@@ -425,7 +425,7 @@
     </div>
   </div>
   <p
-    class="lg:hidden built-using-mobile text-center text-f-p-mobile text-[#dbdbdb] lg:text-f-p rain-hitbox mt-4 mb-4"
+    class="lg:hidden built-using-mobile text-center text-f-p-mobile text-[#dbdbdb] lg:text-f-p mt-4 mb-4"
   >
     © Debugg {{ currentYear }}. All rights reserved • <span class="status-key">TIME</span>
     <b class="text-white">{{ swedishTime }}</b> in Sweden <span class="status-sep">•</span>

@@ -80,6 +80,15 @@ body::after {
   animation-timing-function: steps(4);
 }
 
+body.vfx-disabled::after,
+.vfx-disabled .scanline {
+  display: none;
+}
+
+body.vfx-disabled::after {
+  content: none;
+}
+
 @keyframes static {
   from {
     background-position: 0 0;
